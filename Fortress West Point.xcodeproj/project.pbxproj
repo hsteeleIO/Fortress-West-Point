@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */; };
+		D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7DC1FCC5FB800565FED /* Scene.sks */; };
+		D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7DE1FCC5FB800565FED /* Scene.swift */; };
+		D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7E01FCC5FB800565FED /* ViewController.swift */; };
+		D9FED7E41FCC5FB800565FED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7E21FCC5FB800565FED /* Main.storyboard */; };
+		D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7E51FCC5FB800565FED /* Assets.xcassets */; };
+		D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */; };
+		D9FED7F41FCC5FB900565FED /* Fortress_West_PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */; };
+		D9FED7FF1FCC5FB900565FED /* Fortress_West_PointUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9FED7F01FCC5FB900565FED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FED7CF1FCC5FB800565FED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FED7D61FCC5FB800565FED;
+			remoteInfo = "Fortress West Point";
+		};
+		D9FED7FB1FCC5FB900565FED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FED7CF1FCC5FB800565FED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FED7D61FCC5FB800565FED;
+			remoteInfo = "Fortress West Point";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9FED7D71FCC5FB800565FED /* Fortress West Point.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fortress West Point.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9FED7DC1FCC5FB800565FED /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
+		D9FED7DE1FCC5FB800565FED /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		D9FED7E01FCC5FB800565FED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9FED7E31FCC5FB800565FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9FED7E51FCC5FB800565FED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9FED7E81FCC5FB800565FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9FED7EA1FCC5FB800565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9FED7EF1FCC5FB900565FED /* Fortress West PointTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fortress West PointTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortress_West_PointTests.swift; sourceTree = "<group>"; };
+		D9FED7F51FCC5FB900565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9FED7FA1FCC5FB900565FED /* Fortress West PointUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fortress West PointUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortress_West_PointUITests.swift; sourceTree = "<group>"; };
+		D9FED8001FCC5FB900565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9FED7D41FCC5FB800565FED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7EC1FCC5FB900565FED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7F71FCC5FB900565FED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9FED7CE1FCC5FB800565FED = {
+			isa = PBXGroup;
+			children = (
+				D9FED7D91FCC5FB800565FED /* Fortress West Point */,
+				D9FED7F21FCC5FB900565FED /* Fortress West PointTests */,
+				D9FED7FD1FCC5FB900565FED /* Fortress West PointUITests */,
+				D9FED7D81FCC5FB800565FED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9FED7D81FCC5FB800565FED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9FED7D71FCC5FB800565FED /* Fortress West Point.app */,
+				D9FED7EF1FCC5FB900565FED /* Fortress West PointTests.xctest */,
+				D9FED7FA1FCC5FB900565FED /* Fortress West PointUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9FED7D91FCC5FB800565FED /* Fortress West Point */ = {
+			isa = PBXGroup;
+			children = (
+				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
+				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
+				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
+				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
+				D9FED7E21FCC5FB800565FED /* Main.storyboard */,
+				D9FED7E51FCC5FB800565FED /* Assets.xcassets */,
+				D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */,
+				D9FED7EA1FCC5FB800565FED /* Info.plist */,
+			);
+			path = "Fortress West Point";
+			sourceTree = "<group>";
+		};
+		D9FED7F21FCC5FB900565FED /* Fortress West PointTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */,
+				D9FED7F51FCC5FB900565FED /* Info.plist */,
+			);
+			path = "Fortress West PointTests";
+			sourceTree = "<group>";
+		};
+		D9FED7FD1FCC5FB900565FED /* Fortress West PointUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */,
+				D9FED8001FCC5FB900565FED /* Info.plist */,
+			);
+			path = "Fortress West PointUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9FED7D61FCC5FB800565FED /* Fortress West Point */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FED8031FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West Point" */;
+			buildPhases = (
+				D9FED7D31FCC5FB800565FED /* Sources */,
+				D9FED7D41FCC5FB800565FED /* Frameworks */,
+				D9FED7D51FCC5FB800565FED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fortress West Point";
+			productName = "Fortress West Point";
+			productReference = D9FED7D71FCC5FB800565FED /* Fortress West Point.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9FED7EE1FCC5FB900565FED /* Fortress West PointTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FED8061FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West PointTests" */;
+			buildPhases = (
+				D9FED7EB1FCC5FB900565FED /* Sources */,
+				D9FED7EC1FCC5FB900565FED /* Frameworks */,
+				D9FED7ED1FCC5FB900565FED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FED7F11FCC5FB900565FED /* PBXTargetDependency */,
+			);
+			name = "Fortress West PointTests";
+			productName = "Fortress West PointTests";
+			productReference = D9FED7EF1FCC5FB900565FED /* Fortress West PointTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9FED7F91FCC5FB900565FED /* Fortress West PointUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FED8091FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West PointUITests" */;
+			buildPhases = (
+				D9FED7F61FCC5FB900565FED /* Sources */,
+				D9FED7F71FCC5FB900565FED /* Frameworks */,
+				D9FED7F81FCC5FB900565FED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FED7FC1FCC5FB900565FED /* PBXTargetDependency */,
+			);
+			name = "Fortress West PointUITests";
+			productName = "Fortress West PointUITests";
+			productReference = D9FED7FA1FCC5FB900565FED /* Fortress West PointUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9FED7CF1FCC5FB800565FED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "C3T Hacker";
+				TargetAttributes = {
+					D9FED7D61FCC5FB800565FED = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+					D9FED7EE1FCC5FB900565FED = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9FED7D61FCC5FB800565FED;
+					};
+					D9FED7F91FCC5FB900565FED = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9FED7D61FCC5FB800565FED;
+					};
+				};
+			};
+			buildConfigurationList = D9FED7D21FCC5FB800565FED /* Build configuration list for PBXProject "Fortress West Point" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9FED7CE1FCC5FB800565FED;
+			productRefGroup = D9FED7D81FCC5FB800565FED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9FED7D61FCC5FB800565FED /* Fortress West Point */,
+				D9FED7EE1FCC5FB900565FED /* Fortress West PointTests */,
+				D9FED7F91FCC5FB900565FED /* Fortress West PointUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9FED7D51FCC5FB800565FED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */,
+				D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */,
+				D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */,
+				D9FED7E41FCC5FB800565FED /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7ED1FCC5FB900565FED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7F81FCC5FB900565FED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9FED7D31FCC5FB800565FED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
+				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
+				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7EB1FCC5FB900565FED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FED7F41FCC5FB900565FED /* Fortress_West_PointTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FED7F61FCC5FB900565FED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FED7FF1FCC5FB900565FED /* Fortress_West_PointUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9FED7F11FCC5FB900565FED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FED7D61FCC5FB800565FED /* Fortress West Point */;
+			targetProxy = D9FED7F01FCC5FB900565FED /* PBXContainerItemProxy */;
+		};
+		D9FED7FC1FCC5FB900565FED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FED7D61FCC5FB800565FED /* Fortress West Point */;
+			targetProxy = D9FED7FB1FCC5FB900565FED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9FED7E21FCC5FB800565FED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9FED7E31FCC5FB800565FED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9FED7E81FCC5FB800565FED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9FED8011FCC5FB900565FED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9FED8021FCC5FB900565FED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9FED8041FCC5FB900565FED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West Point/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-Point";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9FED8051FCC5FB900565FED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West Point/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-Point";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D9FED8071FCC5FB900565FED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West PointTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-PointTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fortress West Point.app/Fortress West Point";
+			};
+			name = Debug;
+		};
+		D9FED8081FCC5FB900565FED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West PointTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-PointTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fortress West Point.app/Fortress West Point";
+			};
+			name = Release;
+		};
+		D9FED80A1FCC5FB900565FED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West PointUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-PointUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fortress West Point";
+			};
+			name = Debug;
+		};
+		D9FED80B1FCC5FB900565FED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Fortress West PointUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-PointUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Fortress West Point";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9FED7D21FCC5FB800565FED /* Build configuration list for PBXProject "Fortress West Point" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FED8011FCC5FB900565FED /* Debug */,
+				D9FED8021FCC5FB900565FED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FED8031FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West Point" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FED8041FCC5FB900565FED /* Debug */,
+				D9FED8051FCC5FB900565FED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FED8061FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West PointTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FED8071FCC5FB900565FED /* Debug */,
+				D9FED8081FCC5FB900565FED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FED8091FCC5FB900565FED /* Build configuration list for PBXNativeTarget "Fortress West PointUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FED80A1FCC5FB900565FED /* Debug */,
+				D9FED80B1FCC5FB900565FED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9FED7CF1FCC5FB800565FED /* Project object */;
+}
