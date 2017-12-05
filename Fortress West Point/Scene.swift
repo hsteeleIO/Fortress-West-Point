@@ -6,7 +6,7 @@
 //  Copyright © 2017 C3T Hacker. All rights reserved.
 //
 
-import SpriteKit
+//import SpriteKit
 import ARKit
 
 class Scene: SKScene {
@@ -38,3 +38,4 @@ class Scene: SKScene {
         }
     }
 }
+
