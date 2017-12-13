@@ -12,17 +12,21 @@ import UIKit
 import GoogleMaps
 import MapKit
 import CoreLocation
+import SwiftyJSON
 import Alamofire
+
 
 class hotSpot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
     let zoom: Float
+    let  id: String
     
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float) {
+    init(name: String, location: CLLocationCoordinate2D, zoom: Float, id:String) {
         self.name = name
         self.location = location
         self.zoom = zoom
+        self.id = id
     }
 }
 
@@ -30,38 +34,42 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     @IBOutlet var Map: MKMapView!
     
-    var mapView: GMSMapView?
+    ///Initilaize Global Values///
     
-    var currentHotSpot: hotSpot?
+    var mapView: GMSMapView? /// Map that you see on the screen
     
-    let destinations = [hotSpot(name: "Suppt's Box", location: CLLocationCoordinate2DMake(41.393375,-73.956181), zoom: 15),hotSpot(name: "Trophy Point", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 16),hotSpot(name: "Chapel", location: CLLocationCoordinate2DMake(41.390504,-73.959925),zoom: 14)]
+    var currentHotSpot: hotSpot? /// our made hotspot that describes places on the map
+    
+    
+    /// array of hotspots
+    let destinations = [hotSpot(name: "US Academy Library", location: CLLocationCoordinate2DMake(41.391478,-73.955650), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Chapel", location: CLLocationCoordinate2DMake(41.390504,-73.959925),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc")]
 
+    
+    var polyline: GMSPolyline? /// GMS path used for navigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// Our google API key
         GMSServices.provideAPIKey("AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ")
         
+        
+        ///Initial Map view centered on our classroom in thayer
         let camera = GMSCameraPosition.camera(withLatitude: 41.390733, longitude: -73.954404, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView?.settings.compassButton = true
         mapView?.settings.myLocationButton = true
         mapView?.isMyLocationEnabled = true
-        
-        
-        let currentLocation = CLLocationCoordinate2DMake(41.390733,-73.954404)
-        let marker = GMSMarker(position:currentLocation)
-        marker.title = "Trophy Point"
-        marker.snippet = "FWP"
-        marker.map = mapView
-        
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next",style: .plain, target:self, action: #selector(moron))
-        //view = mapView
         view = mapView
-        //view.insertSubview(mapView!, at:0)
-        //view.insertSubview(button, at: 1)
-        //self.view.addSubview(button)
         
+        ///Display Next button on the top right of the screen
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next",style: .plain, target:self, action: #selector(nextHotSpot))
+        ///Display Draw button on the top left of the screen
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Navigate",style: .plain, target:self, action: #selector(draw))
+        
+       
+        ///customizing our map with the style.json file from our project directory
+        ///style.json file comes from customizing googleMaps website
         do {
             if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json"){
                 mapView?.mapStyle = try GMSMapStyle(contentsOfFileURL:styleURL)
@@ -76,8 +84,16 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
             
         }
-    @objc func moron(){
+    
+    /// rotates thorugh the destination array
+    /// clears all the previous overlays including markers and polyline paths
+    /// puts markers for current hotspot
+    @objc func nextHotSpot(){
         
+        /// Erase old paths
+        self.mapView?.clear()
+        
+        ///pick current hotSpot
         if currentHotSpot == nil {
             currentHotSpot = destinations.first
             
@@ -92,44 +108,48 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
                 if index == 2 {index = 0}
                 else {index = index + 1}
                 currentHotSpot = destinations[index]
-                
                 mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
-                
-                //////// N A V I G A T I O N ///////////////
-                
-                
-                
-                
-                
                 let marker = GMSMarker(position: currentHotSpot!.location)
                 marker.title = currentHotSpot?.name
                 marker.map = mapView
             }
-            
-            
-            
         }
     }
-    func drawPath(startLoacation: CLLocation, endLocation: CLLocation){
-        let origin = "\(startLoacation.coordinate.latitude),\(startLoacation.coordinate.longitude)"
-        let destination = "\(endLocation.coordinate.latitude).\(endLocation.coordinate.longitude)"
+    
+    /// draws the polyline path from the current location to the destination
+    @objc func drawPath(destination: String){
+        let origin = mapView?.myLocation ?? CLLocation(latitude:41.389148,longitude:-73.956231)///defaults to grant turnaround
         let my_key = "AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)7&destination=\(destination)&mode=walking&key=\(my_key)"
         
+        ///constructing url for googleMaps Directions API
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination=place_id:\(destination)&mode=walking&key=\(my_key)"
+        
+        ///Send constructed url to google and parse received JSON file
         Alamofire.request(url).responseJSON{ respose in
-            let json = JSON(data: response.data!)
-            let routes = json["routes"].arrayValue
             
-            for route in routes{
-                let routeOverviewPolyline = route["overview_polyline"].dictionary
-                let points  = routeOverviewPolyline?["points"]?.stringValue
-                let path = GSMPath.init(fromEncodedPath: points!)
-                let polyline = GSMPolyline.init(path: path)
-                polyline.strokeWidth = 4
-                polyline.strokeColor = UIColor.red
-                polyline.map = self.mapView
+            do {
+                let json = try JSON(data: respose.data!) ///serializing JSON
+                let routes = json["routes"].arrayValue ///getting routes array
+                for route in routes{ /// go through all the possible paths, in our case should be just one
+                    let routeOverviewPolyline = route["overview_polyline"].dictionary
+                    let points  = routeOverviewPolyline?["points"]?.stringValue
+                    let path = GMSPath.init(fromEncodedPath: points!)
+                    self.polyline = GMSPolyline.init(path: path)
+                    self.polyline?.strokeWidth = 4
+                    self.polyline?.strokeColor = UIColor.red
+                    self.polyline?.map = self.mapView
+                }
+            }
+            catch{
+                ///DO SOME ERROR MESSAGE HERE OR OTHER ERROR HANDLING ////
+                NSLog("DID NOT GET JSON FILE")
             }
         }
+    }
+    
+    ///invokes drawPath function for Navigate button
+    @IBAction func draw(_sender: UIButton){
+        self.drawPath(destination:(currentHotSpot?.id)!)
     }
         
         

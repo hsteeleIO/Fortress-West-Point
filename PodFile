@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.0'
+use_frameworks!
+
+target 'Fortress West Point' do
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+
+    end
