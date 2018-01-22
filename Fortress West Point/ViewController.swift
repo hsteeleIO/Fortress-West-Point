@@ -14,7 +14,10 @@ import MapKit
 import CoreLocation
 import SwiftyJSON
 import Alamofire
+import AVFoundation
 
+var captureSession: AVCaptureSession?
+var videoPreviewLayer: AVCaptureVideoPreviewLayer?
 
 class hotSpot: NSObject {
     let name: String?
@@ -42,7 +45,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     
     /// array of hotspots
-    let destinations = [hotSpot(name: "US Academy Library", location: CLLocationCoordinate2DMake(41.391478,-73.955650), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Chapel", location: CLLocationCoordinate2DMake(41.390504,-73.959925),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc")]
+    let destinations = [hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
 
     
     var polyline: GMSPolyline? /// GMS path used for navigation
@@ -105,7 +108,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         }
         else {
             if var index = destinations.index(of: currentHotSpot!) {
-                if index == 2 {index = 0}
+                if index == 3 {index = 0}
                 else {index = index + 1}
                 currentHotSpot = destinations[index]
                 mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
@@ -117,12 +120,15 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     }
     
     /// draws the polyline path from the current location to the destination
-    @objc func drawPath(destination: String){
+    @objc func drawPath(destination: CLLocationCoordinate2D) throws {
+        
         let origin = mapView?.myLocation ?? CLLocation(latitude:41.389148,longitude:-73.956231)///defaults to grant turnaround
+        
         let my_key = "AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ"
         
         ///constructing url for googleMaps Directions API
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination=place_id:\(destination)&mode=walking&key=\(my_key)"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination="+String(destination.latitude)+","+String(destination.longitude)+"&mode=walking&key=\(my_key)"
+        
         
         ///Send constructed url to google and parse received JSON file
         Alamofire.request(url).responseJSON{ respose in
@@ -149,7 +155,18 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     ///invokes drawPath function for Navigate button
     @IBAction func draw(_sender: UIButton){
-        self.drawPath(destination:(currentHotSpot?.id)!)
+        do{
+            if (currentHotSpot == nil){
+                let alert = UIAlertController(title: "Naviagtion Alert", message: "Choose the location first by pressing Next button!",preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
+                self.present(alert, animated: true, completion: nil)
+                }   else {
+                    try self.drawPath(destination:(currentHotSpot?.location)!)
+                }
+        } catch{
+            NSLog("Should not get here!")
+        }
+        
     }
         
         
