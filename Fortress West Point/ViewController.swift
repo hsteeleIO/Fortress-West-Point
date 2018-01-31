@@ -15,9 +15,11 @@ import CoreLocation
 import SwiftyJSON
 import Alamofire
 import AVFoundation
+import Photos
+import CoreLocation
 
-var captureSession: AVCaptureSession?
-var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+
+
 
 class hotSpot: NSObject {
     let name: String?
@@ -33,9 +35,13 @@ class hotSpot: NSObject {
     }
 }
 
-class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDelegate {
+
+class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet var Map: MKMapView!
+    @IBOutlet weak var Camera: UINavigationItem!
+    @IBOutlet weak var imageTake: UIImageView!
+    var imagePicker: UIImagePickerController!
     
     ///Initilaize Global Values///
     
@@ -45,7 +51,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     
     /// array of hotspots
-    let destinations = [hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
+    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
 
     
     var polyline: GMSPolyline? /// GMS path used for navigation
@@ -108,7 +114,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         }
         else {
             if var index = destinations.index(of: currentHotSpot!) {
-                if index == 3 {index = 0}
+                if index == 5 {index = 0}
                 else {index = index + 1}
                 currentHotSpot = destinations[index]
                 mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
@@ -206,8 +212,63 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         //super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
+    ////Function that deals with AR Camera button
+    @IBAction func CameraAction(_ sender: UIButton) {
+        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
+        
+        ///Cecks if location is chosen
+        if (currentHotSpot == nil){
+            let alert = UIAlertController(title: "AR Camera Alert", message: "First click the next button to choose a hotspot!",preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else { //// Checks the distance between the user and the hotspot
+            let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
+            do{
+                ///CHecks if the user is within 25m range
+                if (mylocation.distance(from: current_location) >= 25) {
+                    let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    ///Pops up the iOS camera view
+                    let picker = UIImagePickerController()
+                    
+                    picker.delegate = self
+                    picker.sourceType = .camera
+                    
+                    present(picker,animated:true, completion: nil)
+                }
+            }
+        }
+    }
     
-    // MARK: - ARSKViewDelegate
+    //Saving Image
+    @IBAction func save(_ sender: AnyObject) {
+        UIImageWriteToSavedPhotosAlbum(imageTake.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    //Add image to Library
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            // we got back an error!
+            let ac = UIAlertController(title: "Save Error!", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
+    //Done image capture here
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        imageTake.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
+    
+    // ARSKViewDelegate
     
     /*func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
