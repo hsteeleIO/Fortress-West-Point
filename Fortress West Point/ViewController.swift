@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import SpriteKit
-//import ARKit
+import SpriteKit
+import ARKit
 import GoogleMaps
 import MapKit
 import CoreLocation
@@ -17,8 +17,6 @@ import Alamofire
 import AVFoundation
 import Photos
 import CoreLocation
-
-
 
 
 class hotSpot: NSObject {
@@ -35,24 +33,47 @@ class hotSpot: NSObject {
     }
 }
 
+var sideBarOn = false
+
+let screenSize = UIScreen.main.bounds
+let screenWidth = screenSize.width
+let screenHeight = screenSize.height
+
 
 class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet var Map: MKMapView!
-    @IBOutlet weak var Camera: UINavigationItem!
-    @IBOutlet weak var imageTake: UIImageView!
-    var imagePicker: UIImagePickerController!
+    
+    ///@IBOutlet weak var Camera: UINavigationItem!
+    ///@IBOutlet weak var imageTake: UIImageView!
+    ///var imagePicker: UIImagePickerController!
+    
+    @objc func performsegue(){
+        performSegue(withIdentifier:"BruceTheHoon", sender: self)
+    }
+    
+
+    
+    //@IBAction func OnGoButton(_ sender: Any) {
+     //   performSegue(withIdentifier:"BruceTheHoon", sender: self)
+    
+    //}
     
     ///Initilaize Global Values///
-    
     var mapView: GMSMapView? /// Map that you see on the screen
     
     var currentHotSpot: hotSpot? /// our made hotspot that describes places on the map
     
-    
     /// array of hotspots
     let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
-
+    
+    //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
+    //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
+    
+    //if (mylocation.distance(from: current_location) >= 25) {
+    
+    //}
+    
+    
     
     var polyline: GMSPolyline? /// GMS path used for navigation
     
@@ -70,13 +91,50 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         mapView?.settings.myLocationButton = true
         mapView?.isMyLocationEnabled = true
         view = mapView
+
+        let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
+        let navImage = UIImage(named:"walking.png")
+        navButton.setImage(navImage, for: UIControlState.normal)
+        navButton.backgroundColor=UIColor.white
+        navButton.layer.cornerRadius = 10
         
-        ///Display Next button on the top right of the screen
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next",style: .plain, target:self, action: #selector(nextHotSpot))
-        ///Display Draw button on the top left of the screen
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Navigate",style: .plain, target:self, action: #selector(draw))
         
-       
+        let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        ARButton.addTarget(self, action:#selector(self.performsegue) , for: .touchUpInside)
+        let ARImage = UIImage(named:"ARImage.png")
+        ARButton.setImage(ARImage, for: UIControlState.normal)
+        ARButton.backgroundColor=UIColor.white
+        ARButton.layer.cornerRadius = 10
+        
+        
+        
+        let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
+        let sideBarImage = UIImage(named:"menu-alt-256.png")
+        sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
+        //sideBarButton.backgroundColor=UIColor.white
+        sideBarButton.layer.cornerRadius = 10
+        
+        
+        self.view.addSubview(navButton)
+        self.view.addSubview(ARButton)
+        self.view.addSubview(sideBarButton)
+        
+        var inRange = true
+        
+        func startFlashing(button:UIButton){
+            button.alpha = 1.0
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: {() -> Void in button.alpha = 0.1}, completion: nil)
+        }
+        
+        func stopFlashing(button:UIButton){
+            UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState], animations: {() -> Void in button.alpha = 1.0}, completion: nil)
+        }
+        if inRange {
+            startFlashing(button: ARButton)
+        }
+        
         ///customizing our map with the style.json file from our project directory
         ///style.json file comes from customizing googleMaps website
         do {
@@ -125,6 +183,48 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         }
     }
     
+    @IBAction func selectLab(_sender: UIButton) {
+        self.mapView!.clear()
+        currentHotSpot = destinations[1]
+        mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
+        let marker = GMSMarker(position: currentHotSpot!.location)
+        marker.title = currentHotSpot?.name
+        marker.map = mapView
+    }
+    
+    @IBAction func selectBattleMon(_sender: UIButton) {
+        self.mapView!.clear()
+        currentHotSpot = destinations[2]
+        mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
+        let marker = GMSMarker(position: currentHotSpot!.location)
+        marker.title = currentHotSpot?.name
+        marker.map = mapView
+    }
+    @IBAction func selectKosciuszko(_sender: UIButton) {
+        self.mapView!.clear()
+        currentHotSpot = destinations[3]
+        mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
+        let marker = GMSMarker(position: currentHotSpot!.location)
+        marker.title = currentHotSpot?.name
+        marker.map = mapView
+    }
+    @IBAction func selectMachin(_sender: UIButton) {
+        self.mapView!.clear()
+        currentHotSpot = destinations[4]
+        mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
+        let marker = GMSMarker(position: currentHotSpot!.location)
+        marker.title = currentHotSpot?.name
+        marker.map = mapView
+    }
+    @IBAction func selectChain(_sender: UIButton) {
+        self.mapView!.clear()
+        currentHotSpot = destinations[5]
+        mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
+        let marker = GMSMarker(position: currentHotSpot!.location)
+        marker.title = currentHotSpot?.name
+        marker.map = mapView
+    }
+    
     /// draws the polyline path from the current location to the destination
     @objc func drawPath(destination: CLLocationCoordinate2D) throws {
         
@@ -161,6 +261,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     ///invokes drawPath function for Navigate button
     @IBAction func draw(_sender: UIButton){
+        
         do{
             if (currentHotSpot == nil){
                 let alert = UIAlertController(title: "Naviagtion Alert", message: "Choose the location first by pressing Next button!",preferredStyle: .alert)
@@ -174,6 +275,82 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         }
         
     }
+    
+    @IBAction func alternateSideBar(_sender:UIButton){
+        let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
+        let sideBarImage = UIImage(named:"menu-alt-256.png")
+        sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
+        //sideBarButton.backgroundColor=UIColor.white
+        sideBarButton.layer.cornerRadius = 10
+        
+        ///SIDE BAR BUTTONS///
+        let labButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.10,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        labButton.addTarget(self, action:#selector(self.selectLab), for: .touchUpInside)
+        labButton.setTitle("Lab", for: .normal)
+        labButton.layer.cornerRadius = 10
+        
+        let battleMonButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.15,width:screenWidth * 0.39,height:screenHeight * 0.06))
+        battleMonButton.addTarget(self, action:#selector(self.selectBattleMon), for: .touchUpInside)
+        battleMonButton.setTitle("Battle Monument", for: .normal)
+        battleMonButton.layer.cornerRadius = 10
+        
+        let kosciuszkoButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.20,width:screenWidth * 0.36,height:screenHeight * 0.06))
+        kosciuszkoButton.addTarget(self, action:#selector(self.selectKosciuszko), for: .touchUpInside)
+        kosciuszkoButton.setTitle("COL Kosciuszko", for: .normal)
+        kosciuszkoButton.layer.cornerRadius = 10
+        
+        let machinButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.25,width:screenWidth * 0.25,height:screenHeight * 0.06))
+        machinButton.addTarget(self, action:#selector(self.selectMachin), for: .touchUpInside)
+        machinButton.setTitle("LT Machin", for: .normal)
+        machinButton.layer.cornerRadius = 10
+        
+        let chainButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.30,width:screenWidth * 0.27,height:screenHeight * 0.06))
+        chainButton.addTarget(self, action:#selector(self.selectChain), for: .touchUpInside)
+        chainButton.setTitle("Great Chain", for: .normal)
+        chainButton.layer.cornerRadius = 10
+        ///END OF SIDEBAR BUTTONS
+        
+        let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
+        let navImage = UIImage(named:"walking.png")
+        navButton.setImage(navImage, for: UIControlState.normal)
+        navButton.backgroundColor=UIColor.white
+        navButton.layer.cornerRadius = 10
+        
+        
+        let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        ARButton.addTarget(self, action:#selector(self.performsegue) , for: .touchUpInside)
+        let ARImage = UIImage(named:"ARImage.png")
+        ARButton.setImage(ARImage, for: UIControlState.normal)
+        ARButton.backgroundColor=UIColor.white
+        ARButton.layer.cornerRadius = 10
+        
+        if sideBarOn == false {
+            sideBarOn = true
+            NSLog("SIDE BAR IS ::: True")
+
+            self.view.addSubview(labButton)
+            self.view.addSubview(battleMonButton)
+            self.view.addSubview(kosciuszkoButton)
+            self.view.addSubview(machinButton)
+            self.view.addSubview(chainButton)
+        }
+        else {
+            sideBarOn = false
+            for testButtons in self.view.subviews {
+                if testButtons.isKind(of: UIButton.self) {
+                    testButtons.removeFromSuperview()
+                }
+            }
+            self.view.addSubview(navButton)
+            self.view.addSubview(ARButton)
+            self.view.addSubview(sideBarButton)
+            NSLog("SIDE BAR IS ::: False")
+        }
+    }
+    
+
         
         
         
@@ -213,7 +390,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         // Release any cached data, images, etc that aren't in use.
     }
     ////Function that deals with AR Camera button
-    @IBAction func CameraAction(_ sender: UIButton) {
+    @IBAction func OnGoButton(_ sender: Any) {
         let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
         
         ///Cecks if location is chosen
@@ -232,17 +409,18 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
                     self.present(alert, animated: true, completion: nil)
                 } else {
                     ///Pops up the iOS camera view
-                    let picker = UIImagePickerController()
+                    performSegue(withIdentifier:"BruceTheHoon", sender: self)
+                    //let imagepicker = UIImagePickerController()
                     
-                    picker.delegate = self
-                    picker.sourceType = .camera
+                    //imagepicker.delegate = self
+                    //imagepicker.sourceType = .camera
                     
-                    present(picker,animated:true, completion: nil)
+                    //present(imagepicker,animated:true, completion: nil)
                 }
             }
         }
     }
-    
+    /*
     //Saving Image
     @IBAction func save(_ sender: AnyObject) {
         UIImageWriteToSavedPhotosAlbum(imageTake.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
@@ -264,10 +442,11 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     
     //Done image capture here
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageTake.image = image
         imagePicker.dismiss(animated: true, completion: nil)
-        imageTake.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
-    
+    */
     // ARSKViewDelegate
     
     /*func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {

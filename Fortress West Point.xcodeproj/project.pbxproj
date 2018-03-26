@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
+		D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915B7F52028B17D00EB5767 /* SecondViewController.swift */; };
+		D915B7FD2028BFA700EB5767 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FB2028BFA700EB5767 /* texture.png */; };
+		D915B7FE2028BFA700EB5767 /* ship.scn in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FC2028BFA700EB5767 /* ship.scn */; };
+		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
+		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
+		D915B8062061562900EB5767 /* menu-alt-256.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B8052061562900EB5767 /* menu-alt-256.png */; };
+		D915B808206400B100EB5767 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D915B807206400B100EB5767 /* art.scnassets */; };
 		D98BDFB11FD99173002DEF59 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */; };
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
@@ -48,6 +55,13 @@
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FEA5884BB79FD1AB14FB04 /* Pods-Fortress West Point.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.debug.xcconfig"; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D915B7F52028B17D00EB5767 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D915B7FB2028BFA700EB5767 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Assets.xcassets/texture.png; sourceTree = "<group>"; };
+		D915B7FC2028BFA700EB5767 /* ship.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = ship.scn; path = Assets.xcassets/ship.scn; sourceTree = "<group>"; };
+		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
+		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
+		D915B8052061562900EB5767 /* menu-alt-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-alt-256.png"; sourceTree = "<group>"; };
+		D915B807206400B100EB5767 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D95E7C4B1FD999E00062D159 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D40CB01FD9864E001A9A36 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
@@ -152,10 +166,12 @@
 		D9FED7D91FCC5FB800565FED /* Fortress West Point */ = {
 			isa = PBXGroup;
 			children = (
+				D915B807206400B100EB5767 /* art.scnassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
 				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
 				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
+				D915B8052061562900EB5767 /* menu-alt-256.png */,
 				D9FED7E51FCC5FB800565FED /* Assets.xcassets */,
 				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
 				D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */,
@@ -163,6 +179,11 @@
 				D9FED8121FCEE14E00565FED /* style.json */,
 				D9FED8551FD6F0DF00565FED /* Location.gpx */,
 				D9D40CB21FD98712001A9A36 /* Package.swift */,
+				D915B7FF204DA44100EB5767 /* walking.png */,
+				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
+				D915B801205037EC00EB5767 /* ARImage.png */,
+				D915B7FC2028BFA700EB5767 /* ship.scn */,
+				D915B7FB2028BFA700EB5767 /* texture.png */,
 			);
 			path = "Fortress West Point";
 			sourceTree = "<group>";
@@ -295,12 +316,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D915B7FE2028BFA700EB5767 /* ship.scn in Resources */,
+				D915B800204DA44100EB5767 /* walking.png in Resources */,
+				D915B808206400B100EB5767 /* art.scnassets in Resources */,
 				D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */,
 				D9FED8561FD6F0DF00565FED /* Location.gpx in Resources */,
+				D915B7FD2028BFA700EB5767 /* texture.png in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
 				D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */,
 				D9FED8541FD1ADFC00565FED /* Main.storyboard in Resources */,
 				D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */,
+				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
+				D915B8062061562900EB5767 /* menu-alt-256.png in Resources */,
 				D9FED8131FCEE14E00565FED /* style.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,6 +416,7 @@
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
+				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
