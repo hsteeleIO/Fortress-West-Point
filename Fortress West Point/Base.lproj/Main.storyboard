@@ -26,7 +26,7 @@
                                     <color key="titleColor" white="0.42694769965277779" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="onCloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="oE2-xh-4Kb"/>
+                                    <action selector="onCloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="u7U-lj-wI2"/>
                                 </connections>
                             </button>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eN-OG-wgG">
@@ -45,12 +45,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQW-ZA-uoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="938"/>
+            <point key="canvasLocation" x="-204" y="105"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxi-es-Jv3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -65,6 +64,7 @@
                         <segue destination="w7D-ky-lkF" kind="presentation" identifier="BruceTheHoon" id="wTf-TP-akg"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="43.628185907046479"/>
         </scene>

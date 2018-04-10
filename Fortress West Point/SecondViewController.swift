@@ -12,12 +12,12 @@ import ARKit
 
 class SecondViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var coolButton: UIButton!
-    var onDoneBlock : ((Bool) -> Void)?
     
     @IBAction func onCloseButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
     
     @IBOutlet var sceneView: ARSCNView!
     
@@ -36,6 +36,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
 
         // Do any additional setup after loading the view.
+        
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

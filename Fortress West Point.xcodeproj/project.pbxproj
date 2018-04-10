@@ -13,8 +13,13 @@
 		D915B7FE2028BFA700EB5767 /* ship.scn in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FC2028BFA700EB5767 /* ship.scn */; };
 		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
 		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
-		D915B8062061562900EB5767 /* menu-alt-256.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B8052061562900EB5767 /* menu-alt-256.png */; };
 		D915B808206400B100EB5767 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D915B807206400B100EB5767 /* art.scnassets */; };
+		D915B810206AD41A00EB5767 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B80F206AD41A00EB5767 /* location.png */; };
+		D915B814206AD59500EB5767 /* lab.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B813206AD59400EB5767 /* lab.png */; };
+		D915B816206ADB0700EB5767 /* battlemonument.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B815206ADB0700EB5767 /* battlemonument.png */; };
+		D915B81A206AE04D00EB5767 /* kosc.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B819206AE04C00EB5767 /* kosc.png */; };
+		D915B81C206B21C700EB5767 /* macen.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B81B206B21C600EB5767 /* macen.png */; };
+		D91AD62D206BD658006D7660 /* chain.png in Resources */ = {isa = PBXBuildFile; fileRef = D91AD62C206BD657006D7660 /* chain.png */; };
 		D98BDFB11FD99173002DEF59 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */; };
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
@@ -60,8 +65,13 @@
 		D915B7FC2028BFA700EB5767 /* ship.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = ship.scn; path = Assets.xcassets/ship.scn; sourceTree = "<group>"; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
-		D915B8052061562900EB5767 /* menu-alt-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-alt-256.png"; sourceTree = "<group>"; };
 		D915B807206400B100EB5767 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		D915B80F206AD41A00EB5767 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		D915B813206AD59400EB5767 /* lab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lab.png; sourceTree = "<group>"; };
+		D915B815206ADB0700EB5767 /* battlemonument.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battlemonument.png; sourceTree = "<group>"; };
+		D915B819206AE04C00EB5767 /* kosc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kosc.png; sourceTree = "<group>"; };
+		D915B81B206B21C600EB5767 /* macen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macen.png; sourceTree = "<group>"; };
+		D91AD62C206BD657006D7660 /* chain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chain.png; sourceTree = "<group>"; };
 		D95E7C4B1FD999E00062D159 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D40CB01FD9864E001A9A36 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
@@ -169,15 +179,20 @@
 				D915B807206400B100EB5767 /* art.scnassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
 				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
+				D91AD62C206BD657006D7660 /* chain.png */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
+				D915B813206AD59400EB5767 /* lab.png */,
+				D915B819206AE04C00EB5767 /* kosc.png */,
+				D915B81B206B21C600EB5767 /* macen.png */,
+				D915B815206ADB0700EB5767 /* battlemonument.png */,
 				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
-				D915B8052061562900EB5767 /* menu-alt-256.png */,
 				D9FED7E51FCC5FB800565FED /* Assets.xcassets */,
 				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
 				D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */,
 				D9FED7EA1FCC5FB800565FED /* Info.plist */,
 				D9FED8121FCEE14E00565FED /* style.json */,
 				D9FED8551FD6F0DF00565FED /* Location.gpx */,
+				D915B80F206AD41A00EB5767 /* location.png */,
 				D9D40CB21FD98712001A9A36 /* Package.swift */,
 				D915B7FF204DA44100EB5767 /* walking.png */,
 				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
@@ -317,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D915B7FE2028BFA700EB5767 /* ship.scn in Resources */,
+				D915B814206AD59500EB5767 /* lab.png in Resources */,
 				D915B800204DA44100EB5767 /* walking.png in Resources */,
 				D915B808206400B100EB5767 /* art.scnassets in Resources */,
 				D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */,
@@ -324,11 +340,15 @@
 				D915B7FD2028BFA700EB5767 /* texture.png in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
 				D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */,
+				D91AD62D206BD658006D7660 /* chain.png in Resources */,
 				D9FED8541FD1ADFC00565FED /* Main.storyboard in Resources */,
 				D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */,
+				D915B81A206AE04D00EB5767 /* kosc.png in Resources */,
+				D915B816206ADB0700EB5767 /* battlemonument.png in Resources */,
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
-				D915B8062061562900EB5767 /* menu-alt-256.png in Resources */,
+				D915B810206AD41A00EB5767 /* location.png in Resources */,
 				D9FED8131FCEE14E00565FED /* style.json in Resources */,
+				D915B81C206B21C700EB5767 /* macen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,8 @@ import Photos
 import CoreLocation
 
 
+
+
 class hotSpot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
@@ -92,6 +94,9 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         mapView?.isMyLocationEnabled = true
         view = mapView
 
+        
+        
+        
         let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
         navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
         let navImage = UIImage(named:"walking.png")
@@ -101,7 +106,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         
         let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        ARButton.addTarget(self, action:#selector(self.performsegue) , for: .touchUpInside)
+        ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
         let ARImage = UIImage(named:"ARImage.png")
         ARButton.setImage(ARImage, for: UIControlState.normal)
         ARButton.backgroundColor=UIColor.white
@@ -111,7 +116,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
         sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
-        let sideBarImage = UIImage(named:"menu-alt-256.png")
+        let sideBarImage = UIImage(named:"location.png")
         sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
         //sideBarButton.backgroundColor=UIColor.white
         sideBarButton.layer.cornerRadius = 10
@@ -121,7 +126,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         self.view.addSubview(ARButton)
         self.view.addSubview(sideBarButton)
         
-        var inRange = true
+        var inRange = false
         
         func startFlashing(button:UIButton){
             button.alpha = 1.0
@@ -215,6 +220,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
         marker.map = mapView
+
     }
     @IBAction func selectChain(_sender: UIButton) {
         self.mapView!.clear()
@@ -223,7 +229,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
         marker.map = mapView
-    }
+        }
     
     /// draws the polyline path from the current location to the destination
     @objc func drawPath(destination: CLLocationCoordinate2D) throws {
@@ -279,35 +285,50 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     @IBAction func alternateSideBar(_sender:UIButton){
         let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
         sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
-        let sideBarImage = UIImage(named:"menu-alt-256.png")
+        let sideBarImage = UIImage(named:"location.png")
         sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
         //sideBarButton.backgroundColor=UIColor.white
         sideBarButton.layer.cornerRadius = 10
         
         ///SIDE BAR BUTTONS///
-        let labButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.10,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        let labButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.12,width:screenWidth * 0.11,height:screenHeight * 0.06))
         labButton.addTarget(self, action:#selector(self.selectLab), for: .touchUpInside)
-        labButton.setTitle("Lab", for: .normal)
+        ///labButton.setTitle("Lab", for: .normal)
+        let labButtonImage = UIImage(named:"lab.png")
+        labButton.setBackgroundImage(labButtonImage, for: UIControlState.normal)
         labButton.layer.cornerRadius = 10
+        labButton.semanticContentAttribute = .forceRightToLeft
         
-        let battleMonButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.15,width:screenWidth * 0.39,height:screenHeight * 0.06))
+        let battleMonButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.20,width:screenWidth * 0.11,height:screenHeight * 0.06))
         battleMonButton.addTarget(self, action:#selector(self.selectBattleMon), for: .touchUpInside)
-        battleMonButton.setTitle("Battle Monument", for: .normal)
+        ///battleMonButton.setTitle("Battle Monument", for: .normal)
+        let battleMonumentImage = UIImage(named:"battlemonument.png")
+        battleMonButton.setBackgroundImage(battleMonumentImage, for: UIControlState.normal)
+        battleMonButton.backgroundColor=UIColor.white
         battleMonButton.layer.cornerRadius = 10
         
-        let kosciuszkoButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.20,width:screenWidth * 0.36,height:screenHeight * 0.06))
+        let kosciuszkoButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.28,width:screenWidth * 0.11,height:screenHeight * 0.06))
         kosciuszkoButton.addTarget(self, action:#selector(self.selectKosciuszko), for: .touchUpInside)
-        kosciuszkoButton.setTitle("COL Kosciuszko", for: .normal)
+        ///kosciuszkoButton.setTitle("COL Kosciuszko", for: .normal)
+        let koscImage = UIImage(named:"kosc.png")
+        kosciuszkoButton.setBackgroundImage(koscImage, for: UIControlState.normal)
+        kosciuszkoButton.backgroundColor=UIColor.white
         kosciuszkoButton.layer.cornerRadius = 10
         
-        let machinButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.25,width:screenWidth * 0.25,height:screenHeight * 0.06))
+        let machinButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.36,width:screenWidth * 0.11,height:screenHeight * 0.06))
         machinButton.addTarget(self, action:#selector(self.selectMachin), for: .touchUpInside)
-        machinButton.setTitle("LT Machin", for: .normal)
+        ///machinButton.setTitle("LT Machin", for: .normal)
+        let macenImage = UIImage(named:"macen.png")
+        machinButton.setBackgroundImage(macenImage, for: UIControlState.normal)
+        machinButton.backgroundColor=UIColor.white
         machinButton.layer.cornerRadius = 10
         
-        let chainButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.30,width:screenWidth * 0.27,height:screenHeight * 0.06))
+        let chainButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.44,width:screenWidth * 0.11,height:screenHeight * 0.06))
         chainButton.addTarget(self, action:#selector(self.selectChain), for: .touchUpInside)
-        chainButton.setTitle("Great Chain", for: .normal)
+        ///chainButton.setTitle("Great Chain", for: .normal)
+        let chainImage = UIImage(named:"chain.png")
+        chainButton.setBackgroundImage(chainImage, for: UIControlState.normal)
+        chainButton.backgroundColor=UIColor.white
         chainButton.layer.cornerRadius = 10
         ///END OF SIDEBAR BUTTONS
         
@@ -320,7 +341,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         
         let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        ARButton.addTarget(self, action:#selector(self.performsegue) , for: .touchUpInside)
+        ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
         let ARImage = UIImage(named:"ARImage.png")
         ARButton.setImage(ARImage, for: UIControlState.normal)
         ARButton.backgroundColor=UIColor.white
@@ -391,7 +412,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     }
     ////Function that deals with AR Camera button
     @IBAction func OnGoButton(_ sender: Any) {
-        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
+        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)///defaults to lab
         
         ///Cecks if location is chosen
         if (currentHotSpot == nil){
