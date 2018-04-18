@@ -20,18 +20,17 @@ import CoreLocation
 
 
 
-
 class hotSpot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
     let zoom: Float
-    let  id: String
+    let  ARObject: String
     
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float, id:String) {
+    init(name: String, location: CLLocationCoordinate2D, zoom: Float, ARObject:String) {
         self.name = name
         self.location = location
         self.zoom = zoom
-        self.id = id
+        self.ARObject = ARObject
     }
 }
 
@@ -52,7 +51,14 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     @objc func performsegue(){
         performSegue(withIdentifier:"BruceTheHoon", sender: self)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+        if let vc = segue.destination as? SecondViewController
+        {
+            vc.ARObjectName = (currentHotSpot?.ARObject)!
+        }
+    }
 
     
     //@IBAction func OnGoButton(_ sender: Any) {
@@ -66,7 +72,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     var currentHotSpot: hotSpot? /// our made hotspot that describes places on the map
     
     /// array of hotspots
-    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, id:"ChIJvx7sOJLMwokRofBbRROtFlE"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, id:"ChIJTxwGqfLMwokRFHcT7xYczcc"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, id:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
+    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/map.dae"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil.dae"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
     
     //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
     //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
@@ -135,9 +141,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         func stopFlashing(button:UIButton){
             UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState], animations: {() -> Void in button.alpha = 1.0}, completion: nil)
-        }
-        if inRange {
-            startFlashing(button: ARButton)
         }
         
         ///customizing our map with the style.json file from our project directory
@@ -428,15 +431,11 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
                     let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
                     self.present(alert, animated: true, completion: nil)
-                } else {
+                }
+                
+                else {
                     ///Pops up the iOS camera view
                     performSegue(withIdentifier:"BruceTheHoon", sender: self)
-                    //let imagepicker = UIImagePickerController()
-                    
-                    //imagepicker.delegate = self
-                    //imagepicker.sourceType = .camera
-                    
-                    //present(imagepicker,animated:true, completion: nil)
                 }
             }
         }

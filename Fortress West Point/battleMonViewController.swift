@@ -10,17 +10,12 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SecondViewController: UIViewController, ARSCNViewDelegate {
+class BattleMonViewController: UIViewController, ARSCNViewDelegate {
     
-
-
-
     @IBOutlet var sceneView: ARSCNView!
-    
     
     var nodeModel:SCNNode!
     let nodeName = "pirate_hat_caribbean"
-    var ARObjectName:String = ""
     //let nodeName2 = "body_pivot"
     
     override func viewDidLoad() {
@@ -43,8 +38,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         
         let modelScene = SCNScene(named:
-            ARObjectName)!
-        print(ARObjectName)
+            "art.scnassets/hat/hat.dae")!
         
         //attach material to map?
         //let material = SCNMaterial()
@@ -159,6 +153,5 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         
     }
 }
-
 
 

@@ -20,6 +20,9 @@
 		D915B81A206AE04D00EB5767 /* kosc.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B819206AE04C00EB5767 /* kosc.png */; };
 		D915B81C206B21C700EB5767 /* macen.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B81B206B21C600EB5767 /* macen.png */; };
 		D91AD62D206BD658006D7660 /* chain.png in Resources */ = {isa = PBXBuildFile; fileRef = D91AD62C206BD657006D7660 /* chain.png */; };
+		D91AD62F207D0CF4006D7660 /* battleMonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */; };
+		D91AD631207D0D3A006D7660 /* kozViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD630207D0D3A006D7660 /* kozViewController.swift */; };
+		D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD632207D0DAC006D7660 /* machinViewController.swift */; };
 		D98BDFB11FD99173002DEF59 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */; };
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
@@ -72,6 +75,9 @@
 		D915B819206AE04C00EB5767 /* kosc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kosc.png; sourceTree = "<group>"; };
 		D915B81B206B21C600EB5767 /* macen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macen.png; sourceTree = "<group>"; };
 		D91AD62C206BD657006D7660 /* chain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chain.png; sourceTree = "<group>"; };
+		D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleMonViewController.swift; sourceTree = "<group>"; };
+		D91AD630207D0D3A006D7660 /* kozViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kozViewController.swift; sourceTree = "<group>"; };
+		D91AD632207D0DAC006D7660 /* machinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = machinViewController.swift; sourceTree = "<group>"; };
 		D95E7C4B1FD999E00062D159 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D40CB01FD9864E001A9A36 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
@@ -199,6 +205,9 @@
 				D915B801205037EC00EB5767 /* ARImage.png */,
 				D915B7FC2028BFA700EB5767 /* ship.scn */,
 				D915B7FB2028BFA700EB5767 /* texture.png */,
+				D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */,
+				D91AD630207D0D3A006D7660 /* kozViewController.swift */,
+				D91AD632207D0DAC006D7660 /* machinViewController.swift */,
 			);
 			path = "Fortress West Point";
 			sourceTree = "<group>";
@@ -437,7 +446,10 @@
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
+				D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
+				D91AD62F207D0CF4006D7660 /* battleMonViewController.swift in Sources */,
+				D91AD631207D0D3A006D7660 /* kozViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
 				INFOPLIST_FILE = "Fortress West Point/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-Point";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -624,7 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
 				INFOPLIST_FILE = "Fortress West Point/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.FortressWestPoint.Fortress-West-Point";
 				PRODUCT_NAME = "$(TARGET_NAME)";
