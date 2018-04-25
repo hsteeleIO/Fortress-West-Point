@@ -1,26 +1,33 @@
-//
-//  ViewController.swift
-//  Fortress West Point
-//
-//  Created by C3T Hacker on 11/27/17.
-//  Copyright © 2017 C3T Hacker. All rights reserved.
-//
+
 
 import UIKit
-import SpriteKit
-import ARKit
 import GoogleMaps
 import MapKit
 import CoreLocation
 import SwiftyJSON
 import Alamofire
 import AVFoundation
-import Photos
-import CoreLocation
 
 
+///////// Global Variables //////////
 
-class hotSpot: NSObject {
+// variable used to determine whether to show sidebar or not
+var sideBarOn = false
+
+// captures screen Size of the device
+let screenSize = UIScreen.main.bounds
+
+// captures the width of the device
+let screenWidth = screenSize.width
+
+// captures the height of the device
+let screenHeight = screenSize.height
+
+// Google GMS Services API key. It is neccessary to use geolocation features of the app
+let googleAPIkey = "AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ"
+
+// Class for AR Location hotspots
+class hotspot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
     let zoom: Float
@@ -36,75 +43,72 @@ class hotSpot: NSObject {
     }
 }
 
-var sideBarOn = false
-
-let screenSize = UIScreen.main.bounds
-let screenWidth = screenSize.width
-let screenHeight = screenSize.height
-
-
-class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    ////////// ViewController Class Variables //////////
+    
+    // Google Maps MapView presented when App Launches
+    var mapView: GMSMapView?
+    
+    // holds the hotspot that is currently chosen
+    var currentHotSpot: hotspot?
+    
+    // array of hotspots
+    let destinations = [hotspot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotspot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotspot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"), hotspot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"), hotspot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/quill.dae", node:"Machin1"), hotspot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"), hotspot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY", node:"Chain")]
+    
+    // GMS path used to draw path
+    var polyline: GMSPolyline?
     
     
-    ///@IBOutlet weak var Camera: UINavigationItem!
-    ///@IBOutlet weak var imageTake: UIImageView!
-    ///var imagePicker: UIImagePickerController!
+    ////////// ViewController Class Functions //////////
     
+    // Transition from Map to AR Mode
     @objc func performsegue(){
         performSegue(withIdentifier:"BruceTheHoon", sender: self)
     }
+    
+    //Send AR Object name and Node name to the hotspot's AR mode ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         
-        if let vc = segue.destination as? SecondViewController
-        {
+        if let vc = segue.destination as? SecondViewController {
             vc.ARObjectName = (currentHotSpot?.ARObject)!
             vc.nodeName = (currentHotSpot?.node)!
         }
     }
-
-    
-    //@IBAction func OnGoButton(_ sender: Any) {
-     //   performSegue(withIdentifier:"BruceTheHoon", sender: self)
-    
-    //}
-    
-    ///Initilaize Global Values///
-    var mapView: GMSMapView? /// Map that you see on the screen
-    
-    var currentHotSpot: hotSpot? /// our made hotspot that describes places on the map
-    
-    /// array of hotspots
-    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"), hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"), hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/quill.dae", node:"Machin1"), hotSpot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"), hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY", node:"Chain")]
-    
-    //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
-    //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
-    
-    //if (mylocation.distance(from: current_location) >= 25) {
-    
-    //}
-    
-    
-    
-    var polyline: GMSPolyline? /// GMS path used for navigation
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// Our google API key
-        GMSServices.provideAPIKey("AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ")
+        // Our google API key
+        GMSServices.provideAPIKey(googleAPIkey)
         
-        
-        ///Initial Map view centered on our classroom in thayer
-        let camera = GMSCameraPosition.camera(withLatitude: 41.390733, longitude: -73.954404, zoom: 15.0)
+        /*
+           Initial Map view centered around user's current location,
+           defaults to Thayer Hall if location services are unavailable.
+        */
+        let myLocation = mapView?.myLocation?.coordinate ?? CLLocation(latitude:41.390314,longitude:-73.954821).coordinate
+        let camera = GMSCameraPosition.camera(withLatitude: myLocation.latitude, longitude: myLocation.longitude, zoom: 15.0)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView?.settings.compassButton = true
         mapView?.settings.myLocationButton = true
         mapView?.isMyLocationEnabled = true
         view = mapView
-
         
+        /*
+           Customizing our map with the style.json file from our project directory
+           style.json file comes from customizing googleMaps website
+        */
+        do {
+            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
+                mapView?.mapStyle = try GMSMapStyle(contentsOfFileURL:styleURL)
+            } else {
+                NSLog("Unable to find style.json")
+            }
+        } catch {
+            NSLog("One or more of the map styles failed to load")
+        }
         
+        /////////// Setting Up Google Maps Launch Screen //////////
         
         let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
         navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
@@ -113,7 +117,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         navButton.backgroundColor=UIColor.white
         navButton.layer.cornerRadius = 10
         
-        
         let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
         ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
         let ARImage = UIImage(named:"ARImage.png")
@@ -121,57 +124,28 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         ARButton.backgroundColor=UIColor.white
         ARButton.layer.cornerRadius = 10
         
-        
-        
         let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
         sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
         let sideBarImage = UIImage(named:"location.png")
         sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
-        //sideBarButton.backgroundColor=UIColor.white
         sideBarButton.layer.cornerRadius = 10
-        
         
         self.view.addSubview(navButton)
         self.view.addSubview(ARButton)
         self.view.addSubview(sideBarButton)
         
-        var inRange = false
-        
-        func startFlashing(button:UIButton){
-            button.alpha = 1.0
-            UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseInOut, .repeat, .autoreverse, .allowUserInteraction], animations: {() -> Void in button.alpha = 0.1}, completion: nil)
-        }
-        
-        func stopFlashing(button:UIButton){
-            UIView.animate(withDuration: 0.1, delay: 0.0, options: [.curveEaseInOut, .beginFromCurrentState], animations: {() -> Void in button.alpha = 1.0}, completion: nil)
-        }
-        
-        ///customizing our map with the style.json file from our project directory
-        ///style.json file comes from customizing googleMaps website
-        do {
-            if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json"){
-                mapView?.mapStyle = try GMSMapStyle(contentsOfFileURL:styleURL)
-            }
-            else {
-                NSLog("Unable to find style.json")
-            }
-        }catch{
-            NSLog("One or more of the map styles failed to load")
-            }
+    }
     
-        
-            
-        }
-    
-    /// rotates thorugh the destination array
-    /// clears all the previous overlays including markers and polyline paths
-    /// puts markers for current hotspot
+    /*
+       Rotates thorugh the destination array
+       Clears all the previous overlays including markers and polyline paths
+       Puts markers for current hotspot
+    */
     @objc func nextHotSpot(){
-        
-        /// Erase old paths
+        // Erase old paths
         self.mapView?.clear()
         
-        ///pick current hotSpot
+        //pick current hotSpot
         if currentHotSpot == nil {
             currentHotSpot = destinations.first
             
@@ -180,11 +154,13 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
             let marker = GMSMarker(position: currentHotSpot!.location)
             marker.title = currentHotSpot?.name
             marker.map = mapView
-        }
-        else {
+        } else {
             if var index = destinations.index(of: currentHotSpot!) {
-                if index == 5 {index = 0}
-                else {index = index + 1}
+                if index == 5 {
+                    index = 0
+                } else {
+                    index = index + 1
+                }
                 currentHotSpot = destinations[index]
                 mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
                 let marker = GMSMarker(position: currentHotSpot!.location)
@@ -193,6 +169,8 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
             }
         }
     }
+    
+    ////////// Side Bar Menu Buttons' Action Functions //////////
     
     @IBAction func selectLab(_sender: UIButton) {
         self.mapView!.clear()
@@ -211,6 +189,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         marker.title = currentHotSpot?.name
         marker.map = mapView
     }
+    
     @IBAction func selectKosciuszko(_sender: UIButton) {
         self.mapView!.clear()
         currentHotSpot = destinations[3]
@@ -219,6 +198,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         marker.title = currentHotSpot?.name
         marker.map = mapView
     }
+    
     @IBAction func selectMachin(_sender: UIButton) {
         self.mapView!.clear()
         currentHotSpot = destinations[4]
@@ -226,8 +206,8 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
         marker.map = mapView
-
     }
+    
     @IBAction func selectChain(_sender: UIButton) {
         self.mapView!.clear()
         currentHotSpot = destinations[5]
@@ -235,54 +215,54 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
         marker.map = mapView
-        }
-    
-    /// draws the polyline path from the current location to the destination
-    @objc func drawPath(destination: CLLocationCoordinate2D) throws {
-        
-        let origin = mapView?.myLocation ?? CLLocation(latitude:41.389148,longitude:-73.956231)///defaults to grant turnaround
-        
-        let my_key = "AIzaSyASG3frXynPghBgPWCYElmFktpCMoeA7EQ"
-        
-        ///constructing url for googleMaps Directions API
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination="+String(destination.latitude)+","+String(destination.longitude)+"&mode=walking&key=\(my_key)"
-        
-        
-        ///Send constructed url to google and parse received JSON file
-        Alamofire.request(url).responseJSON{ respose in
-            
-            do {
-                let json = try JSON(data: respose.data!) ///serializing JSON
-                let routes = json["routes"].arrayValue ///getting routes array
-                for route in routes{ /// go through all the possible paths, in our case should be just one
-                    let routeOverviewPolyline = route["overview_polyline"].dictionary
-                    let points  = routeOverviewPolyline?["points"]?.stringValue
-                    let path = GMSPath.init(fromEncodedPath: points!)
-                    self.polyline = GMSPolyline.init(path: path)
-                    self.polyline?.strokeWidth = 4
-                    self.polyline?.strokeColor = UIColor.red
-                    self.polyline?.map = self.mapView
-                }
-            }
-            catch{
-                ///DO SOME ERROR MESSAGE HERE OR OTHER ERROR HANDLING ////
-                NSLog("DID NOT GET JSON FILE")
-            }
-        }
     }
     
-    ///invokes drawPath function for Navigate button
+    // Draws the polyline path from the current location to the destination
+    @objc func drawPath(destination: CLLocationCoordinate2D) throws {
+        let origin = mapView?.myLocation ?? CLLocation(latitude:41.389148,longitude:-73.956231)
+        let my_key = googleAPIkey
+        
+        // Constructing url for googleMaps Directions API
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination="+String(destination.latitude)+","+String(destination.longitude)+"&mode=walking&key=\(my_key)"
+        
+        // Send constructed url to google and parse received JSON file
+        Alamofire.request(url).responseJSON {
+            respose in
+                do {
+                    // Serializing JSON
+                    let json = try JSON(data: respose.data!)
+                    
+                    // Getting routes array
+                    let routes = json["routes"].arrayValue
+                    
+                    // Go through all the possible paths, in our case should be just one
+                    for route in routes {
+                        let routeOverviewPolyline = route["overview_polyline"].dictionary
+                        let points  = routeOverviewPolyline?["points"]?.stringValue
+                        let path = GMSPath.init(fromEncodedPath: points!)
+                        self.polyline = GMSPolyline.init(path: path)
+                        self.polyline?.strokeWidth = 4
+                        self.polyline?.strokeColor = UIColor.red
+                        self.polyline?.map = self.mapView
+                    }
+                } catch {
+                    NSLog("DID NOT GET JSON FILE")
+                }
+            }
+    }
+    
+    // Invokes drawPath function for Navigate button
     @IBAction func draw(_sender: UIButton){
         
-        do{
-            if (currentHotSpot == nil){
-                let alert = UIAlertController(title: "Naviagtion Alert", message: "Choose the location first by pressing Next button!",preferredStyle: .alert)
+        do {
+            if currentHotSpot == nil {
+                let alert = UIAlertController(title: "Naviagtion Alert", message: "Choose the location first from Side Bar Menu!",preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
                 self.present(alert, animated: true, completion: nil)
-                }   else {
-                    try self.drawPath(destination:(currentHotSpot?.location)!)
-                }
-        } catch{
+            }  else {
+                try self.drawPath(destination:(currentHotSpot?.location)!)
+            }
+        } catch {
             NSLog("Should not get here!")
         }
         
@@ -293,13 +273,12 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
         let sideBarImage = UIImage(named:"location.png")
         sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
-        //sideBarButton.backgroundColor=UIColor.white
         sideBarButton.layer.cornerRadius = 10
         
-        ///SIDE BAR BUTTONS///
+        ////////// Side Bar Buttons //////////
+        
         let labButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.12,width:screenWidth * 0.11,height:screenHeight * 0.06))
         labButton.addTarget(self, action:#selector(self.selectLab), for: .touchUpInside)
-        ///labButton.setTitle("Lab", for: .normal)
         let labButtonImage = UIImage(named:"lab.png")
         labButton.setBackgroundImage(labButtonImage, for: UIControlState.normal)
         labButton.layer.cornerRadius = 10
@@ -307,7 +286,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         let battleMonButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.20,width:screenWidth * 0.11,height:screenHeight * 0.06))
         battleMonButton.addTarget(self, action:#selector(self.selectBattleMon), for: .touchUpInside)
-        ///battleMonButton.setTitle("Battle Monument", for: .normal)
         let battleMonumentImage = UIImage(named:"battlemonument.png")
         battleMonButton.setBackgroundImage(battleMonumentImage, for: UIControlState.normal)
         battleMonButton.backgroundColor=UIColor.white
@@ -315,7 +293,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         let kosciuszkoButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.28,width:screenWidth * 0.11,height:screenHeight * 0.06))
         kosciuszkoButton.addTarget(self, action:#selector(self.selectKosciuszko), for: .touchUpInside)
-        ///kosciuszkoButton.setTitle("COL Kosciuszko", for: .normal)
         let koscImage = UIImage(named:"kosc.png")
         kosciuszkoButton.setBackgroundImage(koscImage, for: UIControlState.normal)
         kosciuszkoButton.backgroundColor=UIColor.white
@@ -323,7 +300,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         let machinButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.36,width:screenWidth * 0.11,height:screenHeight * 0.06))
         machinButton.addTarget(self, action:#selector(self.selectMachin), for: .touchUpInside)
-        ///machinButton.setTitle("LT Machin", for: .normal)
         let macenImage = UIImage(named:"macen.png")
         machinButton.setBackgroundImage(macenImage, for: UIControlState.normal)
         machinButton.backgroundColor=UIColor.white
@@ -331,12 +307,10 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         let chainButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.44,width:screenWidth * 0.11,height:screenHeight * 0.06))
         chainButton.addTarget(self, action:#selector(self.selectChain), for: .touchUpInside)
-        ///chainButton.setTitle("Great Chain", for: .normal)
         let chainImage = UIImage(named:"chain.png")
         chainButton.setBackgroundImage(chainImage, for: UIControlState.normal)
         chainButton.backgroundColor=UIColor.white
         chainButton.layer.cornerRadius = 10
-        ///END OF SIDEBAR BUTTONS
         
         let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
         navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
@@ -344,7 +318,6 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         navButton.setImage(navImage, for: UIControlState.normal)
         navButton.backgroundColor=UIColor.white
         navButton.layer.cornerRadius = 10
-        
         
         let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
         ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
@@ -355,15 +328,15 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         
         if sideBarOn == false {
             sideBarOn = true
+            
             NSLog("SIDE BAR IS ::: True")
-
+            
             self.view.addSubview(labButton)
             self.view.addSubview(battleMonButton)
             self.view.addSubview(kosciuszkoButton)
             self.view.addSubview(machinButton)
             self.view.addSubview(chainButton)
-        }
-        else {
+        } else {
             sideBarOn = false
             for testButtons in self.view.subviews {
                 if testButtons.isKind(of: UIButton.self) {
@@ -376,122 +349,31 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
             NSLog("SIDE BAR IS ::: False")
         }
     }
-    
 
-        
-        
-        
-        
-       /* // Set the view's delegate
-        sceneView.delegate = self
-        
-        // Show statistics such as fps and node count
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
-        
-        // Load the SKScene from 'Scene.sks'
-        if let scene = SKScene(fileNamed: "Scene") {
-            sceneView.presentScene(scene)
-        }
-    }*/
-    
-    /*override func viewWillAppear(_ animated: Bool) {
-        //super.viewWillAppear(animated)
-        
-        // Create a session configuration
-        //let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
-        //Map.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //super.viewWillDisappear(animated)
-        
-        // Pause the view's session
-        //Map.session.pause()
-    }
-    */
-    override func didReceiveMemoryWarning() {
-        //super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-    ////Function that deals with AR Camera button
+    // Function that deals with AR Camera button
     @IBAction func OnGoButton(_ sender: Any) {
-        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)///defaults to lab
+        // Defaults to Thaeyr Hall 106
+        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)
         
-        ///Cecks if location is chosen
+        // Cecks if location is chosen
         if (currentHotSpot == nil){
-            let alert = UIAlertController(title: "AR Camera Alert", message: "First click the next button to choose a hotspot!",preferredStyle: .alert)
+            let alert = UIAlertController(title: "AR Camera Alert", message: "First choose location from Side Bar Menu !",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
             self.present(alert, animated: true, completion: nil)
-        }
-        else { //// Checks the distance between the user and the hotspot
+        } else {
+            // Checks the distance between the user and the hotspot
             let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
-            do{
-                ///CHecks if the user is within 25m range
+            do {
+                // CHecks if the user is within 25m range
                 if (mylocation.distance(from: current_location) >= 25) {
                     let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
                     self.present(alert, animated: true, completion: nil)
-                }
-                
-                else {
-                    ///Pops up the iOS camera view
+                } else {
+                    // Pops up the AR mode
                     performSegue(withIdentifier:"BruceTheHoon", sender: self)
                 }
             }
         }
     }
-    /*
-    //Saving Image
-    @IBAction func save(_ sender: AnyObject) {
-        UIImageWriteToSavedPhotosAlbum(imageTake.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-    }
-    
-    //Add image to Library
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        if let error = error {
-            // we got back an error!
-            let ac = UIAlertController(title: "Save Error!", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        } else {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        }
-    }
-    
-    //Done image capture here
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageTake.image = image
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    */
-    // ARSKViewDelegate
-    
-    /*func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "👾")
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
-        return labelNode;
-    }
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }*/
 }

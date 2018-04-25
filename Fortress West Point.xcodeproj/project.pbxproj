@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
+		D908CE5720904D700010FE47 /* GreatChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D908CE5620904D700010FE47 /* GreatChainViewController.swift */; };
 		D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915B7F52028B17D00EB5767 /* SecondViewController.swift */; };
-		D915B7FD2028BFA700EB5767 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FB2028BFA700EB5767 /* texture.png */; };
-		D915B7FE2028BFA700EB5767 /* ship.scn in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FC2028BFA700EB5767 /* ship.scn */; };
 		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
 		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
 		D915B808206400B100EB5767 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D915B807206400B100EB5767 /* art.scnassets */; };
@@ -20,10 +19,6 @@
 		D915B81A206AE04D00EB5767 /* kosc.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B819206AE04C00EB5767 /* kosc.png */; };
 		D915B81C206B21C700EB5767 /* macen.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B81B206B21C600EB5767 /* macen.png */; };
 		D91AD62D206BD658006D7660 /* chain.png in Resources */ = {isa = PBXBuildFile; fileRef = D91AD62C206BD657006D7660 /* chain.png */; };
-		D91AD62F207D0CF4006D7660 /* battleMonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */; };
-		D91AD631207D0D3A006D7660 /* kozViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD630207D0D3A006D7660 /* kozViewController.swift */; };
-		D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD632207D0DAC006D7660 /* machinViewController.swift */; };
-		D9517F01208F7330008D50D1 /* ChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517F00208F7330008D50D1 /* ChainViewController.swift */; };
 		D98BDFB11FD99173002DEF59 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */; };
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
@@ -31,10 +26,7 @@
 		D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7DC1FCC5FB800565FED /* Scene.sks */; };
 		D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7DE1FCC5FB800565FED /* Scene.swift */; };
 		D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7E01FCC5FB800565FED /* ViewController.swift */; };
-		D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7E51FCC5FB800565FED /* Assets.xcassets */; };
 		D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */; };
-		D9FED7F41FCC5FB900565FED /* Fortress_West_PointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */; };
-		D9FED7FF1FCC5FB900565FED /* Fortress_West_PointUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */; };
 		D9FED80F1FCC66F400565FED /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = D9FED80E1FCC66F400565FED /* PodFile */; };
 		D9FED8131FCEE14E00565FED /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = D9FED8121FCEE14E00565FED /* style.json */; };
 		D9FED8151FD1834700565FED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9FED8141FD1832200565FED /* CoreLocation.framework */; };
@@ -63,10 +55,11 @@
 		0CE75B294311835B84A7D2DD /* Pods-Fortress West Point.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.release.xcconfig"; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FEA5884BB79FD1AB14FB04 /* Pods-Fortress West Point.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.debug.xcconfig"; sourceTree = "<group>"; };
+		D908CE5220904AFA0010FE47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D908CE5520904C9C0010FE47 /* GC_Chain_HPers_4Down_Half.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = GC_Chain_HPers_4Down_Half.dae; sourceTree = "<group>"; };
+		D908CE5620904D700010FE47 /* GreatChainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GreatChainViewController.swift; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7F52028B17D00EB5767 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		D915B7FB2028BFA700EB5767 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Assets.xcassets/texture.png; sourceTree = "<group>"; };
-		D915B7FC2028BFA700EB5767 /* ship.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = ship.scn; path = Assets.xcassets/ship.scn; sourceTree = "<group>"; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
 		D915B807206400B100EB5767 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -76,14 +69,9 @@
 		D915B819206AE04C00EB5767 /* kosc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kosc.png; sourceTree = "<group>"; };
 		D915B81B206B21C600EB5767 /* macen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = macen.png; sourceTree = "<group>"; };
 		D91AD62C206BD657006D7660 /* chain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chain.png; sourceTree = "<group>"; };
-		D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleMonViewController.swift; sourceTree = "<group>"; };
-		D91AD630207D0D3A006D7660 /* kozViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kozViewController.swift; sourceTree = "<group>"; };
-		D91AD632207D0DAC006D7660 /* machinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = machinViewController.swift; sourceTree = "<group>"; };
 		D9517EFC208F7320008D50D1 /* curvy-pole.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "curvy-pole.jpg"; sourceTree = "<group>"; };
-		D9517EFD208F7325008D50D1 /* GC_Chain_HPers_4Down_Half.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = GC_Chain_HPers_4Down_Half.dae; sourceTree = "<group>"; };
 		D9517EFE208F7329008D50D1 /* IMG_0430_Fotor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0430_Fotor.jpg; sourceTree = "<group>"; };
 		D9517EFF208F732C008D50D1 /* IMG_0479_Fotor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0479_Fotor.jpg; sourceTree = "<group>"; };
-		D9517F00208F7330008D50D1 /* ChainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChainViewController.swift; path = art.scnassets/ChainViewController.swift; sourceTree = "<group>"; };
 		D95E7C4B1FD999E00062D159 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D40CB01FD9864E001A9A36 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
@@ -94,15 +82,10 @@
 		D9FED7DC1FCC5FB800565FED /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		D9FED7DE1FCC5FB800565FED /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		D9FED7E01FCC5FB800565FED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D9FED7E51FCC5FB800565FED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9FED7E81FCC5FB800565FED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9FED7EA1FCC5FB800565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9FED7EF1FCC5FB900565FED /* Fortress West PointTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fortress West PointTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortress_West_PointTests.swift; sourceTree = "<group>"; };
-		D9FED7F51FCC5FB900565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9FED7FA1FCC5FB900565FED /* Fortress West PointUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fortress West PointUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fortress_West_PointUITests.swift; sourceTree = "<group>"; };
-		D9FED8001FCC5FB900565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9FED80E1FCC66F400565FED /* PodFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D9FED8121FCEE14E00565FED /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		D9FED8141FD1832200565FED /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -161,14 +144,39 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D908CE502090484A0010FE47 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D91AD62C206BD657006D7660 /* chain.png */,
+				D915B815206ADB0700EB5767 /* battlemonument.png */,
+				D915B819206AE04C00EB5767 /* kosc.png */,
+				D915B813206AD59400EB5767 /* lab.png */,
+				D915B81B206B21C600EB5767 /* macen.png */,
+				D915B80F206AD41A00EB5767 /* location.png */,
+				D915B7FF204DA44100EB5767 /* walking.png */,
+				D915B801205037EC00EB5767 /* ARImage.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		D908CE51209049070010FE47 /* Great Chain */ = {
+			isa = PBXGroup;
+			children = (
+				D908CE5620904D700010FE47 /* GreatChainViewController.swift */,
+				D9517EFF208F732C008D50D1 /* IMG_0479_Fotor.jpg */,
+				D9517EFE208F7329008D50D1 /* IMG_0430_Fotor.jpg */,
+				D908CE5520904C9C0010FE47 /* GC_Chain_HPers_4Down_Half.dae */,
+				D9517EFC208F7320008D50D1 /* curvy-pole.jpg */,
+			);
+			path = "Great Chain";
+			sourceTree = "<group>";
+		};
 		D9FED7CE1FCC5FB800565FED = {
 			isa = PBXGroup;
 			children = (
 				D9D40CB01FD9864E001A9A36 /* Lib */,
 				D9FED80E1FCC66F400565FED /* PodFile */,
 				D9FED7D91FCC5FB800565FED /* Fortress West Point */,
-				D9FED7F21FCC5FB900565FED /* Fortress West PointTests */,
-				D9FED7FD1FCC5FB900565FED /* Fortress West PointUITests */,
 				D9FED7D81FCC5FB800565FED /* Products */,
 				BAD1827642341E644373F87C /* Pods */,
 				84E1945A5CD3497783947E9A /* Frameworks */,
@@ -188,57 +196,23 @@
 		D9FED7D91FCC5FB800565FED /* Fortress West Point */ = {
 			isa = PBXGroup;
 			children = (
+				D908CE51209049070010FE47 /* Great Chain */,
+				D908CE502090484A0010FE47 /* Icons */,
 				D915B807206400B100EB5767 /* art.scnassets */,
+				D908CE5220904AFA0010FE47 /* Assets.xcassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
-				D9517F00208F7330008D50D1 /* ChainViewController.swift */,
-				D9517EFF208F732C008D50D1 /* IMG_0479_Fotor.jpg */,
-				D9517EFE208F7329008D50D1 /* IMG_0430_Fotor.jpg */,
-				D9517EFD208F7325008D50D1 /* GC_Chain_HPers_4Down_Half.dae */,
-				D9517EFC208F7320008D50D1 /* curvy-pole.jpg */,
-				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
-				D91AD62C206BD657006D7660 /* chain.png */,
+				D9D40CB21FD98712001A9A36 /* Package.swift */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
-				D915B813206AD59400EB5767 /* lab.png */,
-				D915B819206AE04C00EB5767 /* kosc.png */,
-				D915B81B206B21C600EB5767 /* macen.png */,
-				D915B815206ADB0700EB5767 /* battlemonument.png */,
 				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
-				D9FED7E51FCC5FB800565FED /* Assets.xcassets */,
+				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
 				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
 				D9FED7E71FCC5FB800565FED /* LaunchScreen.storyboard */,
 				D9FED7EA1FCC5FB800565FED /* Info.plist */,
 				D9FED8121FCEE14E00565FED /* style.json */,
 				D9FED8551FD6F0DF00565FED /* Location.gpx */,
-				D915B80F206AD41A00EB5767 /* location.png */,
-				D9D40CB21FD98712001A9A36 /* Package.swift */,
-				D915B7FF204DA44100EB5767 /* walking.png */,
-				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
-				D915B801205037EC00EB5767 /* ARImage.png */,
-				D915B7FC2028BFA700EB5767 /* ship.scn */,
-				D915B7FB2028BFA700EB5767 /* texture.png */,
-				D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */,
-				D91AD630207D0D3A006D7660 /* kozViewController.swift */,
-				D91AD632207D0DAC006D7660 /* machinViewController.swift */,
+				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
 			);
 			path = "Fortress West Point";
-			sourceTree = "<group>";
-		};
-		D9FED7F21FCC5FB900565FED /* Fortress West PointTests */ = {
-			isa = PBXGroup;
-			children = (
-				D9FED7F31FCC5FB900565FED /* Fortress_West_PointTests.swift */,
-				D9FED7F51FCC5FB900565FED /* Info.plist */,
-			);
-			path = "Fortress West PointTests";
-			sourceTree = "<group>";
-		};
-		D9FED7FD1FCC5FB900565FED /* Fortress West PointUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D9FED7FE1FCC5FB900565FED /* Fortress_West_PointUITests.swift */,
-				D9FED8001FCC5FB900565FED /* Info.plist */,
-			);
-			path = "Fortress West PointUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,18 +325,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D915B7FE2028BFA700EB5767 /* ship.scn in Resources */,
 				D915B814206AD59500EB5767 /* lab.png in Resources */,
 				D915B800204DA44100EB5767 /* walking.png in Resources */,
 				D915B808206400B100EB5767 /* art.scnassets in Resources */,
 				D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */,
 				D9FED8561FD6F0DF00565FED /* Location.gpx in Resources */,
-				D915B7FD2028BFA700EB5767 /* texture.png in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
 				D9FED7E91FCC5FB800565FED /* LaunchScreen.storyboard in Resources */,
 				D91AD62D206BD658006D7660 /* chain.png in Resources */,
 				D9FED8541FD1ADFC00565FED /* Main.storyboard in Resources */,
-				D9FED7E61FCC5FB800565FED /* Assets.xcassets in Resources */,
 				D915B81A206AE04D00EB5767 /* kosc.png in Resources */,
 				D915B816206ADB0700EB5767 /* battlemonument.png in Resources */,
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
@@ -453,15 +424,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D908CE5720904D700010FE47 /* GreatChainViewController.swift in Sources */,
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
-				D9517F01208F7330008D50D1 /* ChainViewController.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
-				D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
-				D91AD62F207D0CF4006D7660 /* battleMonViewController.swift in Sources */,
-				D91AD631207D0D3A006D7660 /* kozViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +437,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9FED7F41FCC5FB900565FED /* Fortress_West_PointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +444,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9FED7FF1FCC5FB900565FED /* Fortress_West_PointUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Tri Hat
-//
-//  Created by cadet1se on 2/22/18.
-//  Copyright © 2018 Mufasa. All rights reserved.
-//
 
 import UIKit
 import SceneKit
@@ -12,16 +5,12 @@ import ARKit
 
 class SecondViewController: UIViewController, ARSCNViewDelegate {
     
-
-
-
     @IBOutlet var sceneView: ARSCNView!
-    
-    
     var nodeModel:SCNNode!
+    
+    // Catch information provided from Google Maps ViewController
     var nodeName:String = ""
     var ARObjectName:String = ""
-    //let nodeName2 = "body_pivot"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +20,18 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = false
-        //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        
+        // sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.antialiasingMode = .multisampling4X
         
-        
-        
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/hat/clinton.dae")
+        let scene = SCNScene(named: ARObjectName)
         
         // Set the scene to the view
         sceneView.scene = scene!
         
-        let modelScene = SCNScene(named:
-            ARObjectName)!
-        print(ARObjectName)
-        
-        //attach material to map?
-        //let material = SCNMaterial()
-        //material.diffuse.contents = UIImage(named: "art.scnassets/map/map_1.jpg")
-        //nodeModel.materials = [material]
-        
+        let modelScene = SCNScene(named:ARObjectName)!
+
         nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
     }
     
@@ -71,10 +52,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -104,7 +81,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
             // Combine the matrices
             let finalTransform = simd_mul(hit.worldTransform, rotate)
             sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
-            //sceneView.session.add(anchor: ARAnchor(transform: hit.worldTransform))
         }
         
     }
@@ -132,30 +108,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
                 node.addChildNode(modelClone)
             }
         }
-    }
-    
-    /*
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
-     */
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
 }
 
