@@ -23,6 +23,7 @@
 		D91AD62F207D0CF4006D7660 /* battleMonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */; };
 		D91AD631207D0D3A006D7660 /* kozViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD630207D0D3A006D7660 /* kozViewController.swift */; };
 		D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91AD632207D0DAC006D7660 /* machinViewController.swift */; };
+		D9517F01208F7330008D50D1 /* ChainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9517F00208F7330008D50D1 /* ChainViewController.swift */; };
 		D98BDFB11FD99173002DEF59 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */; };
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
@@ -78,6 +79,11 @@
 		D91AD62E207D0CF4006D7660 /* battleMonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = battleMonViewController.swift; sourceTree = "<group>"; };
 		D91AD630207D0D3A006D7660 /* kozViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kozViewController.swift; sourceTree = "<group>"; };
 		D91AD632207D0DAC006D7660 /* machinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = machinViewController.swift; sourceTree = "<group>"; };
+		D9517EFC208F7320008D50D1 /* curvy-pole.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "curvy-pole.jpg"; sourceTree = "<group>"; };
+		D9517EFD208F7325008D50D1 /* GC_Chain_HPers_4Down_Half.dae */ = {isa = PBXFileReference; lastKnownFileType = text.xml.dae; path = GC_Chain_HPers_4Down_Half.dae; sourceTree = "<group>"; };
+		D9517EFE208F7329008D50D1 /* IMG_0430_Fotor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0430_Fotor.jpg; sourceTree = "<group>"; };
+		D9517EFF208F732C008D50D1 /* IMG_0479_Fotor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0479_Fotor.jpg; sourceTree = "<group>"; };
+		D9517F00208F7330008D50D1 /* ChainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChainViewController.swift; path = art.scnassets/ChainViewController.swift; sourceTree = "<group>"; };
 		D95E7C4B1FD999E00062D159 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D98BDFB21FD99173002DEF59 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D40CB01FD9864E001A9A36 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
@@ -184,6 +190,11 @@
 			children = (
 				D915B807206400B100EB5767 /* art.scnassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
+				D9517F00208F7330008D50D1 /* ChainViewController.swift */,
+				D9517EFF208F732C008D50D1 /* IMG_0479_Fotor.jpg */,
+				D9517EFE208F7329008D50D1 /* IMG_0430_Fotor.jpg */,
+				D9517EFD208F7325008D50D1 /* GC_Chain_HPers_4Down_Half.dae */,
+				D9517EFC208F7320008D50D1 /* curvy-pole.jpg */,
 				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
 				D91AD62C206BD657006D7660 /* chain.png */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
@@ -445,6 +456,7 @@
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
+				D9517F01208F7330008D50D1 /* ChainViewController.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D91AD633207D0DAC006D7660 /* machinViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,

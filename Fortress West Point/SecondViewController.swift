@@ -19,7 +19,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
     
     
     var nodeModel:SCNNode!
-    let nodeName = "pirate_hat_caribbean"
+    var nodeName:String = ""
     var ARObjectName:String = ""
     //let nodeName2 = "body_pivot"
     
@@ -30,17 +30,17 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        sceneView.showsStatistics = false
         //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         sceneView.antialiasingMode = .multisampling4X
         
         
         
         // Create a new scene
-        let scene = SCNScene()
+        let scene = SCNScene(named: "art.scnassets/hat/clinton.dae")
         
         // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.scene = scene!
         
         let modelScene = SCNScene(named:
             ARObjectName)!
@@ -52,7 +52,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         //nodeModel.materials = [material]
         
         nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
-        //nodeModel =  modelScene.rootNode.childNode(withName: nodeName2, recursively: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

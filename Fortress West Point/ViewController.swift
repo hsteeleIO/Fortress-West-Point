@@ -24,13 +24,15 @@ class hotSpot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
     let zoom: Float
-    let  ARObject: String
+    let ARObject: String
+    let node: String
     
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float, ARObject:String) {
+    init(name: String, location: CLLocationCoordinate2D, zoom: Float, ARObject:String, node: String) {
         self.name = name
         self.location = location
         self.zoom = zoom
         self.ARObject = ARObject
+        self.node = node
     }
 }
 
@@ -57,6 +59,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
         if let vc = segue.destination as? SecondViewController
         {
             vc.ARObjectName = (currentHotSpot?.ARObject)!
+            vc.nodeName = (currentHotSpot?.node)!
         }
     }
 
@@ -72,7 +75,7 @@ class ViewController: UIViewController, /*ARSKViewDelegate*/CLLocationManagerDel
     var currentHotSpot: hotSpot? /// our made hotspot that describes places on the map
     
     /// array of hotspots
-    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/hat.dae"),hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/map.dae"),hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil.dae"),hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY")]
+    let destinations = [hotSpot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotSpot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotSpot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"), hotSpot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"), hotSpot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/quill.dae", node:"Machin1"), hotSpot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"), hotSpot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY", node:"Chain")]
     
     //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.394625,longitude:-73.956872)///defaults to battle monumnet
     //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
