@@ -12,8 +12,29 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
     var nodeName:String = ""
     var ARObjectName:String = ""
     
+    @objc func onCloseButton(_sender:AnyObject){
+        self.dismiss(animated:true,completion:nil )
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // captures screen Size of the device
+        let screenSize = UIScreen.main.bounds
+        
+        // captures the width of the device
+        let screenWidth = screenSize.width
+        
+        // captures the height of the device
+        let screenHeight = screenSize.height
+        
+        let closeButton = UIButton(frame : CGRect(x:screenWidth * 0.85,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        closeButton.addTarget(self, action:#selector(self.onCloseButton) , for: .touchUpInside)
+        let closeButtonImage = UIImage(named:"close.png")
+        closeButton.setImage(closeButtonImage, for: UIControlState.normal)
+        closeButton.layer.cornerRadius = 10
+        closeButton.backgroundColor=UIColor.white
+        closeButton.layer.cornerRadius = 10
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -29,6 +50,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene!
+        self.view.addSubview(closeButton)
         
         let modelScene = SCNScene(named:ARObjectName)!
 

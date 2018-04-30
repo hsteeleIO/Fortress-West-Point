@@ -66,6 +66,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         performSegue(withIdentifier:"BruceTheHoon", sender: self)
     }
     
+    @objc func performGreatChainSegue() {
+        performSegue(withIdentifier:"greatChainSegue", sender: self)
+    }
+    
     //Send AR Object name and Node name to the hotspot's AR mode ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -210,7 +214,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     @IBAction func selectChain(_sender: UIButton) {
         self.mapView!.clear()
-        currentHotSpot = destinations[5]
+        currentHotSpot = destinations[6]
         mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
@@ -369,6 +373,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
                     let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
                     self.present(alert, animated: true, completion: nil)
+                } else if (mylocation.distance(from: current_location) >= 10 && currentHotSpot == destinations[6]){
+                    performSegue(withIdentifier: "greatChainSegue", sender: self)
                 } else {
                     // Pops up the AR mode
                     performSegue(withIdentifier:"BruceTheHoon", sender: self)
