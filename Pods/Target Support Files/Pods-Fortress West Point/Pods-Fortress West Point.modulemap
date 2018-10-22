@@ -1,0 +1,6 @@
+framework module Pods_Fortress_West_Point {
+  umbrella header "Pods-Fortress West Point-umbrella.h"
+
+  export *
+  module * { export * }
+}

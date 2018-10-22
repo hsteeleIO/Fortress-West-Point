@@ -32,9 +32,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         closeButton.addTarget(self, action:#selector(self.onCloseButton) , for: .touchUpInside)
         let closeButtonImage = UIImage(named:"close.png")
         closeButton.setImage(closeButtonImage, for: UIControlState.normal)
-        closeButton.layer.cornerRadius = 10
-        closeButton.backgroundColor=UIColor.white
-        closeButton.layer.cornerRadius = 10
+        closeButton.layer.cornerRadius = closeButton.frame.size.width/2
+        closeButton.clipsToBounds = true
+        closeButton.backgroundColor=UIColor.clear
+        
         
         // Set the view's delegate
         sceneView.delegate = self
