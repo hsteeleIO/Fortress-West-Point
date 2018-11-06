@@ -53,7 +53,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     var currentHotSpot: hotspot?
     
     // array of hotspots
-    let destinations = [hotspot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotspot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"), hotspot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"), hotspot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"), hotspot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"), hotspot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"), hotspot(name: "Great Chain", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"ChIJS8U8b5TMwokRCbyC2Zsw3TY", node:"Chain")]
+    let destinations = [
+        hotspot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"),
+        hotspot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"),
+        hotspot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"),
+        hotspot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"),
+        hotspot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
+        hotspot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"),
+        hotspot(name: "Test Object", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"art.scnassets/test/Pumpkin.dae", node:"Pumpkin")]
     
     // GMS path used to draw path
     var polyline: GMSPolyline?
@@ -62,6 +69,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     ////////// ViewController Class Functions //////////
     
     // Transition from Map to AR Mode
+    // TODO Fix identifier
     @objc func performsegue(){
         performSegue(withIdentifier:"BruceTheHoon", sender: self)
     }
@@ -212,7 +220,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         marker.map = mapView
     }
     
-    @IBAction func selectChain(_sender: UIButton) {
+    @IBAction func selectTest(_sender: UIButton) {
         self.mapView!.clear()
         currentHotSpot = destinations[6]
         mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
@@ -309,12 +317,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         machinButton.backgroundColor=UIColor.white
         machinButton.layer.cornerRadius = 10
         
-        let chainButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.44,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        chainButton.addTarget(self, action:#selector(self.selectChain), for: .touchUpInside)
-        let chainImage = UIImage(named:"chain.png")
-        chainButton.setBackgroundImage(chainImage, for: UIControlState.normal)
-        chainButton.backgroundColor=UIColor.white
-        chainButton.layer.cornerRadius = 10
+        let testbutton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.44,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        testbutton.addTarget(self, action:#selector(self.selectTest), for: .touchUpInside)
+        let testImage = UIImage(named:"chain.png")
+        testbutton.setBackgroundImage(testImage, for: UIControlState.normal)
+        testbutton.backgroundColor=UIColor.white
+        testbutton.layer.cornerRadius = 10
         
         let navButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.40,width:screenWidth * 0.11,height:screenHeight * 0.06))
         navButton.addTarget(self, action:#selector(self.draw) , for: .touchUpInside)
@@ -339,7 +347,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
             self.view.addSubview(battleMonButton)
             self.view.addSubview(kosciuszkoButton)
             self.view.addSubview(machinButton)
-            self.view.addSubview(chainButton)
+            self.view.addSubview(testbutton)
         } else {
             sideBarOn = false
             for testButtons in self.view.subviews {
@@ -369,11 +377,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
             let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
             do {
                 // CHecks if the user is within 25m range
-                if (mylocation.distance(from: current_location) >= 250000000) {
+                if (mylocation.distance(from: current_location) >= 250000) {
                     let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
                     self.present(alert, animated: true, completion: nil)
-                } else if (mylocation.distance(from: current_location) >= 10 && currentHotSpot == destinations[6]){
+                } else if (mylocation.distance(from: current_location) >= 10 && currentHotSpot == destinations[5]){
                     performSegue(withIdentifier: "greatChainSegue", sender: self)
                 } else {
                     // Pops up the AR mode

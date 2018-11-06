@@ -11,6 +11,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
     // Catch information provided from Google Maps ViewController
     var nodeName:String = ""
     var ARObjectName:String = ""
+    var start:Bool = true
     
     @objc func onCloseButton(_sender:AnyObject){
         self.dismiss(animated:true,completion:nil )
@@ -30,11 +31,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         
         let closeButton = UIButton(frame : CGRect(x:screenWidth * 0.85,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
         closeButton.addTarget(self, action:#selector(self.onCloseButton) , for: .touchUpInside)
-        let closeButtonImage = UIImage(named:"close.png")
+        let closeButtonImage = UIImage(named:"exit.png")
         closeButton.setImage(closeButtonImage, for: UIControlState.normal)
-        closeButton.layer.cornerRadius = closeButton.frame.size.width/2
+        closeButton.layer.cornerRadius = closeButton.frame.size.width/1.8
         closeButton.clipsToBounds = true
-        closeButton.backgroundColor=UIColor.clear
+        closeButton.backgroundColor = UIColor.white
         
         
         // Set the view's delegate
@@ -53,9 +54,13 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene!
         self.view.addSubview(closeButton)
         
+        //self.initialize()
+    }
+    
+    func initialize() {
         let modelScene = SCNScene(named:ARObjectName)!
-
-        nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
+        self.nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +98,9 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
             }
         }
         
-        // No object was touch? Try feature points
+        // No object was touched? Try feature points
+        if start == false {
+            self.initialize()
         let hitResultsFeaturePoints: [ARHitTestResult]  = sceneView.hitTest(location, types: .featurePoint)
         
         if let hit = hitResultsFeaturePoints.first {
@@ -105,6 +112,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
             let finalTransform = simd_mul(hit.worldTransform, rotate)
             sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
         }
+        }
+        start = false
         
     }
     
@@ -124,6 +133,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
+                let modelScene = SCNScene(named:self.ARObjectName)!
+                self.nodeModel =  modelScene.rootNode.childNode(withName: self.nodeName, recursively: true)
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
                 
