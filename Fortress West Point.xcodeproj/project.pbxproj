@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D3546E82183603C0016EACC /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D3546E72183603C0016EACC /* exit.png */; };
+		1D7A566B21AD97A500C360F8 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* TitleViewController.swift */; };
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
 		C0625D652178C73B0091A161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C26D122097650D0024B3E9 /* Assets.xcassets */; };
 		C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0625D662178D4260091A161 /* LaunchScreen.storyboard */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		0CE75B294311835B84A7D2DD /* Pods-Fortress West Point.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.release.xcconfig"; sourceTree = "<group>"; };
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		1D7A566A21AD97A500C360F8 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +203,7 @@
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
 				D9D40CB21FD98712001A9A36 /* Package.swift */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
+				1D7A566A21AD97A500C360F8 /* TitleViewController.swift */,
 				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
 				D9C9862E2096B549006DC902 /* StatusViewController.swift */,
 				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
@@ -430,6 +433,7 @@
 				D9C9862F2096B549006DC902 /* StatusViewController.swift in Sources */,
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
+				1D7A566B21AD97A500C360F8 /* TitleViewController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
@@ -594,6 +598,7 @@
 			baseConfigurationReference = FF95B12D4EA09A6EB945206E /* Pods-Fortress West Point.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
@@ -607,7 +612,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -616,6 +621,7 @@
 			baseConfigurationReference = 0CE75B294311835B84A7D2DD /* Pods-Fortress West Point.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
@@ -629,7 +635,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
