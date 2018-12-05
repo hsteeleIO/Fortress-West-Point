@@ -3,7 +3,15 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SecondViewController: UIViewController, ARSCNViewDelegate {
+class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let objectList = [
+        Gobjects(name: "Clinton Hat", ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"),
+        Gobjects(name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map"),
+        Gobjects(name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
+        Gobjects(name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1"),
+        Gobjects(name: "Pumpkin", ARObject:"art.scnassets/test/Pumpkin.dae", node:"Pumpkin1"),
+        Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine")]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel:SCNNode!
@@ -15,6 +23,26 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func onCloseButton(_sender:AnyObject){
         self.dismiss(animated:true,completion:nil )
+    }
+    /////picker////
+    @IBOutlet weak var objectPicker: UIPickerView!
+    
+    @IBOutlet weak var curObject: UILabel!
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return objectList[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return objectList.count
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        curObject.text = objectList[row].name
+        nodeName = objectList[row].node
+        ARObjectName = objectList[row].ARObject
     }
     
     override func viewDidLoad() {
@@ -48,17 +76,17 @@ class SecondViewController: UIViewController, ARSCNViewDelegate {
         sceneView.antialiasingMode = .multisampling4X
         
         // Create a new scene
-        let scene = SCNScene(named: ARObjectName)
-        
+        //let scene = SCNScene(named: ARObjectName)
+        let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
         // Set the scene to the view
-        sceneView.scene = scene!
+        sceneView.scene = scene
         self.view.addSubview(closeButton)
         
         //self.initialize()
     }
     
     func initialize() {
-        let modelScene = SCNScene(named:ARObjectName)!
+        let modelScene = SCNScene(named: "art.scnassets/GameScene.scn")!
         self.nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
         
     }

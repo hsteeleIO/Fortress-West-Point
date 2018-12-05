@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Fortress West Point.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>5BD37E665B6B63E4A78C48512F2AA0CB26AC1B9F</string>
+				<key>dateExpires</key>
+				<string>10/12/19</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5BD37E665B6B63E4A78C48512F2AA0CB26AC1B9F</string>
+						<key>dateExpires</key>
+						<string>10/12/19</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>Alamofire.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>5YPRDD2S5C</string>
+						<key>name</key>
+						<string>United States Military Academy Electrical Engineering and Computer Science Department</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>5BD37E665B6B63E4A78C48512F2AA0CB26AC1B9F</string>
+						<key>dateExpires</key>
+						<string>10/12/19</string>
+						<key>type</key>
+						<string>iOS Distribution</string>
+					</dict>
+					<key>name</key>
+					<string>SwiftyJSON.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>5YPRDD2S5C</string>
+						<key>name</key>
+						<string>United States Military Academy Electrical Engineering and Computer Science Department</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>5YPRDD2S5C.USMA.eecs.FortressWestPoint</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>5YPRDD2S5C</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>5YPRDD2S5C.USMA.eecs.FortressWestPoint</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>Fortress West Point.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>3b9a4b18-b833-481e-863a-2b46306127bb</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: USMA.eecs.FortressWestPoint</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>5YPRDD2S5C</string>
+				<key>name</key>
+				<string>United States Military Academy Electrical Engineering and Computer Science Department</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

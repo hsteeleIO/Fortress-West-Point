@@ -43,7 +43,22 @@ class hotspot: NSObject {
     }
 }
 
+class Gobjects: NSObject {
+    let name: String?
+    let ARObject: String
+    let node: String
+    
+    init(name: String, ARObject:String, node: String) {
+        self.name = name
+        self.ARObject = ARObject
+        self.node = node
+    }
+}
+
 class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    
+    
     ////////// ViewController Class Variables //////////
     
     // Google Maps MapView presented when App Launches
@@ -68,14 +83,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     ////////// ViewController Class Functions //////////
     
-    // Transition from Map to AR Mode
-    // TODO Fix identifier
-    @objc func performsegue(){
-        performSegue(withIdentifier:"BruceTheHoon", sender: self)
-    }
+    /////Picker View//////
     
-    @objc func performGreatChainSegue() {
-        performSegue(withIdentifier:"greatChainSegue", sender: self)
+
+ 
+    
+    
+    // Transition from Map to AR Mode
+    @objc func performsegue(){
+        performSegue(withIdentifier:"ARView", sender: self)
     }
     
     //Send AR Object name and Node name to the hotspot's AR mode ViewController
@@ -145,6 +161,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         self.view.addSubview(navButton)
         self.view.addSubview(ARButton)
         self.view.addSubview(sideBarButton)
+        
         
     }
     
@@ -365,28 +382,27 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     // Function that deals with AR Camera button
     @IBAction func OnGoButton(_ sender: Any) {
         // Defaults to Thaeyr Hall 106
-        let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)
+        //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)
         
-        // Cecks if location is chosen
+        // Checks if location is chosen
         if (currentHotSpot == nil){
             let alert = UIAlertController(title: "AR Camera Alert", message: "First choose location from Side Bar Menu !",preferredStyle: .alert)
             alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
             self.present(alert, animated: true, completion: nil)
         } else {
             // Checks the distance between the user and the hotspot
-            let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
+            //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
             do {
-                // CHecks if the user is within 25m range
-                if (mylocation.distance(from: current_location) >= 250000) {
-                    let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
-                    self.present(alert, animated: true, completion: nil)
-                } else if (mylocation.distance(from: current_location) >= 10 && currentHotSpot == destinations[5]){
-                    performSegue(withIdentifier: "greatChainSegue", sender: self)
-                } else {
-                    // Pops up the AR mode
-                    performSegue(withIdentifier:"BruceTheHoon", sender: self)
-                }
+//                 CHecks if the user is within 25m range
+//
+//                if (mylocation.distance(from: current_location) >= 2500000) {
+//                    let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
+//                    self.present(alert, animated: true, completion: nil)
+//                } else {
+//                     Pops up the AR mode
+                    performSegue(withIdentifier:"ARView", sender: self)
+                //}
             }
         }
     }

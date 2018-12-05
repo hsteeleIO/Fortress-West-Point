@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina6_1" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcH-Ao-u0i">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,55 +15,106 @@
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w7D-ky-lkF" customClass="SecondViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WaF-VC-mTF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
+                                <rect key="frame" x="0.0" y="0.0" width="834" height="1084"/>
                             </arscnView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
+                                <rect key="frame" x="0.0" y="846" width="834" height="216"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.53828660102739723" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="w7D-ky-lkF" id="zAh-XR-fMr"/>
+                                    <outlet property="delegate" destination="w7D-ky-lkF" id="yTR-bl-lye"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-2g-ClE">
+                                <rect key="frame" x="301.5" y="790" width="231" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="5Bp-36-OwZ"/>
+                            <constraint firstItem="q55-8Z-o8M" firstAttribute="leading" secondItem="WaF-VC-mTF" secondAttribute="leading" id="B8P-7w-vAe"/>
+                            <constraint firstAttribute="trailing" secondItem="q55-8Z-o8M" secondAttribute="trailing" id="BdD-vT-d34"/>
+                            <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="cEr-bS-tQ9" secondAttribute="trailing" id="WG5-Tn-6Uu"/>
+                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" id="ZuF-5A-Boe"/>
+                            <constraint firstItem="q55-8Z-o8M" firstAttribute="top" secondItem="WaF-VC-mTF" secondAttribute="top" id="c2B-sO-tph"/>
+                            <constraint firstItem="eUh-2g-ClE" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="jVf-zn-9fD"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="q55-8Z-o8M" secondAttribute="bottom" constant="-22" id="l9U-d7-tFz"/>
+                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="eUh-2g-ClE" secondAttribute="bottom" constant="8" id="rvK-Fk-Cpo"/>
+                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="bottom" secondItem="b0Q-L9-M8U" secondAttribute="bottom" id="ujw-SG-UR3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b0Q-L9-M8U"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="curObject" destination="eUh-2g-ClE" id="2wt-Ak-7hP"/>
+                        <outlet property="objectPicker" destination="cEr-bS-tQ9" id="rrq-6b-EX3"/>
                         <outlet property="sceneView" destination="q55-8Z-o8M" id="yTO-dH-Trz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQW-ZA-uoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-368.11594202898556" y="702.45535714285711"/>
+            <point key="canvasLocation" x="-16" y="755"/>
         </scene>
-        <!--Chain View Controller-->
-        <scene sceneID="0rr-Do-fmN">
+        <!--Title View Controller-->
+        <scene sceneID="lRZ-Hu-98L">
             <objects>
-                <viewController storyboardIdentifier="ChainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I6u-nA-q1R" customClass="ChainViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gER-Gk-uC9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="CcH-Ao-u0i" customClass="TitleViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g3m-X1-ehn">
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MS-Y0-XZV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kV-A3-LfQ">
+                                <rect key="frame" x="368.5" y="719.5" width="97" height="73"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="meP-LI-C4D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oig-7s-bLL">
+                                <rect key="frame" x="365" y="775.5" width="104" height="161"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="w7D-ky-lkF" kind="show" id="Qcw-9N-vMC"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crest" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-Wg-qHz">
+                                <rect key="frame" x="117" y="169.5" width="600" height="523"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="24X-yu-udW"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="-125" id="7MT-uk-4ON"/>
+                            <constraint firstItem="oig-7s-bLL" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="300" id="GHn-YU-bGw"/>
+                            <constraint firstItem="oig-7s-bLL" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="ISw-iE-fQN"/>
+                            <constraint firstItem="XBG-we-Lzh" firstAttribute="bottom" secondItem="oig-7s-bLL" secondAttribute="bottom" constant="175.5" id="Nnh-2n-ONp"/>
+                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="200" id="hPf-Ph-hYO"/>
+                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="kiZ-6Q-rVb"/>
+                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="ooC-HN-NQ6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XBG-we-Lzh"/>
                     </view>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4ch-2j-eqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NmH-Jb-WqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765.21739130434787" y="880.58035714285711"/>
+            <point key="canvasLocation" x="-1226.4000000000001" y="324.28785607196403"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxi-es-Jv3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1042"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6Km-P1-fCX"/>
@@ -73,13 +124,18 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="view" destination="pxi-es-Jv3" id="mcX-1n-OEE"/>
-                        <segue destination="w7D-ky-lkF" kind="presentation" identifier="BruceTheHoon" id="wTf-TP-akg"/>
-                        <segue destination="I6u-nA-q1R" kind="presentation" identifier="greatChainSegue" id="Tge-0a-tqU"/>
+                        <segue destination="w7D-ky-lkF" kind="presentation" identifier="ARView" id="wTf-TP-akg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576.81159420289862" y="46.875"/>
+            <point key="canvasLocation" x="-16" y="-162"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Crest" width="600" height="523"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qcw-9N-vMC"/>
+    </inferredMetricsTieBreakers>
 </document>
