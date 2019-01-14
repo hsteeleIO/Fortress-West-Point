@@ -5,7 +5,10 @@ import ARKit
 
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //configuration.planeDetection = .horizontal
+    
     let objectList = [
+        Gobjects(name: "Castle", ARObject:"art.scnassets/castle/castle.dae",node:"Castle"),
         Gobjects(name: "Clinton Hat", ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"),
         Gobjects(name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map"),
         Gobjects(name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
@@ -21,8 +24,13 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     var ARObjectName:String = ""
     var start:Bool = true
     
+    @IBAction func CloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @objc func onCloseButton(_sender:AnyObject){
-        self.dismiss(animated:true,completion:nil )
+        self.dismiss(animated:true,completion:nil)
+        //let vc = segue.destination as? SecondViewController
+        //self.unwind(for: vc, towardsViewController: TitleViewController)
     }
     /////picker////
     @IBOutlet weak var objectPicker: UIPickerView!
@@ -82,7 +90,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         sceneView.scene = scene
         self.view.addSubview(closeButton)
         
-        //self.initialize()
+        self.initialize()
     }
     
     func initialize() {
@@ -129,17 +137,17 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         // No object was touched? Try feature points
         if start == false {
             self.initialize()
-        let hitResultsFeaturePoints: [ARHitTestResult]  = sceneView.hitTest(location, types: .featurePoint)
+            let hitResultsFeaturePoints: [ARHitTestResult]  = sceneView.hitTest(location, types: .featurePoint)
         
-        if let hit = hitResultsFeaturePoints.first {
+            if let hit = hitResultsFeaturePoints.first {
             
-            // Get the rotation matrix of the camera
-            let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
+                // Get the rotation matrix of the camera
+                let rotate = simd_float4x4(SCNMatrix4MakeRotation(sceneView.session.currentFrame!.camera.eulerAngles.y, 0, 1, 0))
             
-            // Combine the matrices
-            let finalTransform = simd_mul(hit.worldTransform, rotate)
-            sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
-        }
+                // Combine the matrices
+                let finalTransform = simd_mul(hit.worldTransform, rotate)
+                sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
+            }
         }
         start = false
         

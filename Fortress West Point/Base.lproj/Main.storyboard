@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcH-Ao-u0i">
-    <device id="ipad10_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w7D-ky-lkF" customClass="SecondViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WaF-VC-mTF">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
-                                <rect key="frame" x="0.0" y="0.0" width="834" height="1084"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="996"/>
                             </arscnView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
-                                <rect key="frame" x="0.0" y="846" width="834" height="216"/>
+                                <rect key="frame" x="0.0" y="758" width="768" height="216"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.53828660102739723" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -31,11 +31,19 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-2g-ClE">
-                                <rect key="frame" x="301.5" y="790" width="231" height="48"/>
+                                <rect key="frame" x="268.5" y="702" width="231" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p1-Vx-wAL">
+                                <rect key="frame" x="675" y="170" width="63" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="CloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="UGV-fs-sjL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -45,8 +53,10 @@
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="cEr-bS-tQ9" secondAttribute="trailing" id="WG5-Tn-6Uu"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" id="ZuF-5A-Boe"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="top" secondItem="WaF-VC-mTF" secondAttribute="top" id="c2B-sO-tph"/>
+                            <constraint firstItem="7p1-Vx-wAL" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="150" id="gJT-GN-mWg"/>
                             <constraint firstItem="eUh-2g-ClE" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="jVf-zn-9fD"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q55-8Z-o8M" secondAttribute="bottom" constant="-22" id="l9U-d7-tFz"/>
+                            <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="7p1-Vx-wAL" secondAttribute="trailing" constant="30" id="n3s-8q-mPt"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="eUh-2g-ClE" secondAttribute="bottom" constant="8" id="rvK-Fk-Cpo"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="bottom" secondItem="b0Q-L9-M8U" secondAttribute="bottom" id="ujw-SG-UR3"/>
                         </constraints>
@@ -62,18 +72,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQW-ZA-uoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16" y="755"/>
+            <point key="canvasLocation" x="-16.546762589928058" y="754.85611510791364"/>
         </scene>
         <!--Title View Controller-->
         <scene sceneID="lRZ-Hu-98L">
             <objects>
                 <viewController id="CcH-Ao-u0i" customClass="TitleViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3m-X1-ehn">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kV-A3-LfQ">
-                                <rect key="frame" x="368.5" y="719.5" width="97" height="73"/>
+                                <rect key="frame" x="335.5" y="658.5" width="97" height="73"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="51"/>
                                 <state key="normal" title="Map"/>
                                 <connections>
@@ -81,7 +91,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oig-7s-bLL">
-                                <rect key="frame" x="365" y="775.5" width="104" height="161"/>
+                                <rect key="frame" x="332" y="751.5" width="104" height="73"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="51"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
@@ -89,18 +99,17 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Crest" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-Wg-qHz">
-                                <rect key="frame" x="117" y="169.5" width="600" height="523"/>
+                                <rect key="frame" x="84" y="115.5" width="600" height="523"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="-125" id="7MT-uk-4ON"/>
-                            <constraint firstItem="oig-7s-bLL" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="300" id="GHn-YU-bGw"/>
-                            <constraint firstItem="oig-7s-bLL" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="ISw-iE-fQN"/>
-                            <constraint firstItem="XBG-we-Lzh" firstAttribute="bottom" secondItem="oig-7s-bLL" secondAttribute="bottom" constant="175.5" id="Nnh-2n-ONp"/>
-                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="200" id="hPf-Ph-hYO"/>
-                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="kiZ-6Q-rVb"/>
-                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="ooC-HN-NQ6"/>
+                            <constraint firstItem="oig-7s-bLL" firstAttribute="top" secondItem="9kV-A3-LfQ" secondAttribute="bottom" constant="20" id="06x-01-4NF"/>
+                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="top" secondItem="CRM-Wg-qHz" secondAttribute="bottom" constant="20" id="0BP-zo-Gup"/>
+                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="3AA-IM-zch"/>
+                            <constraint firstItem="oig-7s-bLL" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="75G-PU-c6J"/>
+                            <constraint firstItem="CRM-Wg-qHz" firstAttribute="centerY" secondItem="g3m-X1-ehn" secondAttribute="centerY" constant="-100" id="C3u-Uh-P7Y"/>
+                            <constraint firstItem="9kV-A3-LfQ" firstAttribute="centerX" secondItem="g3m-X1-ehn" secondAttribute="centerX" id="IZI-vq-vBs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XBG-we-Lzh"/>
                     </view>
@@ -114,9 +123,23 @@
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxi-es-Jv3">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1042"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-OP-JdU">
+                                <rect key="frame" x="699" y="20" width="49" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Title"/>
+                                <connections>
+                                    <segue destination="CcH-Ao-u0i" kind="show" id="rwm-yN-bNG"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Km-P1-fCX" firstAttribute="trailing" secondItem="rOH-OP-JdU" secondAttribute="trailing" constant="20" id="fgl-Ot-koF"/>
+                            <constraint firstItem="rOH-OP-JdU" firstAttribute="top" secondItem="6Km-P1-fCX" secondAttribute="top" constant="20" id="h4B-Wt-8y5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Km-P1-fCX"/>
                     </view>
                     <toolbarItems/>
@@ -129,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16" y="-162"/>
+            <point key="canvasLocation" x="-16.546762589928058" y="-162.41007194244605"/>
         </scene>
     </scenes>
     <resources>
