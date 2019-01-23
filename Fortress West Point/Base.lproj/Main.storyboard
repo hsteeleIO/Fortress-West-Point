@@ -95,7 +95,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <segue destination="w7D-ky-lkF" kind="show" id="MsP-A6-ok7"/>
+                                    <segue destination="pEJ-38-Hau" kind="show" id="r4A-Om-flI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4we-AD-nXR">
@@ -127,7 +127,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NmH-Jb-WqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1226.5625" y="324.0234375"/>
+            <point key="canvasLocation" x="-1338" y="-163"/>
+        </scene>
+        <!--Fort Selection-->
+        <scene sceneID="WwT-LQ-Re1">
+            <objects>
+                <viewController id="pEJ-38-Hau" customClass="FortSelection" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tnl-Od-8lO" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-9e-WcS">
+                                <rect key="frame" x="174" y="207.5" width="76" height="51"/>
+                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CcH-Ao-u0i" kind="show" id="PwW-s6-uFW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s4I-9e-WcS" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" constant="-300" id="Xgf-B6-ycV"/>
+                            <constraint firstItem="s4I-9e-WcS" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" constant="-450" id="uWn-8K-XwQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j7M-GZ-s0C"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qtT-eI-YkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1338.28125" y="754.61200585651534"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -152,7 +183,4 @@
             <point key="canvasLocation" x="-16.546762589928058" y="-162.41007194244605"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="MsP-A6-ok7"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1D3546E82183603C0016EACC /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D3546E72183603C0016EACC /* exit.png */; };
-		1D7A566B21AD97A500C360F8 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* TitleViewController.swift */; };
+		1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* GameViewController.swift */; };
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
+		C020E38421ECD65F00545B4A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020E38321ECD65F00545B4A /* GameScene.swift */; };
+		C020E38621ECD8E700545B4A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38521ECD8E700545B4A /* Actions.sks */; };
+		C0243F7421F8AAB4003DCE95 /* FortSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7321F8AAB4003DCE95 /* FortSelection.swift */; };
+		C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0243F7521F8AB92003DCE95 /* SelectionScene.sks */; };
+		C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */; };
 		C0625D652178C73B0091A161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C26D122097650D0024B3E9 /* Assets.xcassets */; };
 		C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0625D662178D4260091A161 /* LaunchScreen.storyboard */; };
+		C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38221ECD65F00545B4A /* GameScene.sks */; };
 		D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915B7F52028B17D00EB5767 /* SecondViewController.swift */; };
 		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
 		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
@@ -28,7 +34,6 @@
 		D9D40CB31FD98712001A9A36 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D40CB21FD98712001A9A36 /* Package.swift */; };
 		D9D40CBD1FD98903001A9A36 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D40CBE1FD98903001A9A36 /* Alamofire.framework */; };
 		D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */; };
-		D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9FED7DC1FCC5FB800565FED /* Scene.sks */; };
 		D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7DE1FCC5FB800565FED /* Scene.swift */; };
 		D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FED7E01FCC5FB800565FED /* ViewController.swift */; };
 		D9FED80F1FCC66F400565FED /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = D9FED80E1FCC66F400565FED /* PodFile */; };
@@ -58,8 +63,14 @@
 /* Begin PBXFileReference section */
 		0CE75B294311835B84A7D2DD /* Pods-Fortress West Point.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.release.xcconfig"; sourceTree = "<group>"; };
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
-		1D7A566A21AD97A500C360F8 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
+		1D7A566A21AD97A500C360F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C020E38221ECD65F00545B4A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
+		C020E38321ECD65F00545B4A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = ../GameScene.swift; sourceTree = "<group>"; };
+		C020E38521ECD8E700545B4A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		C0243F7321F8AAB4003DCE95 /* FortSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortSelection.swift; sourceTree = "<group>"; };
+		C0243F7521F8AB92003DCE95 /* SelectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectionScene.sks; sourceTree = "<group>"; };
+		C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScene.swift; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7F52028B17D00EB5767 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +93,6 @@
 		D9D40CBE1FD98903001A9A36 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FED7D71FCC5FB800565FED /* Fortress West Point.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fortress West Point.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9FED7DC1FCC5FB800565FED /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		D9FED7DE1FCC5FB800565FED /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		D9FED7E01FCC5FB800565FED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D9FED7EA1FCC5FB800565FED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -201,18 +211,23 @@
 				D9C26D10209763630024B3E9 /* art.scnassets */,
 				D9C26D122097650D0024B3E9 /* Assets.xcassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
+				C0243F7521F8AB92003DCE95 /* SelectionScene.sks */,
+				C020E38221ECD65F00545B4A /* GameScene.sks */,
+				C0243F7321F8AAB4003DCE95 /* FortSelection.swift */,
+				C020E38321ECD65F00545B4A /* GameScene.swift */,
+				C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */,
 				D9D40CB21FD98712001A9A36 /* Package.swift */,
 				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
-				1D7A566A21AD97A500C360F8 /* TitleViewController.swift */,
+				1D7A566A21AD97A500C360F8 /* GameViewController.swift */,
 				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
 				D9C9862E2096B549006DC902 /* StatusViewController.swift */,
 				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
 				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
+				C020E38521ECD8E700545B4A /* Actions.sks */,
 				C0625D662178D4260091A161 /* LaunchScreen.storyboard */,
 				D9FED7EA1FCC5FB800565FED /* Info.plist */,
 				D9FED8121FCEE14E00565FED /* style.json */,
 				D9FED8551FD6F0DF00565FED /* Location.gpx */,
-				D9FED7DC1FCC5FB800565FED /* Scene.sks */,
 			);
 			path = "Fortress West Point";
 			sourceTree = "<group>";
@@ -327,10 +342,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */,
+				C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */,
 				C0625D652178C73B0091A161 /* Assets.xcassets in Resources */,
 				D915B814206AD59500EB5767 /* lab.png in Resources */,
 				D915B800204DA44100EB5767 /* walking.png in Resources */,
-				D9FED7DD1FCC5FB800565FED /* Scene.sks in Resources */,
 				D9FED8561FD6F0DF00565FED /* Location.gpx in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
 				D91AD62D206BD658006D7660 /* chain.png in Resources */,
@@ -342,6 +358,7 @@
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
 				D9C26D11209763630024B3E9 /* art.scnassets in Resources */,
 				D915B810206AD41A00EB5767 /* location.png in Resources */,
+				C020E38621ECD8E700545B4A /* Actions.sks in Resources */,
 				D9FED8131FCEE14E00565FED /* style.json in Resources */,
 				D9C9863120970170006DC902 /* close.png in Resources */,
 				D915B81C206B21C700EB5767 /* macen.png in Resources */,
@@ -431,9 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C9862F2096B549006DC902 /* StatusViewController.swift in Sources */,
+				C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */,
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
+				C020E38421ECD65F00545B4A /* GameScene.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
-				1D7A566B21AD97A500C360F8 /* TitleViewController.swift in Sources */,
+				1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */,
+				C0243F7421F8AAB4003DCE95 /* FortSelection.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
@@ -602,7 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
 				INFOPLIST_FILE = "Fortress West Point/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -624,7 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YPRDD2S5C;
 				INFOPLIST_FILE = "Fortress West Point/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
