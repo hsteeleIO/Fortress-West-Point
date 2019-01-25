@@ -216,7 +216,7 @@
                                     <segue destination="pEJ-38-Hau" kind="show" id="rCY-d1-aQ1"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beV-d8-LWT">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beV-d8-LWT">
                                 <rect key="frame" x="85" y="521" width="600" height="352"/>
                                 <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.79757063356164382" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
@@ -230,11 +230,9 @@ role at West Point. The purpose of Fort Wyllys is to protect Fortress West Point
 attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. By clicking on
 the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the
 other forts and redoubts on West Point. You will be able to see how the fort was designed to take
-full advantage of the terrain around it. Because of the downward slope to the south, the southern
-walls are lower. Because the eastern side faces a hill, the walls there are taller. Click Touch to Start to
-begin interacting with West Point’s history!</mutableString>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="22"/>
+full advantage of the terrain around it.  Because of the downward slope to the south, the southern walls are lower.  Because the eastern side faces a hill, the walls there are taller. </mutableString>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current photo of the fort as it stands today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UI-ZB-tQ1">
@@ -270,6 +268,10 @@ begin interacting with West Point’s history!</mutableString>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T5U-D1-m5r"/>
                     </view>
+                    <connections>
+                        <outlet property="fortwyllys" destination="HEv-mD-cXN" id="8O0-3y-7Zx"/>
+                        <outlet property="scrollbox" destination="beV-d8-LWT" id="U2f-x1-swL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcz-Lh-aUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

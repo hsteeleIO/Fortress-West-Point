@@ -13,8 +13,25 @@ import GameplayKit
 
 class FWIntroController: UIViewController {
     
+    @IBOutlet weak var fortwyllys: UIImageView!
+    @IBOutlet weak var scrollbox: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollbox.clipsToBounds = true;
+        scrollbox.layer.cornerRadius = 10.0;
+        scrollbox.layer.borderColor = UIColor.gray.cgColor
+        scrollbox.layer.borderWidth = 1
+        scrollbox.layer.shadowColor = UIColor.black.cgColor
+        scrollbox.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        scrollbox.layer.shadowOpacity = 1.0
+        scrollbox.layer.shadowRadius = 2.0
+        
+        fortwyllys.layer.borderColor = UIColor.gray.cgColor
+        fortwyllys.layer.borderWidth = 1
+        fortwyllys.layer.shadowColor = UIColor.black.cgColor
+        fortwyllys.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        fortwyllys.layer.shadowOpacity = 1.0
+        fortwyllys.layer.shadowRadius = 2.0
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -32,6 +49,8 @@ class FWIntroController: UIViewController {
             view.showsNodeCount = true
         }
     }
+    
+    
     
     override var shouldAutorotate: Bool {
         return true

@@ -17,12 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Crest" translatesAutoresizingMaskIntoConstraints="NO" id="VLC-KY-Et4">
-                                <rect key="frame" x="74" y="93" width="687" height="642"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -32,7 +26,4 @@
             <point key="canvasLocation" x="52.517985611510795" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Crest" width="600" height="523"/>
-    </resources>
 </document>
