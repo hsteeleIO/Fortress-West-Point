@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  SelectionScene.swift
 //  spriteTest
 //
 //  Created by Daniel An on 1/10/19.
@@ -9,7 +9,7 @@
 //import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class SelectionScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -49,7 +49,7 @@ class GameScene: SKScene {
     func touchMoved(toPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
-            n.strokeColor = SKColor.blue
+            n.strokeColor = UIColor.orange
             self.addChild(n)
         }
     }
@@ -87,3 +87,4 @@ class GameScene: SKScene {
         // Called before each frame is rendered
     }
 }
+

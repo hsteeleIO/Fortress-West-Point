@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcH-Ao-u0i">
-    <device id="ipad12_9rounded" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w7D-ky-lkF" customClass="SecondViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WaF-VC-mTF">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1318"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="996"/>
                             </arscnView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
-                                <rect key="frame" x="0.0" y="1080" width="1024" height="216"/>
+                                <rect key="frame" x="0.0" y="758" width="768" height="216"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.53828660102739723" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -31,13 +31,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-2g-ClE">
-                                <rect key="frame" x="396.5" y="1024" width="231" height="48"/>
+                                <rect key="frame" x="268.5" y="702" width="231" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p1-Vx-wAL">
-                                <rect key="frame" x="931" y="174" width="63" height="47"/>
+                                <rect key="frame" x="675" y="170" width="63" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
@@ -79,11 +79,11 @@
             <objects>
                 <viewController id="CcH-Ao-u0i" customClass="GameViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3m-X1-ehn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYa-dU-Sij">
-                                <rect key="frame" x="457.5" y="798.5" width="109" height="69"/>
+                                <rect key="frame" x="329.5" y="627.5" width="109" height="69"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Start">
@@ -99,7 +99,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4we-AD-nXR">
-                                <rect key="frame" x="461.5" y="898.5" width="101" height="69"/>
+                                <rect key="frame" x="333.5" y="727.5" width="101" height="69"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Map">
@@ -110,9 +110,6 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="TOa-ib-dUB"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,18 +124,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NmH-Jb-WqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1338" y="-163"/>
+            <point key="canvasLocation" x="-3118" y="755"/>
         </scene>
-        <!--Fort Selection-->
+        <!--Fort Selection Controller-->
         <scene sceneID="WwT-LQ-Re1">
             <objects>
-                <viewController id="pEJ-38-Hau" customClass="FortSelection" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pEJ-38-Hau" customClass="FortSelectionController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnl-Od-8lO" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-9e-WcS">
-                                <rect key="frame" x="174" y="207.5" width="76" height="51"/>
+                                <rect key="frame" x="46" y="36.5" width="76" height="51"/>
                                 <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,25 +144,143 @@
                                     <segue destination="CcH-Ao-u0i" kind="show" id="PwW-s6-uFW"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6jw-AM-2bA">
+                                <rect key="frame" x="266.5" y="479.5" width="235" height="65"/>
+                                <subviews>
+                                    <button contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grk-vD-Dww">
+                                        <rect key="frame" x="0.0" y="0.0" width="235" height="65"/>
+                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="46"/>
+                                        <color key="tintColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
+                                        <state key="normal" title="Fort Wyllys">
+                                            <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="nIh-AM-akB" kind="show" id="kpB-ZD-LTn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qg-xY-Q4L">
+                                <rect key="frame" x="83" y="628" width="602" height="68"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="49"/>
+                                <state key="normal" title="Fort X (under construction)">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6jw-AM-2bA" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" id="0MV-6F-ibL"/>
                             <constraint firstItem="s4I-9e-WcS" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" constant="-300" id="Xgf-B6-ycV"/>
+                            <constraint firstItem="1Qg-xY-Q4L" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" constant="150" id="cjj-Bc-3aX"/>
+                            <constraint firstItem="6jw-AM-2bA" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" id="dMz-he-gQr"/>
+                            <constraint firstItem="1Qg-xY-Q4L" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" id="r6n-3h-E1R"/>
                             <constraint firstItem="s4I-9e-WcS" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" constant="-450" id="uWn-8K-XwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j7M-GZ-s0C"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtT-eI-YkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1338.28125" y="754.61200585651534"/>
+            <point key="canvasLocation" x="-2050" y="755"/>
+        </scene>
+        <!--Intro Controller-->
+        <scene sceneID="jxi-ZF-3lB">
+            <objects>
+                <viewController id="nIh-AM-akB" customClass="FWIntroController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Igk-kq-tHS" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWP-Lw-waz">
+                                <rect key="frame" x="197.5" y="878" width="373" height="68"/>
+                                <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="50"/>
+                                <state key="normal" title="Touch to Start">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="w7D-ky-lkF" kind="show" id="ofl-b1-0Gt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRc-84-3ns">
+                                <rect key="frame" x="46" y="36.5" width="76" height="51"/>
+                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pEJ-38-Hau" kind="show" id="rCY-d1-aQ1"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beV-d8-LWT">
+                                <rect key="frame" x="85" y="521" width="600" height="352"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.79757063356164382" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="2QA-RC-jX7"/>
+                                    <constraint firstAttribute="width" constant="600" id="zMb-h8-INt"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <mutableString key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’
+role at West Point. The purpose of Fort Wyllys is to protect Fortress West Point from infantry
+attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. By clicking on
+the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the
+other forts and redoubts on West Point. You will be able to see how the fort was designed to take
+full advantage of the terrain around it. Because of the downward slope to the south, the southern
+walls are lower. Because the eastern side faces a hill, the walls there are taller. Click Touch to Start to
+begin interacting with West Point’s history!</mutableString>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current photo of the fort as it stands today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UI-ZB-tQ1">
+                                <rect key="frame" x="180" y="485" width="401.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortwyllys" translatesAutoresizingMaskIntoConstraints="NO" id="HEv-mD-cXN">
+                                <rect key="frame" x="180" y="193" width="408" height="284"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" adjustable="YES"/>
+                                </accessibility>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iWP-Lw-waz" firstAttribute="centerY" secondItem="Igk-kq-tHS" secondAttribute="centerY" constant="400" id="3UK-w7-bh4"/>
+                            <constraint firstAttribute="bottom" secondItem="beV-d8-LWT" secondAttribute="bottom" constant="151" id="87g-oV-Oci"/>
+                            <constraint firstItem="HEv-mD-cXN" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="180" id="COr-q9-Vre"/>
+                            <constraint firstItem="HEv-mD-cXN" firstAttribute="top" secondItem="T5U-D1-m5r" secondAttribute="top" constant="173" id="Edq-DZ-5d5"/>
+                            <constraint firstItem="beV-d8-LWT" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="85" id="Is1-An-iIS"/>
+                            <constraint firstItem="0UI-ZB-tQ1" firstAttribute="leading" secondItem="HEv-mD-cXN" secondAttribute="leading" id="Mvc-kH-PWL"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0UI-ZB-tQ1" secondAttribute="trailing" symbolic="YES" id="XzE-sB-RSR"/>
+                            <constraint firstItem="0UI-ZB-tQ1" firstAttribute="top" secondItem="HEv-mD-cXN" secondAttribute="bottom" constant="8" symbolic="YES" id="YnH-cr-Fz2"/>
+                            <constraint firstItem="lRc-84-3ns" firstAttribute="centerX" secondItem="Igk-kq-tHS" secondAttribute="centerX" constant="-300" id="ape-2r-YuQ"/>
+                            <constraint firstItem="lRc-84-3ns" firstAttribute="centerY" secondItem="Igk-kq-tHS" secondAttribute="centerY" constant="-450" id="jUY-6X-3Do"/>
+                            <constraint firstItem="beV-d8-LWT" firstAttribute="top" secondItem="HEv-mD-cXN" secondAttribute="bottom" constant="44" id="jWO-Bh-7hJ"/>
+                            <constraint firstItem="iWP-Lw-waz" firstAttribute="top" secondItem="beV-d8-LWT" secondAttribute="bottom" constant="5" id="laa-eb-s90"/>
+                            <constraint firstItem="HEv-mD-cXN" firstAttribute="centerX" secondItem="iWP-Lw-waz" secondAttribute="centerX" id="p4v-9T-Yyo"/>
+                            <constraint firstItem="iWP-Lw-waz" firstAttribute="centerX" secondItem="Igk-kq-tHS" secondAttribute="centerX" id="paE-rE-k1l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T5U-D1-m5r"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcz-Lh-aUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1100.78125" y="754.1015625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxi-es-Jv3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1292"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6Km-P1-fCX"/>
@@ -183,4 +298,11 @@
             <point key="canvasLocation" x="-16.546762589928058" y="-162.41007194244605"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fortwyllys" width="4032" height="3024"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rCY-d1-aQ1"/>
+        <segue reference="ofl-b1-0Gt"/>
+    </inferredMetricsTieBreakers>
 </document>

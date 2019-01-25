@@ -12,9 +12,12 @@
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
 		C020E38421ECD65F00545B4A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020E38321ECD65F00545B4A /* GameScene.swift */; };
 		C020E38621ECD8E700545B4A /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38521ECD8E700545B4A /* Actions.sks */; };
-		C0243F7421F8AAB4003DCE95 /* FortSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7321F8AAB4003DCE95 /* FortSelection.swift */; };
+		C0243F7421F8AAB4003DCE95 /* FortSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7321F8AAB4003DCE95 /* FortSelectionController.swift */; };
 		C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0243F7521F8AB92003DCE95 /* SelectionScene.sks */; };
 		C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */; };
+		C0243F8021F8C303003DCE95 /* FWIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7F21F8C303003DCE95 /* FWIntroController.swift */; };
+		C0243F8221F8C316003DCE95 /* FWIntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F8121F8C316003DCE95 /* FWIntroScene.swift */; };
+		C0243F8421F8C32A003DCE95 /* FWIntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */; };
 		C0625D652178C73B0091A161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C26D122097650D0024B3E9 /* Assets.xcassets */; };
 		C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0625D662178D4260091A161 /* LaunchScreen.storyboard */; };
 		C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38221ECD65F00545B4A /* GameScene.sks */; };
@@ -65,12 +68,15 @@
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 		1D7A566A21AD97A500C360F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C020E38221ECD65F00545B4A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../GameScene.sks; sourceTree = "<group>"; };
-		C020E38321ECD65F00545B4A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = ../GameScene.swift; sourceTree = "<group>"; };
+		C020E38221ECD65F00545B4A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		C020E38321ECD65F00545B4A /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		C020E38521ECD8E700545B4A /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		C0243F7321F8AAB4003DCE95 /* FortSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortSelection.swift; sourceTree = "<group>"; };
+		C0243F7321F8AAB4003DCE95 /* FortSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortSelectionController.swift; sourceTree = "<group>"; };
 		C0243F7521F8AB92003DCE95 /* SelectionScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SelectionScene.sks; sourceTree = "<group>"; };
 		C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionScene.swift; sourceTree = "<group>"; };
+		C0243F7F21F8C303003DCE95 /* FWIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroController.swift; sourceTree = "<group>"; };
+		C0243F8121F8C316003DCE95 /* FWIntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroScene.swift; sourceTree = "<group>"; };
+		C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FWIntroScene.sks; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7F52028B17D00EB5767 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +163,52 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C0243F7921F8C168003DCE95 /* TitleScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C020E38221ECD65F00545B4A /* GameScene.sks */,
+				C020E38321ECD65F00545B4A /* GameScene.swift */,
+				1D7A566A21AD97A500C360F8 /* GameViewController.swift */,
+			);
+			path = TitleScreen;
+			sourceTree = "<group>";
+		};
+		C0243F7B21F8C1A0003DCE95 /* SelectionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C0243F7521F8AB92003DCE95 /* SelectionScene.sks */,
+				C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */,
+				C0243F7321F8AAB4003DCE95 /* FortSelectionController.swift */,
+			);
+			path = SelectionScreen;
+			sourceTree = "<group>";
+		};
+		C0243F7C21F8C1DA003DCE95 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
+		C0243F7D21F8C29A003DCE95 /* GoogleMap */ = {
+			isa = PBXGroup;
+			children = (
+				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
+			);
+			path = GoogleMap;
+			sourceTree = "<group>";
+		};
+		C0243F7E21F8C2B4003DCE95 /* FortWyllysIntro */ = {
+			isa = PBXGroup;
+			children = (
+				C0243F7F21F8C303003DCE95 /* FWIntroController.swift */,
+				C0243F8121F8C316003DCE95 /* FWIntroScene.swift */,
+				C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */,
+			);
+			path = FortWyllysIntro;
+			sourceTree = "<group>";
+		};
 		D908CE502090484A0010FE47 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,19 +263,16 @@
 				D9C26D10209763630024B3E9 /* art.scnassets */,
 				D9C26D122097650D0024B3E9 /* Assets.xcassets */,
 				D9FED7DA1FCC5FB800565FED /* AppDelegate.swift */,
-				C0243F7521F8AB92003DCE95 /* SelectionScene.sks */,
-				C020E38221ECD65F00545B4A /* GameScene.sks */,
-				C0243F7321F8AAB4003DCE95 /* FortSelection.swift */,
-				C020E38321ECD65F00545B4A /* GameScene.swift */,
-				C0243F7721F8ADA2003DCE95 /* SelectionScene.swift */,
-				D9D40CB21FD98712001A9A36 /* Package.swift */,
-				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
-				1D7A566A21AD97A500C360F8 /* GameViewController.swift */,
-				D9FED7E01FCC5FB800565FED /* ViewController.swift */,
 				D9C9862E2096B549006DC902 /* StatusViewController.swift */,
-				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
-				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
+				D9FED7DE1FCC5FB800565FED /* Scene.swift */,
+				D9D40CB21FD98712001A9A36 /* Package.swift */,
 				C020E38521ECD8E700545B4A /* Actions.sks */,
+				C0243F7E21F8C2B4003DCE95 /* FortWyllysIntro */,
+				C0243F7C21F8C1DA003DCE95 /* AR */,
+				C0243F7B21F8C1A0003DCE95 /* SelectionScreen */,
+				C0243F7921F8C168003DCE95 /* TitleScreen */,
+				C0243F7D21F8C29A003DCE95 /* GoogleMap */,
+				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
 				C0625D662178D4260091A161 /* LaunchScreen.storyboard */,
 				D9FED7EA1FCC5FB800565FED /* Info.plist */,
 				D9FED8121FCEE14E00565FED /* style.json */,
@@ -342,10 +391,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C26D11209763630024B3E9 /* art.scnassets in Resources */,
 				C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */,
 				C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */,
 				C0625D652178C73B0091A161 /* Assets.xcassets in Resources */,
 				D915B814206AD59500EB5767 /* lab.png in Resources */,
+				C0243F8421F8C32A003DCE95 /* FWIntroScene.sks in Resources */,
 				D915B800204DA44100EB5767 /* walking.png in Resources */,
 				D9FED8561FD6F0DF00565FED /* Location.gpx in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
@@ -356,7 +407,6 @@
 				D915B816206ADB0700EB5767 /* battlemonument.png in Resources */,
 				1D3546E82183603C0016EACC /* exit.png in Resources */,
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
-				D9C26D11209763630024B3E9 /* art.scnassets in Resources */,
 				D915B810206AD41A00EB5767 /* location.png in Resources */,
 				C020E38621ECD8E700545B4A /* Actions.sks in Resources */,
 				D9FED8131FCEE14E00565FED /* style.json in Resources */,
@@ -447,13 +497,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0243F8221F8C316003DCE95 /* FWIntroScene.swift in Sources */,
 				D9C9862F2096B549006DC902 /* StatusViewController.swift in Sources */,
 				C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */,
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
+				C0243F8021F8C303003DCE95 /* FWIntroController.swift in Sources */,
 				C020E38421ECD65F00545B4A /* GameScene.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
 				1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */,
-				C0243F7421F8AAB4003DCE95 /* FortSelection.swift in Sources */,
+				C0243F7421F8AAB4003DCE95 /* FortSelectionController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
 				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,

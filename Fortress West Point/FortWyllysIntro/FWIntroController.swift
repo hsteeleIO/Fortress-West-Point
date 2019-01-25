@@ -1,5 +1,5 @@
 //
-//  FortSelection.swift
+//  FWIntro.swift
 //  Fortress West Point
 //
 //  Created by Daniel An on 1/23/19.
@@ -11,14 +11,14 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class FortSelection: UIViewController {
+class FWIntroController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "SelectionScene") {
+            if let scene = SKScene(fileNamed: "FWIntroScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
