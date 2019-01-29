@@ -17,12 +17,23 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine")]
     
     @IBOutlet var sceneView: ARSCNView!
-    var nodeModel:SCNNode!
+    var nodeModel: SCNNode!
     
     // Catch information provided from Google Maps ViewController
-    var nodeName:String = ""
-    var ARObjectName:String = ""
-    var start:Bool = true
+    // The node name as seen in the node inspector
+    var nodeName:String = "Castle"
+    // Initialized as the fort (for now stand in castle object), needed to be the full path name
+    var ARObjectName:String = "art.scnassets/castle/castle.dae"
+    // Global object anchor
+    var anchor:ARAnchor!
+    // Global object Variable (will only allow one object on the scene at a time)
+    var LastARObject:SCNNode!
+    // Last object rendered name
+    var lastObjectName:String = "Castle"
+    // Global variable storing the last 3d transform
+    var lastTransform:simd_float4x4!
+    // Variable for determining if an object is present
+    var objectPresent:Bool = false
     
     @IBAction func CloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -52,6 +63,16 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         nodeName = objectList[row].node
         ARObjectName = objectList[row].ARObject
     }
+    
+    @IBAction func MusketButton(_ sender: UIButton) {
+        self.LastARObject.removeFromParentNode()
+        
+        self.ARObjectName = "art.scnassets/carbine/Carbine.dae"
+        self.nodeName = "Carbine"
+        
+        sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,13 +111,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         sceneView.scene = scene
         self.view.addSubview(closeButton)
         
-        self.initialize()
-    }
-    
-    func initialize() {
-        let modelScene = SCNScene(named: "art.scnassets/GameScene.scn")!
-        self.nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -130,13 +144,13 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         if let hit = hitResults.first {
             if let node = getParent(hit.node) {
                 node.removeFromParentNode()
+                self.objectPresent = false
                 return
             }
         }
         
         // No object was touched? Try feature points
-        if start == false {
-            self.initialize()
+        if self.objectPresent == false {
             let hitResultsFeaturePoints: [ARHitTestResult]  = sceneView.hitTest(location, types: .featurePoint)
         
             if let hit = hitResultsFeaturePoints.first {
@@ -146,16 +160,19 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             
                 // Combine the matrices
                 let finalTransform = simd_mul(hit.worldTransform, rotate)
+                // set global variable
+                self.lastTransform = finalTransform
+                
                 sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
             }
         }
-        start = false
-        
     }
     
+    // Looks for the parent of the node it was sent, if that node's name matches the last
+    // object which was rendered then it returns that node
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
         if let node = nodeFound {
-            if node.name == nodeName {
+            if node.name == lastObjectName {
                 return node
             } else if let parent = node.parent {
                 return getParent(parent)
@@ -173,6 +190,13 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.nodeModel =  modelScene.rootNode.childNode(withName: self.nodeName, recursively: true)
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
+                
+                // Sets global var to have the name of the last object that was rendered
+                self.lastObjectName = self.nodeName
+                // Sets global var to store the last object rendered, to store multiple objects simply make it a queue
+                self.LastARObject = modelClone
+                // sets global var to true
+                self.objectPresent = true
                 
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
