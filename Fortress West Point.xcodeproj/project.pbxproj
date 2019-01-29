@@ -18,10 +18,10 @@
 		C0243F8021F8C303003DCE95 /* FWIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F7F21F8C303003DCE95 /* FWIntroController.swift */; };
 		C0243F8221F8C316003DCE95 /* FWIntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0243F8121F8C316003DCE95 /* FWIntroScene.swift */; };
 		C0243F8421F8C32A003DCE95 /* FWIntroScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */; };
+		C0329A4622009A53003AF50D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0329A4522009A53003AF50D /* SecondViewController.swift */; };
 		C0625D652178C73B0091A161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C26D122097650D0024B3E9 /* Assets.xcassets */; };
 		C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0625D662178D4260091A161 /* LaunchScreen.storyboard */; };
 		C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38221ECD65F00545B4A /* GameScene.sks */; };
-		D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D915B7F52028B17D00EB5767 /* SecondViewController.swift */; };
 		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
 		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
 		D915B810206AD41A00EB5767 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B80F206AD41A00EB5767 /* location.png */; };
@@ -77,9 +77,9 @@
 		C0243F7F21F8C303003DCE95 /* FWIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroController.swift; sourceTree = "<group>"; };
 		C0243F8121F8C316003DCE95 /* FWIntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroScene.swift; sourceTree = "<group>"; };
 		C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FWIntroScene.sks; sourceTree = "<group>"; };
+		C0329A4522009A53003AF50D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ../../../../Downloads/SecondViewController.swift; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D915B7F52028B17D00EB5767 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
 		D915B80F206AD41A00EB5767 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		C0243F7C21F8C1DA003DCE95 /* AR */ = {
 			isa = PBXGroup;
 			children = (
-				D915B7F52028B17D00EB5767 /* SecondViewController.swift */,
+				C0329A4522009A53003AF50D /* SecondViewController.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -348,7 +348,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = "C3T Hacker";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					D9FED7D61FCC5FB800565FED = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -497,6 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0329A4622009A53003AF50D /* SecondViewController.swift in Sources */,
 				C0243F8221F8C316003DCE95 /* FWIntroScene.swift in Sources */,
 				D9C9862F2096B549006DC902 /* StatusViewController.swift in Sources */,
 				C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */,
@@ -507,7 +508,6 @@
 				1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */,
 				C0243F7421F8AAB4003DCE95 /* FortSelectionController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,
-				D915B7F62028B17D00EB5767 /* SecondViewController.swift in Sources */,
 				D9FED7DB1FCC5FB800565FED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
