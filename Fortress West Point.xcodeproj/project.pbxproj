@@ -77,7 +77,7 @@
 		C0243F7F21F8C303003DCE95 /* FWIntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroController.swift; sourceTree = "<group>"; };
 		C0243F8121F8C316003DCE95 /* FWIntroScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWIntroScene.swift; sourceTree = "<group>"; };
 		C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FWIntroScene.sks; sourceTree = "<group>"; };
-		C0329A4522009A53003AF50D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ../../../../Downloads/SecondViewController.swift; sourceTree = "<group>"; };
+		C0329A4522009A53003AF50D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };

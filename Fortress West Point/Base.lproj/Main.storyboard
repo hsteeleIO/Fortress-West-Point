@@ -20,6 +20,10 @@
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="996"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cfE-g1-TMu" appends="YES" id="MPd-Cr-Asq"/>
+                                </connections>
                             </arscnView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
                                 <rect key="frame" x="0.0" y="758" width="768" height="216"/>
@@ -54,6 +58,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="5Bp-36-OwZ"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="leading" secondItem="WaF-VC-mTF" secondAttribute="leading" id="B8P-7w-vAe"/>
@@ -79,6 +84,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQW-ZA-uoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="cfE-g1-TMu">
+                    <connections>
+                        <action selector="rotateObject:" destination="w7D-ky-lkF" id="San-o0-x0u"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-16.546762589928058" y="754.85611510791364"/>
         </scene>
