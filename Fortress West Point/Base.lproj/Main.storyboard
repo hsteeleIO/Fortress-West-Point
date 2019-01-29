@@ -225,12 +225,12 @@
                                     <constraint firstAttribute="width" constant="600" id="zMb-h8-INt"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <mutableString key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’
+                                <string key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’
 role at West Point. The purpose of Fort Wyllys is to protect Fortress West Point from infantry
 attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. By clicking on
 the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the
 other forts and redoubts on West Point. You will be able to see how the fort was designed to take
-full advantage of the terrain around it.  Because of the downward slope to the south, the southern walls are lower.  Because the eastern side faces a hill, the walls there are taller. </mutableString>
+full advantage of the terrain around it.  Because of the downward slope to the south, the southern walls are lower.  Because the eastern side faces a hill, the walls there are taller. </string>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
