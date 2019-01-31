@@ -37,6 +37,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     //global var for storing current angle of object
     var currentAngleY: Float = 0.0
+    //global var for storing current scale of object
+    var currentScale: Float = 1.0
     
     @IBAction func CloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -51,6 +53,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var curObject: UILabel!
     
+    @IBOutlet weak var loadObject: UILabel!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -67,11 +70,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         ARObjectName = objectList[row].ARObject
     }
     
-    @IBAction func MusketButton(_ sender: UIButton) {
+    @IBAction func SwitchObject(_ sender: UIButton) {
         self.LastARObject.removeFromParentNode()
         
-        self.ARObjectName = "art.scnassets/carbine/Carbine.dae"
-        self.nodeName = "Carbine"
+//        self.ARObjectName = "art.scnassets/carbine/Carbine.dae"
+//        self.nodeName = "Carbine"
         
         sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
     }
@@ -136,19 +139,22 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        
         let location = touches.first!.location(in: sceneView)
+        if self.objectPresent == false {
         
-        // Let's test if a 3D Object was touch
-        var hitTestOptions = [SCNHitTestOption: Any]()
-        hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
+            // Let's test if a 3D Object was touch
+            var hitTestOptions = [SCNHitTestOption: Any]()
+            hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
         
-        let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
+            let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
         
-        if let hit = hitResults.first {
-            if let node = getParent(hit.node) {
-                node.removeFromParentNode()
-                self.objectPresent = false
-                return
+            if let hit = hitResults.first {
+                if let node = getParent(hit.node) {
+                    node.removeFromParentNode()
+                    self.objectPresent = false
+                    return
+                }
             }
         }
         
@@ -189,6 +195,24 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         print(nodeToRotate.eulerAngles)
     }
     
+    /// scales an object based on UIPinchGesture
+    ///
+    /// - Parameter gesture: UIPinchGesture
+    @IBAction func scaleObject(_ gesture: UIPinchGestureRecognizer) {
+        
+        guard let nodeToScale = self.LastARObject else { return }
+        
+        if gesture.state == .began || gesture.state == .changed {
+            let dis = Float(gesture.scale)
+            let CS = nodeToScale.scale
+            let newScale = SCNVector3((CS.x)*(dis), (CS.y)*(dis), (CS.z)*(dis))
+            nodeToScale.scale = newScale
+            gesture.scale = 1.0
+        }
+        
+        print(nodeToScale.scale)
+    }
+    
     // Looks for the parent of the node it was sent, if that node's name matches the last
     // object which was rendered then it returns that node
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
@@ -218,6 +242,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.LastARObject = modelClone
                 // sets global var to true
                 self.objectPresent = true
+                
+                self.loadObject.isHidden = false
                 
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
