@@ -13,7 +13,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         Gobjects(name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map"),
         Gobjects(name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
         Gobjects(name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1"),
-        Gobjects(name: "Landscape", ARObject:"art.scnassets/landscape/landscape.dae", node:"landscape"),
         Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine")]
     
     @IBOutlet var sceneView: ARSCNView!
@@ -115,7 +114,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
         // Set the scene to the view
         sceneView.scene = scene
-        self.view.addSubview(closeButton)
+        //self.view.addSubview(closeButton)
         
     }
     
@@ -229,8 +228,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     // MARK: - ARSCNViewDelegate
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
+                let t = DispatchTime.now()
                 let modelScene = SCNScene(named:self.ARObjectName)!
                 self.nodeModel =  modelScene.rootNode.childNode(withName: self.nodeName, recursively: true)
                 let modelClone = self.nodeModel.clone()
@@ -247,8 +248,12 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
+                let a = DispatchTime.now()
+                let f = (a.rawValue - t.rawValue)
+                print("TEST ", f)
             }
         }
+        
     }
 }
 

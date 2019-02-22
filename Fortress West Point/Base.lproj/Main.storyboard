@@ -23,6 +23,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="cfE-g1-TMu" appends="YES" id="MPd-Cr-Asq"/>
+                                    <outletCollection property="gestureRecognizers" destination="CcZ-Jw-znO" appends="YES" id="Atp-ps-H09"/>
                                 </connections>
                             </arscnView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
@@ -40,20 +41,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p1-Vx-wAL">
-                                <rect key="frame" x="675" y="170" width="63" height="47"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <state key="normal" title="Back"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-F5-oOT">
+                                <rect key="frame" x="652" y="674" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Load Object"/>
                                 <connections>
-                                    <action selector="CloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="UGV-fs-sjL"/>
+                                    <action selector="SwitchObject:" destination="w7D-ky-lkF" eventType="touchUpInside" id="G80-Fg-SRg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-F5-oOT">
-                                <rect key="frame" x="690" y="674" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Musket"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7p1-Vx-wAL">
+                                <rect key="frame" x="46" y="44" width="76" height="51"/>
+                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="MusketButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="hcC-AC-8nx"/>
+                                    <action selector="CloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="UGV-fs-sjL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -63,13 +67,13 @@
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="5Bp-36-OwZ"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="leading" secondItem="WaF-VC-mTF" secondAttribute="leading" id="B8P-7w-vAe"/>
                             <constraint firstAttribute="trailing" secondItem="q55-8Z-o8M" secondAttribute="trailing" id="BdD-vT-d34"/>
+                            <constraint firstItem="7p1-Vx-wAL" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" constant="46" id="VaG-k4-YKp"/>
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="cEr-bS-tQ9" secondAttribute="trailing" id="WG5-Tn-6Uu"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" id="ZuF-5A-Boe"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="top" secondItem="WaF-VC-mTF" secondAttribute="top" id="c2B-sO-tph"/>
-                            <constraint firstItem="7p1-Vx-wAL" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="150" id="gJT-GN-mWg"/>
                             <constraint firstItem="eUh-2g-ClE" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="jVf-zn-9fD"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q55-8Z-o8M" secondAttribute="bottom" constant="-22" id="l9U-d7-tFz"/>
-                            <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="7p1-Vx-wAL" secondAttribute="trailing" constant="30" id="n3s-8q-mPt"/>
+                            <constraint firstItem="7p1-Vx-wAL" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="24" id="o7b-tf-9IS"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="eUh-2g-ClE" secondAttribute="bottom" constant="8" id="rvK-Fk-Cpo"/>
                             <constraint firstItem="cEr-bS-tQ9" firstAttribute="bottom" secondItem="b0Q-L9-M8U" secondAttribute="bottom" id="ujw-SG-UR3"/>
                         </constraints>
@@ -79,6 +83,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="curObject" destination="eUh-2g-ClE" id="2wt-Ak-7hP"/>
+                        <outlet property="loadObject" destination="4ex-F5-oOT" id="CvT-FY-0eO"/>
                         <outlet property="objectPicker" destination="cEr-bS-tQ9" id="rrq-6b-EX3"/>
                         <outlet property="sceneView" destination="q55-8Z-o8M" id="yTO-dH-Trz"/>
                     </connections>
@@ -89,8 +94,13 @@
                         <action selector="rotateObject:" destination="w7D-ky-lkF" id="San-o0-x0u"/>
                     </connections>
                 </panGestureRecognizer>
+                <pinchGestureRecognizer id="CcZ-Jw-znO">
+                    <connections>
+                        <action selector="scaleObject:" destination="w7D-ky-lkF" id="HBC-ge-fGW"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-16.546762589928058" y="754.85611510791364"/>
+            <point key="canvasLocation" x="-17.1875" y="754.6875"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="lRZ-Hu-98L">
@@ -152,16 +162,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-9e-WcS">
-                                <rect key="frame" x="46" y="36.5" width="76" height="51"/>
-                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="CcH-Ao-u0i" kind="show" id="PwW-s6-uFW"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6jw-AM-2bA">
                                 <rect key="frame" x="266.5" y="479.5" width="235" height="65"/>
                                 <subviews>
@@ -187,15 +187,25 @@
                                     <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-9e-WcS">
+                                <rect key="frame" x="48" y="49" width="76" height="51"/>
+                                <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="34"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CcH-Ao-u0i" kind="show" id="PwW-s6-uFW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6jw-AM-2bA" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" id="0MV-6F-ibL"/>
-                            <constraint firstItem="s4I-9e-WcS" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" constant="-300" id="Xgf-B6-ycV"/>
+                            <constraint firstItem="s4I-9e-WcS" firstAttribute="leading" secondItem="j7M-GZ-s0C" secondAttribute="leading" constant="48" id="1V1-hb-26e"/>
+                            <constraint firstItem="s4I-9e-WcS" firstAttribute="top" secondItem="j7M-GZ-s0C" secondAttribute="top" constant="29" id="8UI-CD-R91"/>
                             <constraint firstItem="1Qg-xY-Q4L" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" constant="150" id="cjj-Bc-3aX"/>
                             <constraint firstItem="6jw-AM-2bA" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" id="dMz-he-gQr"/>
                             <constraint firstItem="1Qg-xY-Q4L" firstAttribute="centerX" secondItem="tnl-Od-8lO" secondAttribute="centerX" id="r6n-3h-E1R"/>
-                            <constraint firstItem="s4I-9e-WcS" firstAttribute="centerY" secondItem="tnl-Od-8lO" secondAttribute="centerY" constant="-450" id="uWn-8K-XwQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j7M-GZ-s0C"/>
                     </view>
@@ -243,12 +253,14 @@
                                     <constraint firstAttribute="width" constant="600" id="zMb-h8-INt"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <string key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’
-role at West Point. The purpose of Fort Wyllys is to protect Fortress West Point from infantry
-attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. By clicking on
-the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the
-other forts and redoubts on West Point. You will be able to see how the fort was designed to take
-full advantage of the terrain around it.  Because of the downward slope to the south, the southern walls are lower.  Because the eastern side faces a hill, the walls there are taller. </string>
+                                <mutableString key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’ role at West Point. 
+
+The purpose of Fort Wyllys is to protect Fortress West Point from infantry attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. 
+
+By clicking on the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the other forts and redoubts on West Point. You will be able to see how the fort was designed to take full advantage of the terrain around it. 
+ Because of the downward slope to the south, the southern walls are lower. Because the eastern side faces a hill, the walls there are taller. 
+
+Have fun exploring Fort Wyllys!</mutableString>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -265,24 +277,35 @@ full advantage of the terrain around it.  Because of the downward slope to the
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" adjustable="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HEv-mD-cXN" secondAttribute="height" multiplier="102:71" id="dhR-dc-SXG"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iWP-Lw-waz" firstAttribute="centerY" secondItem="Igk-kq-tHS" secondAttribute="centerY" constant="400" id="3UK-w7-bh4"/>
+                            <constraint firstItem="iWP-Lw-waz" firstAttribute="top" secondItem="beV-d8-LWT" secondAttribute="bottom" constant="5" id="44n-OW-jAo"/>
+                            <constraint firstItem="0UI-ZB-tQ1" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="180" id="7lg-kK-Dp9"/>
                             <constraint firstAttribute="bottom" secondItem="beV-d8-LWT" secondAttribute="bottom" constant="151" id="87g-oV-Oci"/>
+                            <constraint firstItem="beV-d8-LWT" firstAttribute="top" secondItem="0UI-ZB-tQ1" secondAttribute="bottom" constant="15" id="9dt-O0-dKj"/>
                             <constraint firstItem="HEv-mD-cXN" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="180" id="COr-q9-Vre"/>
                             <constraint firstItem="HEv-mD-cXN" firstAttribute="top" secondItem="T5U-D1-m5r" secondAttribute="top" constant="173" id="Edq-DZ-5d5"/>
                             <constraint firstItem="beV-d8-LWT" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="85" id="Is1-An-iIS"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" secondItem="0UI-ZB-tQ1" secondAttribute="trailing" constant="186.5" id="LNt-Xg-LT3"/>
+                            <constraint firstItem="lRc-84-3ns" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="46" id="MTg-0Y-6aj"/>
+                            <constraint firstItem="HEv-mD-cXN" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="180" id="MpD-fn-tFX"/>
                             <constraint firstItem="0UI-ZB-tQ1" firstAttribute="leading" secondItem="HEv-mD-cXN" secondAttribute="leading" id="Mvc-kH-PWL"/>
-                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0UI-ZB-tQ1" secondAttribute="trailing" symbolic="YES" id="XzE-sB-RSR"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" secondItem="beV-d8-LWT" secondAttribute="trailing" constant="83" id="RJ8-Yx-qpT"/>
+                            <constraint firstItem="beV-d8-LWT" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="85" id="Y7S-VB-iva"/>
                             <constraint firstItem="0UI-ZB-tQ1" firstAttribute="top" secondItem="HEv-mD-cXN" secondAttribute="bottom" constant="8" symbolic="YES" id="YnH-cr-Fz2"/>
-                            <constraint firstItem="lRc-84-3ns" firstAttribute="centerX" secondItem="Igk-kq-tHS" secondAttribute="centerX" constant="-300" id="ape-2r-YuQ"/>
-                            <constraint firstItem="lRc-84-3ns" firstAttribute="centerY" secondItem="Igk-kq-tHS" secondAttribute="centerY" constant="-450" id="jUY-6X-3Do"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" secondItem="HEv-mD-cXN" secondAttribute="trailing" constant="180" id="ePR-Ww-dNN"/>
                             <constraint firstItem="beV-d8-LWT" firstAttribute="top" secondItem="HEv-mD-cXN" secondAttribute="bottom" constant="44" id="jWO-Bh-7hJ"/>
+                            <constraint firstItem="iWP-Lw-waz" firstAttribute="leading" secondItem="T5U-D1-m5r" secondAttribute="leading" constant="197.5" id="lM3-hH-vRu"/>
                             <constraint firstItem="iWP-Lw-waz" firstAttribute="top" secondItem="beV-d8-LWT" secondAttribute="bottom" constant="5" id="laa-eb-s90"/>
-                            <constraint firstItem="HEv-mD-cXN" firstAttribute="centerX" secondItem="iWP-Lw-waz" secondAttribute="centerX" id="p4v-9T-Yyo"/>
-                            <constraint firstItem="iWP-Lw-waz" firstAttribute="centerX" secondItem="Igk-kq-tHS" secondAttribute="centerX" id="paE-rE-k1l"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="bottom" secondItem="iWP-Lw-waz" secondAttribute="bottom" constant="28" id="o9h-zT-gYR"/>
+                            <constraint firstItem="T5U-D1-m5r" firstAttribute="trailing" secondItem="iWP-Lw-waz" secondAttribute="trailing" constant="197.5" id="obX-sO-bLF"/>
+                            <constraint firstItem="0UI-ZB-tQ1" firstAttribute="top" secondItem="HEv-mD-cXN" secondAttribute="bottom" constant="8" id="xDB-kq-dV9"/>
+                            <constraint firstItem="lRc-84-3ns" firstAttribute="top" secondItem="T5U-D1-m5r" secondAttribute="top" constant="16.5" id="y1P-EA-iJZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T5U-D1-m5r"/>
                     </view>
