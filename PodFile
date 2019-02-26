@@ -7,5 +7,6 @@ target 'Fortress West Point' do
     pod 'GooglePlaces'
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    pod 'FLAnimatedImage'
 
     end

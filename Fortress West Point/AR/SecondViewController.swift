@@ -2,6 +2,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import FLAnimatedImage
 
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -61,6 +62,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var loadText: UIButton!
     
+    @IBOutlet weak var loadGuide: FLAnimatedImageView!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -92,24 +95,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // captures screen Size of the device
-        let screenSize = UIScreen.main.bounds
-        
-        // captures the width of the device
-        let screenWidth = screenSize.width
-        
-        // captures the height of the device
-        let screenHeight = screenSize.height
-        
-        let closeButton = UIButton(frame : CGRect(x:screenWidth * 0.85,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        closeButton.addTarget(self, action:#selector(self.onCloseButton) , for: .touchUpInside)
-        let closeButtonImage = UIImage(named:"exit.png")
-        closeButton.setImage(closeButtonImage, for: UIControlState.normal)
-        closeButton.layer.cornerRadius = closeButton.frame.size.width/1.8
-        closeButton.clipsToBounds = true
-        closeButton.backgroundColor = UIColor.white
-        
+
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -125,9 +111,14 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
         // Set the scene to the view
         sceneView.scene = scene
-        //self.view.addSubview(closeButton)
         
-    }
+        let path1 : String = Bundle.main.path(forResource: "art.scnassets/tapheregif2", ofType: "gif")!
+        let url = URL(fileURLWithPath: path1)
+        let gifData = NSData(contentsOf: url)
+        let imageData1 = FLAnimatedImage(animatedGIFData: gifData! as Data)
+        loadGuide.animatedImage = imageData1
+            }
+        
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -193,12 +184,15 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     @IBAction func rotateObject(_ gesture: UIPanGestureRecognizer) {
         
         guard let nodeToRotate = self.LastARObject else { return }
+        guard let nodeToRotate2 = self.textBox else { return }
+        
         
         let translation = gesture.translation(in: gesture.view!)
         var newAngleY = (Float)(translation.x)*(Float)(Double.pi)/180.0
         newAngleY += currentAngleY
         
         nodeToRotate.eulerAngles.y = newAngleY
+        nodeToRotate2.eulerAngles.y = newAngleY
         
         if(gesture.state == .ended) { currentAngleY = newAngleY }
         
@@ -211,12 +205,16 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     @IBAction func scaleObject(_ gesture: UIPinchGestureRecognizer) {
         
         guard let nodeToScale = self.LastARObject else { return }
+        guard let nodeToScale2 = self.textBox else { return }
         
         if gesture.state == .began || gesture.state == .changed {
             let dis = Float(gesture.scale)
             let CS = nodeToScale.scale
+            let CS2 = nodeToScale2.scale
             let newScale = SCNVector3((CS.x)*(dis), (CS.y)*(dis), (CS.z)*(dis))
+            let newScale2 = SCNVector3((CS2.x)*(dis), (CS2.y)*(dis), (CS2.z)*(dis))
             nodeToScale.scale = newScale
+            nodeToScale2.scale = newScale2
             gesture.scale = 1.0
         }
         
@@ -245,7 +243,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         
         self.textBox = planeNode
         self.textBoxMode = true
-        nodeToText.parent?.addChildNode(planeNode)
+        nodeToText.parent?.addChildNode(self.textBox)
         }
             }
     // Looks for the parent of the node it was sent, if that node's name matches the last
@@ -271,8 +269,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.nodeModel =  modelScene.rootNode.childNode(withName: self.nodeName, recursively: true)
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
-                
-                
+                let plane = SCNPlane(width: CGFloat(0), height: CGFloat(0))
+                let planeNode = SCNNode(geometry: plane)
+                planeNode.position = SCNVector3Make(0,0,0)
+                self.textBox = planeNode
                 
                 // Sets global var to have the name of the last object that was rendered
                 self.lastObjectName = self.nodeName
@@ -282,9 +282,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.objectPresent = true
                 self.loadText.isHidden = false
                 self.loadObject.isHidden = false
-                
+                self.loadGuide.isHidden = true
                 
                 // Add model as a child of the node
+                node.addChildNode(planeNode)
                 node.addChildNode(modelClone)
                 
                 
