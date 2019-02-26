@@ -60,6 +60,14 @@
                                     <action selector="CloseButton:" destination="w7D-ky-lkF" eventType="touchUpInside" id="UGV-fs-sjL"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srz-7H-ME1">
+                                <rect key="frame" x="680" y="610" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Text box"/>
+                                <connections>
+                                    <action selector="getTextBox:" destination="w7D-ky-lkF" eventType="touchUpInside" id="zIB-aw-fFe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -84,6 +92,7 @@
                     <connections>
                         <outlet property="curObject" destination="eUh-2g-ClE" id="2wt-Ak-7hP"/>
                         <outlet property="loadObject" destination="4ex-F5-oOT" id="CvT-FY-0eO"/>
+                        <outlet property="loadText" destination="Srz-7H-ME1" id="iKe-La-JYv"/>
                         <outlet property="objectPicker" destination="cEr-bS-tQ9" id="rrq-6b-EX3"/>
                         <outlet property="sceneView" destination="q55-8Z-o8M" id="yTO-dH-Trz"/>
                     </connections>
@@ -253,14 +262,14 @@
                                     <constraint firstAttribute="width" constant="600" id="zMb-h8-INt"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <mutableString key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’ role at West Point. 
+                                <string key="text">Welcome to Fort Wyllys! Through this interactive experience, you will learn about Fort Wyllys’ role at West Point. 
 
 The purpose of Fort Wyllys is to protect Fortress West Point from infantry attacks from the south while reinforcing Fort Putnam and Redoubt 4 to the east. 
 
 By clicking on the map, you will be able to see where Fort Wyllys is in relation to the Hudson River and the other forts and redoubts on West Point. You will be able to see how the fort was designed to take full advantage of the terrain around it. 
  Because of the downward slope to the south, the southern walls are lower. Because the eastern side faces a hill, the walls there are taller. 
 
-Have fun exploring Fort Wyllys!</mutableString>
+Have fun exploring Fort Wyllys!</string>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" name="Charter-Roman" family="Charter" pointSize="27"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

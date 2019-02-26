@@ -21,6 +21,7 @@
 		C0329A4622009A53003AF50D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0329A4522009A53003AF50D /* SecondViewController.swift */; };
 		C0625D652178C73B0091A161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C26D122097650D0024B3E9 /* Assets.xcassets */; };
 		C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0625D662178D4260091A161 /* LaunchScreen.storyboard */; };
+		C0BE8173222048E7009E872D /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE8172222048E7009E872D /* ProductInfoViewController.swift */; };
 		C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C020E38221ECD65F00545B4A /* GameScene.sks */; };
 		D915B800204DA44100EB5767 /* walking.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B7FF204DA44100EB5767 /* walking.png */; };
 		D915B802205037EC00EB5767 /* ARImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D915B801205037EC00EB5767 /* ARImage.png */; };
@@ -79,6 +80,8 @@
 		C0243F8321F8C32A003DCE95 /* FWIntroScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FWIntroScene.sks; sourceTree = "<group>"; };
 		C0329A4522009A53003AF50D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0BE8172222048E7009E872D /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
+		C0BE817422204AB6009E872D /* helloworld.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = helloworld.sks; path = "/Users/qjawls2003/Desktop/Fortress-West-Point/Fortress West Point/helloworld.sks"; sourceTree = "<absolute>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 		C0243F7C21F8C1DA003DCE95 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				C0BE8172222048E7009E872D /* ProductInfoViewController.swift */,
+				C0BE817422204AB6009E872D /* helloworld.sks */,
 				C0329A4522009A53003AF50D /* SecondViewController.swift */,
 			);
 			path = AR;
@@ -505,6 +510,7 @@
 				C0243F8021F8C303003DCE95 /* FWIntroController.swift in Sources */,
 				C020E38421ECD65F00545B4A /* GameScene.swift in Sources */,
 				D9FED7E11FCC5FB800565FED /* ViewController.swift in Sources */,
+				C0BE8173222048E7009E872D /* ProductInfoViewController.swift in Sources */,
 				1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */,
 				C0243F7421F8AAB4003DCE95 /* FortSelectionController.swift in Sources */,
 				D9FED7DF1FCC5FB800565FED /* Scene.swift in Sources */,

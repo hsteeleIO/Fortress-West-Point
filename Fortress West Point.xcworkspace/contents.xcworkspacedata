@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/qjawls2003/Desktop/Fortress-West-Point/Fortress West Point/helloworld.sks">
+   </FileRef>
+   <FileRef
       location = "group:Fortress West Point.xcodeproj">
    </FileRef>
    <FileRef

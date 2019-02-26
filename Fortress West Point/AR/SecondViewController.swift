@@ -34,6 +34,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     // Variable for determining if an object is present
     var objectPresent:Bool = false
     
+    var textBox:SCNNode!
+    //textbox node
+    var textBoxMode:Bool = false
+    
+    
     //global var for storing current angle of object
     var currentAngleY: Float = 0.0
     //global var for storing current scale of object
@@ -54,6 +59,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var loadObject: UILabel!
     
+    @IBOutlet weak var loadText: UIButton!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -71,6 +78,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBAction func SwitchObject(_ sender: UIButton) {
         self.LastARObject.removeFromParentNode()
+        if textBoxMode == true {
+            self.textBox.removeFromParentNode()
+            self.textBoxMode = false
+        }
         
 //        self.ARObjectName = "art.scnassets/carbine/Carbine.dae"
 //        self.nodeName = "Carbine"
@@ -212,6 +223,31 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         print(nodeToScale.scale)
     }
     
+    @IBAction func getTextBox(_ sender: Any) {
+        if textBoxMode == true {
+            self.textBox.removeFromParentNode()
+            self.textBoxMode = false
+        }
+        else {
+            guard let nodeToText = self.LastARObject else { return }
+        let plane = SCNPlane(width: CGFloat(nodeToText.scale.x * 0.8), height: CGFloat(nodeToText.scale.y * 0.5))
+        
+        plane.cornerRadius = plane.width / 8
+        
+        //let spriteKitScene = SKScene(fileNamed: "helloworld")
+        let imageMaterial = UIImage(named: "art.scnassets/cannon/cannon_wood.jpg")
+        plane.firstMaterial?.diffuse.contents = imageMaterial
+        plane.firstMaterial?.isDoubleSided = true
+        plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+        
+        let planeNode = SCNNode(geometry: plane)
+        planeNode.position = SCNVector3Make(nodeToText.scale.x, nodeToText.scale.y + 0.1, nodeToText.scale.z)
+        
+        self.textBox = planeNode
+        self.textBoxMode = true
+        nodeToText.parent?.addChildNode(planeNode)
+        }
+            }
     // Looks for the parent of the node it was sent, if that node's name matches the last
     // object which was rendered then it returns that node
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
@@ -231,11 +267,12 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         
         if !anchor.isKind(of: ARPlaneAnchor.self) {
             DispatchQueue.main.async {
-                let t = DispatchTime.now()
                 let modelScene = SCNScene(named:self.ARObjectName)!
                 self.nodeModel =  modelScene.rootNode.childNode(withName: self.nodeName, recursively: true)
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
+                
+                
                 
                 // Sets global var to have the name of the last object that was rendered
                 self.lastObjectName = self.nodeName
@@ -243,14 +280,15 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.LastARObject = modelClone
                 // sets global var to true
                 self.objectPresent = true
-                
+                self.loadText.isHidden = false
                 self.loadObject.isHidden = false
+                
                 
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
-                let a = DispatchTime.now()
-                let f = (a.rawValue - t.rawValue)
-                print("TEST ", f)
+                
+                
+                
             }
         }
         
