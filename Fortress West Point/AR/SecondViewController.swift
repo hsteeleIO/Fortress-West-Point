@@ -23,7 +23,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         Gobjects(name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map"),
         Gobjects(name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
         Gobjects(name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1"),
-        Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine")]
+        Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine"),
+        Gobjects(name: "Sword", ARObject:"art.scnassets/sword/sword.dae", node:"Sword")]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
