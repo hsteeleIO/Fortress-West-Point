@@ -4,6 +4,15 @@ import SceneKit
 import ARKit
 import FLAnimatedImage
 
+extension SCNNode {
+    func setHighlighted( _ highlighted : Bool = true, _ highlightedBitMask : Int = 2 ) {
+        categoryBitMask = highlightedBitMask
+        for child in self.childNodes {
+            child.setHighlighted()
+        }
+    }
+}
+
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //configuration.planeDetection = .horizontal
@@ -62,6 +71,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var loadText: UIButton!
     
+    //gif view
     @IBOutlet weak var loadGuide: FLAnimatedImageView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -90,6 +100,23 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
 //        self.nodeName = "Carbine"
         
         sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
+    }
+    
+    //Highlight specific nodes in objects
+    @IBAction func hightlight(_ sender: Any) {
+        let names = ["_28", "_5"]
+        for name in names {
+            let item = self.LastARObject.childNode(withName: name, recursively: true)
+            item?.setHighlighted()
+        }
+        
+        if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
+            if let dict = NSDictionary(contentsOfFile: path)  {
+                let dict2 = dict as! [String : AnyObject]
+                let technique = SCNTechnique(dictionary:dict2)
+                self.sceneView.technique = technique
+            }
+        }
     }
     
     
@@ -139,23 +166,19 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
         let location = touches.first!.location(in: sceneView)
-        if self.objectPresent == false {
-        
-            // Let's test if a 3D Object was touch
+        //setting this to test to false means it never tests when an object is present
+        if self.objectPresent == true {
+            
+            // Let's test if a 3D Object was touched
             var hitTestOptions = [SCNHitTestOption: Any]()
             hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
-        
+            
             let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
-        
+            
+            //testing name of node touched
             if let hit = hitResults.first {
-                if let node = getParent(hit.node) {
-                    node.removeFromParentNode()
-                    self.objectPresent = false
-                    return
-                }
+                print(hit.node.name!)
             }
         }
         
@@ -270,6 +293,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 let modelClone = self.nodeModel.clone()
                 modelClone.position = SCNVector3Zero
                 let plane = SCNPlane(width: CGFloat(0), height: CGFloat(0))
+                
+                //add empty plane to make sure rotate & scale functions don't crash
                 let planeNode = SCNNode(geometry: plane)
                 planeNode.position = SCNVector3Make(0,0,0)
                 self.textBox = planeNode

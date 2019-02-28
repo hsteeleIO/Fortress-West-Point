@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2C31D822259EF30090374B /* NodeRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C31D622259EF30090374B /* NodeRender.metal */; };
+		1D2C31D922259EF30090374B /* NodeTechnique.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D2C31D722259EF30090374B /* NodeTechnique.plist */; };
 		1D3546E82183603C0016EACC /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D3546E72183603C0016EACC /* exit.png */; };
 		1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* GameViewController.swift */; };
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
@@ -66,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		0CE75B294311835B84A7D2DD /* Pods-Fortress West Point.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fortress West Point.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fortress West Point/Pods-Fortress West Point.release.xcconfig"; sourceTree = "<group>"; };
+		1D2C31D622259EF30090374B /* NodeRender.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = NodeRender.metal; sourceTree = "<group>"; };
+		1D2C31D722259EF30090374B /* NodeTechnique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NodeTechnique.plist; sourceTree = "<group>"; };
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
 		1D7A566A21AD97A500C360F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +85,6 @@
 		C0329A4522009A53003AF50D /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		C0625D662178D4260091A161 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0BE8172222048E7009E872D /* ProductInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoViewController.swift; sourceTree = "<group>"; };
-		C0BE817422204AB6009E872D /* helloworld.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = helloworld.sks; path = "/Users/qjawls2003/Desktop/Fortress-West-Point/Fortress West Point/helloworld.sks"; sourceTree = "<absolute>"; };
 		D908E9511FD9784D004C2109 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D915B7FF204DA44100EB5767 /* walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walking.png; sourceTree = "<group>"; };
 		D915B801205037EC00EB5767 /* ARImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARImage.png; sourceTree = "<group>"; };
@@ -190,8 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				C0BE8172222048E7009E872D /* ProductInfoViewController.swift */,
-				C0BE817422204AB6009E872D /* helloworld.sks */,
 				C0329A4522009A53003AF50D /* SecondViewController.swift */,
+				1D2C31D622259EF30090374B /* NodeRender.metal */,
+				1D2C31D722259EF30090374B /* NodeTechnique.plist */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -413,6 +417,7 @@
 				1D3546E82183603C0016EACC /* exit.png in Resources */,
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
 				D915B810206AD41A00EB5767 /* location.png in Resources */,
+				1D2C31D922259EF30090374B /* NodeTechnique.plist in Resources */,
 				C020E38621ECD8E700545B4A /* Actions.sks in Resources */,
 				D9FED8131FCEE14E00565FED /* style.json in Resources */,
 				D9C9863120970170006DC902 /* close.png in Resources */,
@@ -507,6 +512,7 @@
 				C0329A4622009A53003AF50D /* SecondViewController.swift in Sources */,
 				C0243F8221F8C316003DCE95 /* FWIntroScene.swift in Sources */,
 				D9C9862F2096B549006DC902 /* StatusViewController.swift in Sources */,
+				1D2C31D822259EF30090374B /* NodeRender.metal in Sources */,
 				C0243F7821F8ADA2003DCE95 /* SelectionScene.swift in Sources */,
 				D9D40CB31FD98712001A9A36 /* Package.swift in Sources */,
 				C0243F8021F8C303003DCE95 /* FWIntroController.swift in Sources */,

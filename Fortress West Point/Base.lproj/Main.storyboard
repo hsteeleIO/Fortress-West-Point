@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CcH-Ao-u0i">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="w7D-ky-lkF" customClass="SecondViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WaF-VC-mTF">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q55-8Z-o8M">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1338"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="996"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="cfE-g1-TMu" appends="YES" id="MPd-Cr-Asq"/>
@@ -28,7 +28,7 @@
                                 </connections>
                             </arscnView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
-                                <rect key="frame" x="0.0" y="1100" width="1024" height="216"/>
+                                <rect key="frame" x="0.0" y="758" width="768" height="216"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.53828660102739723" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -37,13 +37,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-2g-ClE">
-                                <rect key="frame" x="396.5" y="1044" width="231" height="48"/>
+                                <rect key="frame" x="268.5" y="702" width="231" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-F5-oOT">
-                                <rect key="frame" x="918.5" y="674" width="93" height="33"/>
+                                <rect key="frame" x="662.5" y="674" width="93" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Load Object"/>
                                 <connections>
@@ -61,18 +61,26 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srz-7H-ME1">
-                                <rect key="frame" x="936" y="610" width="58" height="30"/>
+                                <rect key="frame" x="680" y="610" width="58" height="30"/>
                                 <state key="normal" title="Text box"/>
                                 <connections>
                                     <action selector="getTextBox:" destination="w7D-ky-lkF" eventType="touchUpInside" id="zIB-aw-fFe"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yvg-bd-Wop" customClass="FLAnimatedImageView">
-                                <rect key="frame" x="227.5" y="400" width="569" height="566"/>
+                                <rect key="frame" x="271.5" y="400" width="225" height="224"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yvg-bd-Wop" secondAttribute="height" multiplier="198:197" id="77k-AZ-b4T"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-o2-YBN">
+                                <rect key="frame" x="678" y="553" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Highlight"/>
+                                <connections>
+                                    <action selector="hightlight:" destination="w7D-ky-lkF" eventType="touchUpInside" id="tff-7O-mLk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -124,18 +132,18 @@
                 </pinchGestureRecognizer>
                 <tapGestureRecognizer id="qAs-Of-RMm"/>
             </objects>
-            <point key="canvasLocation" x="-17.1875" y="754.6875"/>
+            <point key="canvasLocation" x="-17.578125" y="754.61200585651534"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="lRZ-Hu-98L">
             <objects>
                 <viewController id="CcH-Ao-u0i" customClass="GameViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3m-X1-ehn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYa-dU-Sij">
-                                <rect key="frame" x="457.5" y="798.5" width="109" height="69"/>
+                                <rect key="frame" x="329.5" y="627.5" width="109" height="69"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Start">
@@ -151,7 +159,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4we-AD-nXR">
-                                <rect key="frame" x="461.5" y="898.5" width="101" height="69"/>
+                                <rect key="frame" x="333.5" y="727.5" width="101" height="69"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Map">
@@ -183,11 +191,11 @@
             <objects>
                 <viewController id="pEJ-38-Hau" customClass="FortSelectionController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tnl-Od-8lO" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6jw-AM-2bA">
-                                <rect key="frame" x="394.5" y="650.5" width="235" height="65"/>
+                                <rect key="frame" x="266.5" y="479.5" width="235" height="65"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grk-vD-Dww">
                                         <rect key="frame" x="0.0" y="0.0" width="235" height="65"/>
@@ -205,7 +213,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="spatial" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qg-xY-Q4L">
-                                <rect key="frame" x="211" y="799" width="602" height="68"/>
+                                <rect key="frame" x="83" y="628" width="602" height="68"/>
                                 <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="49"/>
                                 <state key="normal" title="Fort X (under construction)">
                                     <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -245,11 +253,11 @@
             <objects>
                 <viewController id="nIh-AM-akB" customClass="FWIntroController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Igk-kq-tHS" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWP-Lw-waz">
-                                <rect key="frame" x="197.5" y="1220" width="629" height="68"/>
+                                <rect key="frame" x="197.5" y="878" width="373" height="68"/>
                                 <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="50"/>
                                 <state key="normal" title="Touch to Start">
                                     <color key="titleColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -269,7 +277,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="beV-d8-LWT">
-                                <rect key="frame" x="85" y="863" width="856" height="352"/>
+                                <rect key="frame" x="85" y="521" width="600" height="352"/>
                                 <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="0.79757063356164382" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
@@ -290,13 +298,13 @@ Have fun exploring Fort Wyllys!</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current photo of the fort as it stands today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0UI-ZB-tQ1">
-                                <rect key="frame" x="180" y="827" width="657.5" height="21"/>
+                                <rect key="frame" x="180" y="485" width="401.5" height="21"/>
                                 <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="18"/>
                                 <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortwyllys" translatesAutoresizingMaskIntoConstraints="NO" id="HEv-mD-cXN">
-                                <rect key="frame" x="180" y="193" width="664" height="626"/>
+                                <rect key="frame" x="180" y="193" width="408" height="284"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" image="YES" adjustable="YES"/>
@@ -347,7 +355,7 @@ Have fun exploring Fort Wyllys!</string>
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Fortress_West_Point" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pxi-es-Jv3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1296"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="954"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="6Km-P1-fCX"/>
