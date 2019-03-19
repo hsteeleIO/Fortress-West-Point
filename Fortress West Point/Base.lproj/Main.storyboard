@@ -73,7 +73,7 @@
                                     <constraint firstAttribute="width" secondItem="yvg-bd-Wop" secondAttribute="height" multiplier="198:197" id="77k-AZ-b4T"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-o2-YBN">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-o2-YBN">
                                 <rect key="frame" x="678" y="553" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Highlight"/>
@@ -112,6 +112,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="curObject" destination="eUh-2g-ClE" id="2wt-Ak-7hP"/>
+                        <outlet property="highlightbutton" destination="xyQ-o2-YBN" id="TRj-gf-1pV"/>
                         <outlet property="loadGuide" destination="yvg-bd-Wop" id="Zvy-Ke-Usz"/>
                         <outlet property="loadObject" destination="4ex-F5-oOT" id="CvT-FY-0eO"/>
                         <outlet property="loadText" destination="Srz-7H-ME1" id="iKe-La-JYv"/>
@@ -132,7 +133,7 @@
                 </pinchGestureRecognizer>
                 <tapGestureRecognizer id="qAs-Of-RMm"/>
             </objects>
-            <point key="canvasLocation" x="-17.578125" y="754.61200585651534"/>
+            <point key="canvasLocation" x="-17.96875" y="754.1015625"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="lRZ-Hu-98L">
@@ -170,6 +171,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="gaD-jI-5qP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -365,19 +369,17 @@ Have fun exploring Fort Wyllys!</string>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="view" destination="pxi-es-Jv3" id="mcX-1n-OEE"/>
-                        <segue destination="w7D-ky-lkF" kind="presentation" identifier="ARView" id="wTf-TP-akg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-16.546762589928058" y="-162.41007194244605"/>
+            <point key="canvasLocation" x="-3119" y="1734"/>
         </scene>
     </scenes>
     <resources>
         <image name="fortwyllys" width="4032" height="3024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rCY-d1-aQ1"/>
-        <segue reference="ofl-b1-0Gt"/>
+        <segue reference="r4A-Om-flI"/>
     </inferredMetricsTieBreakers>
 </document>

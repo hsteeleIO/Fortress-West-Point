@@ -13,18 +13,37 @@ extension SCNNode {
     }
 }
 
+class Gobjects: NSObject {
+    let id: Int
+    let name: String?
+    let ARObject: String
+    let node: String
+    let high: Array<String>
+    let boxSize: Int
+    let textbox: String
+    
+    init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, boxSize: Int, textbox: String) {
+        self.id = id
+        self.name = name
+        self.ARObject = ARObject
+        self.node = node
+        self.high = high
+        self.boxSize = boxSize
+        self.textbox = textbox
+    }
+}
+
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //configuration.planeDetection = .horizontal
     
     let objectList = [
-        Gobjects(name: "Castle", ARObject:"art.scnassets/castle/castle.dae",node:"Castle"),
-        Gobjects(name: "Clinton Hat", ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"),
-        Gobjects(name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map"),
-        Gobjects(name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
-        Gobjects(name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1"),
-        Gobjects(name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine"),
-        Gobjects(name: "Sword", ARObject:"art.scnassets/sword/sword.dae", node:"Sword")]
+        Gobjects(id: 0, name: "Castle", ARObject:"art.scnassets/castle/castle.dae",node:"Castle", high: [""], boxSize: 5, textbox: "musket1"),
+        Gobjects(id: 1, name: "Clinton Hat", ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2", high: [""], boxSize: 0, textbox: "musket1"),
+        Gobjects(id: 2,name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map", high: [""], boxSize: 0, textbox: "musket1"),
+        Gobjects(id: 3,name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1", high: [""], boxSize: 0, textbox: "musket1"),
+        Gobjects(id: 4,name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1", high: [""], boxSize: 0, textbox: "musket1"),
+        Gobjects(id: 5,name: "Musket", ARObject:"art.scnassets/carbine/Carbine.dae", node:"Carbine", high: ["_26"], boxSize: 9, textbox: "musket1")]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
@@ -45,9 +64,15 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     // Variable for determining if an object is present
     var objectPresent:Bool = false
     
+    var object:Gobjects!
+    
+    var objectId:Int = 0
+    
     var textBox:SCNNode!
     //textbox node
     var textBoxMode:Bool = false
+    //node that the user touched
+    var touchedNode:SCNNode!
     
     
     //global var for storing current angle of object
@@ -72,6 +97,9 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var loadText: UIButton!
     
+    @IBOutlet weak var highlightbutton: UIButton!
+    
+    
     //gif view
     @IBOutlet weak var loadGuide: FLAnimatedImageView!
     
@@ -88,24 +116,26 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         curObject.text = objectList[row].name
         nodeName = objectList[row].node
         ARObjectName = objectList[row].ARObject
+        objectId = objectList[row].id
     }
     
     @IBAction func SwitchObject(_ sender: UIButton) {
+        //remove the current object
         self.LastARObject.removeFromParentNode()
+        //set the new object in the data structure
+        self.object = objectList[objectId]
         if textBoxMode == true {
+            //remove textbox
             self.textBox.removeFromParentNode()
             self.textBoxMode = false
         }
-        
-//        self.ARObjectName = "art.scnassets/carbine/Carbine.dae"
-//        self.nodeName = "Carbine"
-        
+        //actually spawn the object
         sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
     }
     
     //Highlight specific nodes in objects
     @IBAction func hightlight(_ sender: Any) {
-        let names = ["_28", "_5"]
+        let names = object.high
         for name in names {
             let item = self.LastARObject.childNode(withName: name, recursively: true)
             item?.setHighlighted()
@@ -139,7 +169,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
         // Set the scene to the view
         sceneView.scene = scene
-        
+        self.object = objectList[0]
         let path1 : String = Bundle.main.path(forResource: "art.scnassets/tapheregif2", ofType: "gif")!
         let url = URL(fileURLWithPath: path1)
         let gifData = NSData(contentsOf: url)
@@ -179,7 +209,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             
             //testing name of node touched
             if let hit = hitResults.first {
-                print(hit.node.name!)
+                if let name = hit.node.name {
+                    touchedNode = hit.node
+                    print(name)
+                }
             }
         }
         
@@ -202,7 +235,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         }
     }
     
-    /// Rotates An Object On It's YAxis
+    /// Rotates An Object On It's Y-Axis
     ///
     /// - Parameter gesture: UIPanGestureRecognizer
     @IBAction func rotateObject(_ gesture: UIPanGestureRecognizer) {
@@ -220,17 +253,18 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         
         if(gesture.state == .ended) { currentAngleY = newAngleY }
         
-        print(nodeToRotate.eulerAngles)
+        //print(nodeToRotate.eulerAngles)
     }
     
     /// scales an object based on UIPinchGesture
     ///
     /// - Parameter gesture: UIPinchGesture
+
     @IBAction func scaleObject(_ gesture: UIPinchGestureRecognizer) {
         
         guard let nodeToScale = self.LastARObject else { return }
         guard let nodeToScale2 = self.textBox else { return }
-        
+        let pos = object.boxSize
         if gesture.state == .began || gesture.state == .changed {
             let dis = Float(gesture.scale)
             let CS = nodeToScale.scale
@@ -239,10 +273,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             let newScale2 = SCNVector3((CS2.x)*(dis), (CS2.y)*(dis), (CS2.z)*(dis))
             nodeToScale.scale = newScale
             nodeToScale2.scale = newScale2
+            nodeToScale2.position = SCNVector3Make(nodeToScale.scale.x*1.5, nodeToScale.scale.y*Float(pos), nodeToScale.scale.z*1.5)
             gesture.scale = 1.0
         }
         
-        print(nodeToScale.scale)
+        //print(nodeToScale.scale)
     }
     
     @IBAction func getTextBox(_ sender: Any) {
@@ -251,19 +286,21 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             self.textBoxMode = false
         }
         else {
-            guard let nodeToText = self.LastARObject else { return }
-        let plane = SCNPlane(width: CGFloat(nodeToText.scale.x * 0.8), height: CGFloat(nodeToText.scale.y * 0.5))
+            
+        guard let nodeToText = self.LastARObject else { return }
+        let plane = SCNPlane(width: CGFloat(0.185), height: CGFloat(0.185))
         
-        plane.cornerRadius = plane.width / 8
-        
-        //let spriteKitScene = SKScene(fileNamed: "helloworld")
-        let imageMaterial = UIImage(named: "art.scnassets/cannon/cannon_wood.jpg")
-        plane.firstMaterial?.diffuse.contents = imageMaterial
+        plane.cornerRadius = plane.width / 6.5
+        let pos = object.boxSize
+        let box = object.textbox
+        let spriteKitScene = SKScene(fileNamed: box)
+        //let imageMaterial = UIImage(named: "art.scnassets/cannon/cannon_wood.jpg")
+        plane.firstMaterial?.diffuse.contents = spriteKitScene
         plane.firstMaterial?.isDoubleSided = true
         plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
         
         let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(nodeToText.scale.x, nodeToText.scale.y + 0.1, nodeToText.scale.z)
+        planeNode.position = SCNVector3Make(nodeToText.scale.x*1.5, nodeToText.scale.y*Float(pos), nodeToText.scale.z*1.5)
         
         self.textBox = planeNode
         self.textBoxMode = true
@@ -308,7 +345,9 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.objectPresent = true
                 self.loadText.isHidden = false
                 self.loadObject.isHidden = false
+                self.highlightbutton.isHidden = false
                 self.loadGuide.isHidden = true
+                self.touchedNode = modelClone
                 
                 // Add model as a child of the node
                 node.addChildNode(planeNode)

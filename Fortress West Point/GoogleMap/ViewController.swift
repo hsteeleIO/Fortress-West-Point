@@ -31,29 +31,15 @@ class hotspot: NSObject {
     let name: String?
     let location: CLLocationCoordinate2D
     let zoom: Float
-    let ARObject: String
-    let node: String
     
-    init(name: String, location: CLLocationCoordinate2D, zoom: Float, ARObject:String, node: String) {
+    init(name: String, location: CLLocationCoordinate2D, zoom: Float) {
         self.name = name
         self.location = location
         self.zoom = zoom
-        self.ARObject = ARObject
-        self.node = node
     }
 }
 
-class Gobjects: NSObject {
-    let name: String?
-    let ARObject: String
-    let node: String
-    
-    init(name: String, ARObject:String, node: String) {
-        self.name = name
-        self.ARObject = ARObject
-        self.node = node
-    }
-}
+
 
 class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -69,13 +55,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     // array of hotspots
     let destinations = [
-        hotspot(name: "Grant Hall", location: CLLocationCoordinate2DMake(41.389992,-73.956481), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"),
-        hotspot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae", node:"Clinton2"),
-        hotspot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15, ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2"),
-        hotspot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15, ARObject:"art.scnassets/map/kucz.dae",node:"_2"),
-        hotspot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15, ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1"),
-        hotspot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15, ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend"),
-        hotspot(name: "Test Object", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15, ARObject:"art.scnassets/test/Pumpkin.dae", node:"Pumpkin")]
+        hotspot(name: "Fort Wyllys", location: CLLocationCoordinate2DMake(41.385150, -73.960211), zoom: 15),
+        hotspot(name: "Test Current Loc", location: CLLocationCoordinate2DMake(41.390314,-73.954821), zoom: 15),
+        hotspot(name: "Battle Monument", location: CLLocationCoordinate2DMake(41.394711,-73.956823), zoom: 15),
+        hotspot(name: "COL Tadeusz Kościuszko", location: CLLocationCoordinate2DMake(41.395069,-73.956590),zoom: 15),
+        hotspot(name: "LT Thomas Machin", location: CLLocationCoordinate2DMake(41.395379,-73.956327), zoom: 15),
+        hotspot(name:"Townsend", location: CLLocationCoordinate2DMake(41.395564,-73.955671), zoom:15),
+        hotspot(name: "Test Object", location: CLLocationCoordinate2DMake(41.395894,-73.955781), zoom: 15)]
     
     // GMS path used to draw path
     var polyline: GMSPolyline?
@@ -83,25 +69,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     ////////// ViewController Class Functions //////////
     
-    /////Picker View//////
     
-
- 
-    
-    
-    // Transition from Map to AR Mode
-    @objc func performsegue(){
-        performSegue(withIdentifier:"ARView", sender: self)
-    }
-    
-    //Send AR Object name and Node name to the hotspot's AR mode ViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        
-        if let vc = segue.destination as? SecondViewController {
-            vc.ARObjectName = (currentHotSpot?.ARObject)!
-            vc.nodeName = (currentHotSpot?.node)!
-        }
+    @objc func onCloseButton(_sender:AnyObject){
+        self.dismiss(animated:true,completion:nil )
     }
     
     override func viewDidLoad() {
@@ -145,22 +115,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         navButton.backgroundColor=UIColor.white
         navButton.layer.cornerRadius = 10
         
-        let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
-        let ARImage = UIImage(named:"ARImage.png")
-        ARButton.setImage(ARImage, for: UIControlState.normal)
-        ARButton.backgroundColor=UIColor.white
-        ARButton.layer.cornerRadius = 10
-        
         let sideBarButton = UIButton(frame : CGRect(x:screenWidth * 0.05,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
         sideBarButton.addTarget(self, action:#selector(self.alternateSideBar) , for: .touchUpInside)
         let sideBarImage = UIImage(named:"location.png")
         sideBarButton.setImage(sideBarImage, for: UIControlState.normal)
         sideBarButton.layer.cornerRadius = 10
         
+        let closeButton = UIButton(frame : CGRect(x:screenWidth * 0.85,y:screenHeight * 0.05,width:screenWidth * 0.11,height:screenHeight * 0.06))
+        closeButton.addTarget(self, action:#selector(self.onCloseButton) , for: .touchUpInside)
+        let closeButtonImage = UIImage(named:"exit.png")
+        closeButton.setImage(closeButtonImage, for: UIControlState.normal)
+        closeButton.layer.cornerRadius = 23
+        closeButton.backgroundColor=UIColor.white
+        
+        
         self.view.addSubview(navButton)
-        self.view.addSubview(ARButton)
+        //self.view.addSubview(ARButton)
         self.view.addSubview(sideBarButton)
+        self.view.addSubview(closeButton)
         
         
     }
@@ -239,7 +211,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     @IBAction func selectTest(_sender: UIButton) {
         self.mapView!.clear()
-        currentHotSpot = destinations[6]
+        currentHotSpot = destinations[0]
         mapView?.camera = GMSCameraPosition.camera(withTarget: currentHotSpot!.location, zoom: currentHotSpot!.zoom)
         let marker = GMSMarker(position: currentHotSpot!.location)
         marker.title = currentHotSpot?.name
@@ -248,22 +220,23 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     // Draws the polyline path from the current location to the destination
     @objc func drawPath(destination: CLLocationCoordinate2D) throws {
+        
         let origin = mapView?.myLocation ?? CLLocation(latitude:41.389148,longitude:-73.956231)
         let my_key = googleAPIkey
-        
+        print(origin.coordinate, destination)
         // Constructing url for googleMaps Directions API
         let url = "https://maps.googleapis.com/maps/api/directions/json?origin="+String(origin.coordinate.latitude)+","+String(origin.coordinate.longitude)+"&destination="+String(destination.latitude)+","+String(destination.longitude)+"&mode=walking&key=\(my_key)"
-        
+        print(url)
         // Send constructed url to google and parse received JSON file
         Alamofire.request(url).responseJSON {
             respose in
                 do {
+                    
                     // Serializing JSON
                     let json = try JSON(data: respose.data!)
                     
                     // Getting routes array
                     let routes = json["routes"].arrayValue
-                    
                     // Go through all the possible paths, in our case should be just one
                     for route in routes {
                         let routeOverviewPolyline = route["overview_polyline"].dictionary
@@ -282,7 +255,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
     
     // Invokes drawPath function for Navigate button
     @IBAction func draw(_sender: UIButton){
-        
+        print("Navigating...")
         do {
             if currentHotSpot == nil {
                 let alert = UIAlertController(title: "Naviagtion Alert", message: "Choose the location first from Side Bar Menu!",preferredStyle: .alert)
@@ -348,13 +321,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
         navButton.backgroundColor=UIColor.white
         navButton.layer.cornerRadius = 10
         
-        let ARButton = UIButton(frame : CGRect(x:screenWidth * 0.84,y:screenHeight * 0.50,width:screenWidth * 0.11,height:screenHeight * 0.06))
-        ARButton.addTarget(self, action:#selector(self.OnGoButton) , for: .touchUpInside)
-        let ARImage = UIImage(named:"ARImage.png")
-        ARButton.setImage(ARImage, for: UIControlState.normal)
-        ARButton.backgroundColor=UIColor.white
-        ARButton.layer.cornerRadius = 10
-        
         if sideBarOn == false {
             sideBarOn = true
             
@@ -373,37 +339,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate, UIImagePickerC
                 }
             }
             self.view.addSubview(navButton)
-            self.view.addSubview(ARButton)
+            //self.view.addSubview(ARButton)
             self.view.addSubview(sideBarButton)
             NSLog("SIDE BAR IS ::: False")
-        }
-    }
-
-    // Function that deals with AR Camera button
-    @IBAction func OnGoButton(_ sender: Any) {
-        // Defaults to Thaeyr Hall 106
-        //let mylocation = mapView?.myLocation ?? CLLocation(latitude:41.390314,longitude:-73.954821)
-        
-        // Checks if location is chosen
-        if (currentHotSpot == nil){
-            let alert = UIAlertController(title: "AR Camera Alert", message: "First choose location from Side Bar Menu !",preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            // Checks the distance between the user and the hotspot
-            //let current_location = CLLocation(latitude:(currentHotSpot?.location.latitude)!,longitude:(currentHotSpot?.location.longitude)!)
-            do {
-//                 CHecks if the user is within 25m range
-//
-//                if (mylocation.distance(from: current_location) >= 2500000) {
-//                    let alert = UIAlertController(title: "AR Camera Alert", message: "You are not within AR range!",preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title:NSLocalizedString("OK", comment: "Default Action"), style: .`default`,handler:{ _ in NSLog("User clicked ")}))
-//                    self.present(alert, animated: true, completion: nil)
-//                } else {
-//                     Pops up the AR mode
-                    performSegue(withIdentifier:"ARView", sender: self)
-                //}
-            }
         }
     }
 }
