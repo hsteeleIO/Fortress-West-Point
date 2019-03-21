@@ -4,6 +4,7 @@ import SceneKit
 import ARKit
 import FLAnimatedImage
 
+// extends the functionality of the SCNNode class to allow nodes to be highlighted
 extension SCNNode {
     func setHighlighted( _ highlighted : Bool = true, _ highlightedBitMask : Int = 2 ) {
         categoryBitMask = highlightedBitMask
@@ -13,6 +14,7 @@ extension SCNNode {
     }
 }
 
+// custom class for storing information about our graphic objects
 class Gobjects: NSObject {
     let id: Int
     let name: String?
@@ -35,37 +37,28 @@ class Gobjects: NSObject {
 
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    //configuration.planeDetection = .horizontal
-    
     let objectList = [
-        Gobjects(id: 0, name: "Castle", ARObject:"art.scnassets/castle/castle.dae",node:"Castle", high:["Cylinder_008"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Clinton Hat", ARObject:"art.scnassets/hat/clinton.dae",node:"Clinton2", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "COL Tadeusz Kościuszko Map", ARObject:"art.scnassets/map/kucz.dae",node:"Map", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "LT Thomas Machin Quill",  ARObject:"art.scnassets/Quill/machin.dae", node:"Machin1", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name:"Townsend Anvil", ARObject:"art.scnassets/hammerAnvil/hammerAnvil2.dae", node:"Townsend1", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["_28", "_5"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Sword", ARObject:"art.scnassets/sword/sword.dae", node:"sword", high:["24"], boxSize: 5, textbox: "musket1"),
+        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], boxSize: 5, textbox: "musket1"),
         Gobjects(id: 0, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["24"], boxSize: 5, textbox: "musket1"),
+        Gobjects(id: 0, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], boxSize: 5, textbox: "musket1"),
         Gobjects(id: 0, name: "Battery", ARObject:"art.scnassets/battery/battery.dae", node:"battery", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["24"], boxSize: 5, textbox: "musket1")]
+        Gobjects(id: 0, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], boxSize: 5, textbox: "musket1"),
+        Gobjects(id: 0, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], boxSize: 5, textbox: "musket1"),
+        Gobjects(id: 0, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], boxSize: 5, textbox: "musket1")]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
     
-    // Catch information provided from Google Maps ViewController
     // The node name as seen in the node inspector
-    var nodeName:String = "Castle"
+    var nodeName:String = "Fort"
     // Initialized as the fort (for now stand in castle object), needed to be the full path name
-    var ARObjectName:String = "art.scnassets/castle/castle.dae"
+    var ARObjectName:String = "art.scnassets/fort/fort.dae"
     // Global object anchor
     var anchor:ARAnchor!
     // Global object Variable (will only allow one object on the scene at a time)
     var LastARObject:SCNNode!
     // Last object rendered name
-    var lastObjectName:String = "Castle"
+    var lastObjectName:String = "Fort"
     // Global variable storing the last 3d transform
     var lastTransform:simd_float4x4!
     // Variable for determining if an object is present
@@ -80,6 +73,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     var textBoxMode:Bool = false
     //node that the user touched
     var touchedNode:SCNNode!
+    //list of current highlights
+    var highlightList:Array<String>!
     
     
     //global var for storing current angle of object
@@ -95,8 +90,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         //let vc = segue.destination as? SecondViewController
         //self.unwind(for: vc, towardsViewController: TitleViewController)
     }
-    /////picker////
-    @IBOutlet weak var objectPicker: UIPickerView!
     
     @IBOutlet weak var curObject: UILabel!
     
@@ -106,10 +99,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var highlightbutton: UIButton!
     
-    
-    
-    //gif view
+    //allows the gif to be animated by setting it to a variable
     @IBOutlet weak var loadGuide: FLAnimatedImageView!
+    
+    /////picker////
+    @IBOutlet weak var objectPicker: UIPickerView!
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -125,9 +119,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         nodeName = objectList[row].node
         ARObjectName = objectList[row].ARObject
         objectId = objectList[row].id
-        
+        highlightList = objectList[row].high
     }
     
+    //Button that allows user to switch between objects
     @IBAction func SwitchObject(_ sender: UIButton) {
         //remove the current object
         self.LastARObject.removeFromParentNode()
@@ -144,10 +139,11 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     //Highlight specific nodes in objects
     @IBAction func hightlight(_ sender: Any) {
-        let names = ["_28", "_5"]
+        let names = self.highlightList!
         for name in names {
             let item = self.LastARObject.childNode(withName: name, recursively: true)
             item?.setHighlighted()
+            
         }
         
         if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
@@ -162,7 +158,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -179,6 +174,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         // Set the scene to the view
         sceneView.scene = scene
         self.object = objectList[0]
+        //sets the path for the gif that asks users to taps on the screen
         let path1 : String = Bundle.main.path(forResource: "art.scnassets/tapheregif2", ofType: "gif")!
         let url = URL(fileURLWithPath: path1)
         let gifData = NSData(contentsOf: url)
@@ -288,13 +284,13 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         //print(nodeToScale.scale)
     }
     
+    //loads text box next to object after button is tapped
     @IBAction func getTextBox(_ sender: Any) {
         if textBoxMode == true {
             self.textBox.removeFromParentNode()
             self.textBoxMode = false
         }
         else {
-            
             guard let nodeToText = self.LastARObject else { return }
             let plane = SCNPlane(width: CGFloat(0.185), height: CGFloat(0.185))
             
@@ -315,6 +311,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             nodeToText.parent?.addChildNode(self.textBox)
         }
     }
+    
     // Looks for the parent of the node it was sent, if that node's name matches the last
     // object which was rendered then it returns that node
     func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
