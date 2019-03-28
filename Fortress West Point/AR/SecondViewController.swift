@@ -22,15 +22,17 @@ class Gobjects: NSObject {
     let node: String
     let high: Array<String>
     let boxSize: Int
+    let location: SCNVector3
     let textbox: String
     
-    init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, boxSize: Int, textbox: String) {
+    init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, boxSize: Int, location: SCNVector3, textbox: String) {
         self.id = id
         self.name = name
         self.ARObject = ARObject
         self.node = node
         self.high = high
         self.boxSize = boxSize
+        self.location = location
         self.textbox = textbox
     }
 }
@@ -38,13 +40,13 @@ class Gobjects: NSObject {
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let objectList = [
-        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Battery", ARObject:"art.scnassets/battery/battery.dae", node:"battery", high:["24"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], boxSize: 5, textbox: "musket1"),
-        Gobjects(id: 0, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], boxSize: 5, textbox: "musket1")]
+        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], boxSize: 5, location:SCNVector3Make(0,0.14,0), textbox: "musket1"),
+        Gobjects(id: 1, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1"),
+        Gobjects(id: 2, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
+        Gobjects(id: 3, name: "Battery", ARObject:"art.scnassets/battery/battery2.dae", node:"battery", high:["24"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
+        Gobjects(id: 4, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
+        Gobjects(id: 5, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1"),
+        Gobjects(id: 6, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], boxSize: 5, location:SCNVector3Make(0.153,0.288,0.005), textbox: "musket1")]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
@@ -120,6 +122,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         ARObjectName = objectList[row].ARObject
         objectId = objectList[row].id
         highlightList = objectList[row].high
+        
     }
     
     //Button that allows user to switch between objects
@@ -173,7 +176,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
         // Set the scene to the view
         sceneView.scene = scene
-        self.object = objectList[0]
+        self.object = objectList[objectId]
         //sets the path for the gif that asks users to taps on the screen
         let path1 : String = Bundle.main.path(forResource: "art.scnassets/tapheregif2", ofType: "gif")!
         let url = URL(fileURLWithPath: path1)
@@ -246,7 +249,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     @IBAction func rotateObject(_ gesture: UIPanGestureRecognizer) {
         
         guard let nodeToRotate = self.LastARObject else { return }
-        guard let nodeToRotate2 = self.textBox else { return }
+        //guard let nodeToRotate2 = self.textBox else { return }
         
         
         let translation = gesture.translation(in: gesture.view!)
@@ -254,7 +257,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         newAngleY += currentAngleY
         
         nodeToRotate.eulerAngles.y = newAngleY
-        nodeToRotate2.eulerAngles.y = newAngleY
+        //nodeToRotate2.eulerAngles.y = newAngleY
         
         if(gesture.state == .ended) { currentAngleY = newAngleY }
         
@@ -277,7 +280,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             let newScale2 = SCNVector3((CS2.x)*(dis), (CS2.y)*(dis), (CS2.z)*(dis))
             nodeToScale.scale = newScale
             nodeToScale2.scale = newScale2
-            nodeToScale2.position = SCNVector3Make(nodeToScale.scale.x*1.5, nodeToScale.scale.y*Float(pos), nodeToScale.scale.z*1.5)
+            nodeToScale2.position = SCNVector3Make(object.location.x, object.location.y, object.location.z)
             gesture.scale = 1.0
         }
         
@@ -304,7 +307,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
             
             let planeNode = SCNNode(geometry: plane)
-            planeNode.position = SCNVector3Make(nodeToText.scale.x*1.5, nodeToText.scale.y*Float(pos), nodeToText.scale.z*1.5)
+            planeNode.position = SCNVector3Make(object.location.x, object.location.y, object.location.z)
             
             self.textBox = planeNode
             self.textBoxMode = true
@@ -339,9 +342,10 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 
                 //add empty plane to make sure rotate & scale functions don't crash
                 let planeNode = SCNNode(geometry: plane)
+                planeNode.name = "textbox"
                 planeNode.position = SCNVector3Make(0,0,0)
                 self.textBox = planeNode
-                
+                self.object = self.objectList[self.objectId]
                 // Sets global var to have the name of the last object that was rendered
                 self.lastObjectName = self.nodeName
                 // Sets global var to store the last object rendered, to store multiple objects simply make it a queue
