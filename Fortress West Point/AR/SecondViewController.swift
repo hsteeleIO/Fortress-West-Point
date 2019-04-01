@@ -12,6 +12,12 @@ extension SCNNode {
             child.setHighlighted()
         }
     }
+    func setUnHighlighted( _ highlighted : Bool = true, _ highlightedBitMask : Int = 1 ) {
+        categoryBitMask = highlightedBitMask
+        for child in self.childNodes {
+            child.setUnHighlighted()
+        }
+    }
 }
 
 // custom class for storing information about our graphic objects
@@ -21,50 +27,56 @@ class Gobjects: NSObject {
     let ARObject: String
     let node: String
     let high: Array<String>
+    let highBool: Array<Bool>
     let boxSize: Int
     let location: SCNVector3
     let textbox: String
+    let textBoxButtons: Array<String>
     
-    init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, boxSize: Int, location: SCNVector3, textbox: String) {
+    init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, highBool: Array<Bool>, boxSize: Int, location: SCNVector3, textbox: String, textBoxButtons: Array<String>) {
         self.id = id
         self.name = name
         self.ARObject = ARObject
         self.node = node
         self.high = high
+        self.highBool = highBool
         self.boxSize = boxSize
         self.location = location
         self.textbox = textbox
+        self.textBoxButtons = textBoxButtons
     }
 }
 
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let objectList = [
-        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], boxSize: 5, location:SCNVector3Make(0,0.14,0), textbox: "musket1"),
-        Gobjects(id: 1, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1"),
-        Gobjects(id: 2, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
-        Gobjects(id: 3, name: "Battery", ARObject:"art.scnassets/battery/battery2.dae", node:"battery", high:["24"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
-        Gobjects(id: 4, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1"),
-        Gobjects(id: 5, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1"),
-        Gobjects(id: 6, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], boxSize: 5, location:SCNVector3Make(0.153,0.288,0.005), textbox: "musket1")]
+        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], highBool:[true], boxSize: 5, location:SCNVector3Make(0,0.14,0), textbox: "musket1", textBoxButtons: ["Loading a Musket", "Flint", ""]),
+        Gobjects(id: 1, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Powder Box", "Job", ""]),
+        Gobjects(id: 2, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], highBool:[true, true, true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Location", "Why?", "Cannons"]),
+        Gobjects(id: 3, name: "Battery", ARObject:"art.scnassets/battery/battery2.dae", node:"battery", high:["24"], highBool:[true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Purpose", "", ""]),
+        Gobjects(id: 4, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], highBool:[true, true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Sword", "Epilets"]),
+        Gobjects(id: 5, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Job", "Pay"]),
+        Gobjects(id: 6, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.153,0.288,0.005), textbox: "musket1", textBoxButtons: ["Loading a Cannon", "", ""])]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
     
     // The node name as seen in the node inspector
-    var nodeName:String = "Fort"
+    var nodeName:String = "musket"
     // Initialized as the fort (for now stand in castle object), needed to be the full path name
-    var ARObjectName:String = "art.scnassets/fort/fort.dae"
+    var ARObjectName:String = "art.scnassets/musket/musket.dae"
     // Global object anchor
     var anchor:ARAnchor!
     // Global object Variable (will only allow one object on the scene at a time)
     var LastARObject:SCNNode!
     // Last object rendered name
-    var lastObjectName:String = "Fort"
+    var lastObjectName:String = "Placeholder"
     // Global variable storing the last 3d transform
     var lastTransform:simd_float4x4!
     // Variable for determining if an object is present
     var objectPresent:Bool = false
+    // Variable for determining whether highlight button has been hit
+    var highlight:Bool = false
     
     var object:Gobjects!
     
@@ -95,9 +107,9 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     @IBOutlet weak var curObject: UILabel!
     
-    @IBOutlet weak var loadObject: UILabel!
-    
-    @IBOutlet weak var loadText: UIButton!
+    @IBOutlet weak var loadText1: UIButton!
+    @IBOutlet weak var loadText2: UIButton!
+    @IBOutlet weak var loadText3: UIButton!
     
     @IBOutlet weak var highlightbutton: UIButton!
     
@@ -125,30 +137,29 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         
     }
     
-    //Button that allows user to switch between objects
-    @IBAction func SwitchObject(_ sender: UIButton) {
-        //remove the current object
-        self.LastARObject.removeFromParentNode()
-        //set the new object in the data structure
-        self.object = objectList[objectId]
-        if textBoxMode == true {
-            //remove textbox
-            self.textBox.removeFromParentNode()
-            self.textBoxMode = false
-        }
-        //actually spawn the object
-        sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
-    }
-    
-    //Highlight specific nodes in objects
+    //Highlights/unhighlights specific nodes in objects
     @IBAction func hightlight(_ sender: Any) {
-        let names = self.highlightList!
-        for name in names {
-            let item = self.LastARObject.childNode(withName: name, recursively: true)
-            item?.setHighlighted()
-            
+        //highlights nodes
+        if (highlight == false){
+            let names = self.highlightList!
+            for name in names {
+                let item = self.LastARObject.childNode(withName: name, recursively: true)
+                item?.setHighlighted()
+            }
+            self.highlight = true
         }
         
+        //Unhighlights nodes
+        else if (highlight == true){
+            let names = self.highlightList!
+            for name in names {
+                let item = self.LastARObject.childNode(withName: name, recursively: true)
+                item?.setUnHighlighted()
+            }
+            self.highlight = false
+        }
+        
+        //connects to custom shader
         if let path = Bundle.main.path(forResource: "NodeTechnique", ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path)  {
                 let dict2 = dict as! [String : AnyObject]
@@ -206,7 +217,9 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first!.location(in: sceneView)
+        
         //setting this to test to false means it never tests when an object is present
+        //This lets us see the name of the node being touched
         if self.objectPresent == true {
             
             // Let's test if a 3D Object was touched
@@ -220,8 +233,17 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 if let name = hit.node.name {
                     touchedNode = hit.node
                     print(name)
+                    if (self.highlight == true){
+                        if (object.high.contains(name)){
+                            let index = object.high.firstIndex(of: name)
+                            if (object.highBool[index!] == true){
+                                touchedNode.setUnHighlighted()
+                            }
+                        }
+                    }
                 }
             }
+            
         }
         
         // No object was touched? Try feature points
@@ -238,8 +260,33 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 // set global variable
                 self.lastTransform = finalTransform
                 
+                loadText1.setTitle(object.textBoxButtons[0], for: UIControl.State.normal)
+                loadText2.setTitle(object.textBoxButtons[1], for: UIControl.State.normal)
+                loadText3.setTitle(object.textBoxButtons[2], for: UIControl.State.normal)
+                
                 sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
             }
+        }
+        
+        // Switches between objects
+        else if (self.lastObjectName != self.nodeName) {
+            //remove the current object
+            self.LastARObject.removeFromParentNode()
+            //set the new object in the data structure
+            self.object = objectList[objectId]
+            if textBoxMode == true {
+                //remove textbox
+                self.textBox.removeFromParentNode()
+                self.textBoxMode = false
+            }
+            
+            //sets labels for text box buttons
+            loadText1.setTitle(object.textBoxButtons[0], for: UIControl.State.normal)
+            loadText2.setTitle(object.textBoxButtons[1], for: UIControl.State.normal)
+            loadText3.setTitle(object.textBoxButtons[2], for: UIControl.State.normal)
+            
+            //actually spawn the object
+            sceneView.session.add(anchor: ARAnchor(transform: self.lastTransform))
         }
     }
     
@@ -352,16 +399,18 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 self.LastARObject = modelClone
                 // sets global var to true
                 self.objectPresent = true
-                self.loadText.isHidden = false
-                self.loadObject.isHidden = false
+                
+                //textboxbutton settings
+                self.loadText1.isHidden = false
+                self.loadText2.isHidden = false
+                self.loadText3.isHidden = false
+                
                 self.highlightbutton.isHidden = false
                 self.loadGuide.isHidden = true
                 
                 // Add model as a child of the node
                 node.addChildNode(planeNode)
                 node.addChildNode(modelClone)
-                
-                
                 
             }
         }

@@ -10,6 +10,7 @@
 		1D2C31D822259EF30090374B /* NodeRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C31D622259EF30090374B /* NodeRender.metal */; };
 		1D2C31D922259EF30090374B /* NodeTechnique.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D2C31D722259EF30090374B /* NodeTechnique.plist */; };
 		1D3546E82183603C0016EACC /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D3546E72183603C0016EACC /* exit.png */; };
+		1D47AF40224D17880054271F /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF3F224D17880054271F /* highlight.png */; };
 		1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* GameViewController.swift */; };
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
 		C0139B0D224128500054E02D /* matross1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0139B0C224128500054E02D /* matross1.sks */; };
@@ -73,6 +74,7 @@
 		1D2C31D622259EF30090374B /* NodeRender.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = NodeRender.metal; sourceTree = "<group>"; };
 		1D2C31D722259EF30090374B /* NodeTechnique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NodeTechnique.plist; sourceTree = "<group>"; };
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		1D47AF3F224D17880054271F /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highlight.png; path = Icons/highlight.png; sourceTree = "<group>"; };
 		1D7A566A21AD97A500C360F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0139B0C224128500054E02D /* matross1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = matross1.sks; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				C0243F7921F8C168003DCE95 /* TitleScreen */,
 				C0243F7D21F8C29A003DCE95 /* GoogleMap */,
 				D9FED8521FD1ADFB00565FED /* Main.storyboard */,
+				1D47AF3F224D17880054271F /* highlight.png */,
 				C0625D662178D4260091A161 /* LaunchScreen.storyboard */,
 				D9FED7EA1FCC5FB800565FED /* Info.plist */,
 				D9FED8121FCEE14E00565FED /* style.json */,
@@ -418,6 +421,7 @@
 				C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */,
 				C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */,
 				C0625D652178C73B0091A161 /* Assets.xcassets in Resources */,
+				1D47AF40224D17880054271F /* highlight.png in Resources */,
 				D915B814206AD59500EB5767 /* lab.png in Resources */,
 				C0AFB66722316E2A0024EE00 /* musket2.sks in Resources */,
 				C0243F8421F8C32A003DCE95 /* FWIntroScene.sks in Resources */,
