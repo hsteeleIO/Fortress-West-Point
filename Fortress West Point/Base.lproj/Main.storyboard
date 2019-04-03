@@ -27,10 +27,14 @@
                                     <outletCollection property="gestureRecognizers" destination="qAs-Of-RMm" appends="YES" id="dCs-x9-RIH"/>
                                 </connections>
                             </arscnView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEr-bS-tQ9">
                                 <rect key="frame" x="0.0" y="757" width="766" height="217"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="0.53828660102739723" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES"/>
+                                </accessibility>
                                 <connections>
                                     <outlet property="dataSource" destination="w7D-ky-lkF" id="zAh-XR-fMr"/>
                                     <outlet property="delegate" destination="w7D-ky-lkF" id="yTR-bl-lye"/>
@@ -120,33 +124,25 @@
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="top" secondItem="7p1-Vx-wAL" secondAttribute="bottom" constant="566" id="2gg-bM-1wv"/>
                             <constraint firstItem="juk-pI-PcS" firstAttribute="leading" secondItem="Srz-7H-ME1" secondAttribute="trailing" constant="127" id="38T-q1-ty3"/>
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7p1-Vx-wAL" secondAttribute="trailing" symbolic="YES" id="3sS-JO-Rfa"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="5Bp-36-OwZ"/>
                             <constraint firstItem="xyQ-o2-YBN" firstAttribute="leading" secondItem="yvg-bd-Wop" secondAttribute="trailing" constant="168.5" id="7Sv-9K-4hw"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="9WD-lD-F5t"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="xyQ-o2-YBN" secondAttribute="bottom" constant="134" id="AWN-Da-CzU"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="leading" secondItem="WaF-VC-mTF" secondAttribute="leading" id="B8P-7w-vAe"/>
                             <constraint firstAttribute="trailing" secondItem="q55-8Z-o8M" secondAttribute="trailing" id="BdD-vT-d34"/>
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="top" secondItem="7p1-Vx-wAL" secondAttribute="bottom" constant="566" id="F1r-F0-QAm"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="380" id="J8J-1R-rkw"/>
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="xyQ-o2-YBN" secondAttribute="trailing" constant="20" id="QMG-ph-9x8"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="CNX-Im-RZu" secondAttribute="bottom" constant="56" id="TdM-io-S5Z"/>
                             <constraint firstItem="CNX-Im-RZu" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="641" id="VOW-7I-6NR"/>
                             <constraint firstItem="juk-pI-PcS" firstAttribute="top" secondItem="yvg-bd-Wop" secondAttribute="bottom" constant="37" id="VYb-3s-xyg"/>
                             <constraint firstItem="7p1-Vx-wAL" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" constant="46" id="VaG-k4-YKp"/>
-                            <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="cEr-bS-tQ9" secondAttribute="trailing" id="WG5-Tn-6Uu"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" id="ZuF-5A-Boe"/>
                             <constraint firstItem="CNX-Im-RZu" firstAttribute="leading" secondItem="juk-pI-PcS" secondAttribute="trailing" constant="105" id="bYF-u7-20C"/>
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="CNX-Im-RZu" secondAttribute="trailing" constant="68" id="bYs-Ch-kkn"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="top" secondItem="WaF-VC-mTF" secondAttribute="top" id="c2B-sO-tph"/>
                             <constraint firstItem="eUh-2g-ClE" firstAttribute="top" secondItem="juk-pI-PcS" secondAttribute="bottom" id="clu-0y-MCk"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="Srz-7H-ME1" secondAttribute="bottom" constant="56" id="gpJ-Fi-arh"/>
                             <constraint firstItem="juk-pI-PcS" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="hFQ-ms-7fk"/>
                             <constraint firstItem="eUh-2g-ClE" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="jVf-zn-9fD"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q55-8Z-o8M" secondAttribute="bottom" constant="-22" id="l9U-d7-tFz"/>
                             <constraint firstItem="7p1-Vx-wAL" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="24" id="o7b-tf-9IS"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="top" secondItem="eUh-2g-ClE" secondAttribute="bottom" constant="8" id="rvK-Fk-Cpo"/>
                             <constraint firstItem="xyQ-o2-YBN" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="527" id="s2w-tm-sJR"/>
-                            <constraint firstItem="cEr-bS-tQ9" firstAttribute="bottom" secondItem="b0Q-L9-M8U" secondAttribute="bottom" id="ujw-SG-UR3"/>
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" constant="46" id="wYk-p9-thz"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="centerY" secondItem="WaF-VC-mTF" secondAttribute="centerY" id="ybR-e5-PHW"/>
                         </constraints>
@@ -426,6 +422,6 @@ Have fun exploring Fort Wyllys!</string>
         <image name="highlight.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r4A-Om-flI"/>
+        <segue reference="rCY-d1-aQ1"/>
     </inferredMetricsTieBreakers>
 </document>

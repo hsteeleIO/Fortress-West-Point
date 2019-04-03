@@ -35,8 +35,11 @@ class Gobjects: NSObject {
     
     init(id: Int, name: String, ARObject:String, node: String, high: Array<String>, highBool: Array<Bool>, boxSize: Int, location: SCNVector3, textbox: String, textBoxButtons: Array<String>) {
         self.id = id
+        //name that appears above scroll wheel
         self.name = name
+        //path to where object is stored
         self.ARObject = ARObject
+        //name of overarching node to load
         self.node = node
         self.high = high
         self.highBool = highBool
@@ -90,6 +93,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     //list of current highlights
     var highlightList:Array<String>!
     
+    // images for picker view
+    var imageArray = [UIImage]()
     
     //global var for storing current angle of object
     var currentAngleY: Float = 0.0
@@ -124,6 +129,21 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return objectList[row].name
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var myImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: pickerView.frame.height, height: pickerView.frame.height))
+        myImageView.transform = CGAffineTransform(rotationAngle: 90 * (.pi/180))
+        
+//        for i in 0..<imageArray.count {
+//            myImageView.image = imageArray[i]
+//            return myImageView
+//        }
+        myImageView.image = imageArray[row]
+
+        return myImageView
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return pickerView.frame.height
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return objectList.count
@@ -188,12 +208,19 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         // Set the scene to the view
         sceneView.scene = scene
         self.object = objectList[objectId]
+        
         //sets the path for the gif that asks users to taps on the screen
         let path1 : String = Bundle.main.path(forResource: "art.scnassets/tapheregif2", ofType: "gif")!
         let url = URL(fileURLWithPath: path1)
         let gifData = NSData(contentsOf: url)
         let imageData1 = FLAnimatedImage(animatedGIFData: gifData! as Data)
         loadGuide.animatedImage = imageData1
+        
+        imageArray = [#imageLiteral(resourceName: "Musket"), #imageLiteral(resourceName: "Matross"), #imageLiteral(resourceName: "fort"), #imageLiteral(resourceName: "battery"), #imageLiteral(resourceName: "Colonel"), #imageLiteral(resourceName: "Lieutenant"), #imageLiteral(resourceName: "cannon")]
+        let y = objectPicker.frame.origin.y
+        objectPicker.transform = CGAffineTransform(scaleX: 1.0, y: 1.0);
+        objectPicker.transform = CGAffineTransform(rotationAngle: -90 * (.pi/180)) // angle needs to be in radians
+        objectPicker.frame = CGRect(x: 0, y: y+25, width: view.frame.width, height: 250)
     }
     
     
