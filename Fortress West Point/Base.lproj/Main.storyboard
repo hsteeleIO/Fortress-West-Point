@@ -90,19 +90,6 @@
                                     <constraint firstAttribute="width" secondItem="yvg-bd-Wop" secondAttribute="height" multiplier="198:197" id="77k-AZ-b4T"/>
                                 </constraints>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyQ-o2-YBN">
-                                <rect key="frame" x="664" y="547" width="82" height="76"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xyQ-o2-YBN" secondAttribute="height" multiplier="83:77" id="Ags-d9-Kq1"/>
-                                </constraints>
-                                <state key="normal" title="Highlight" image="highlight.png"/>
-                                <connections>
-                                    <action selector="hightlight:" destination="w7D-ky-lkF" eventType="touchUpInside" id="tff-7O-mLk"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Srz-7H-ME1">
                                 <rect key="frame" x="46" y="661" width="140" height="40"/>
                                 <constraints>
@@ -124,13 +111,11 @@
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="top" secondItem="7p1-Vx-wAL" secondAttribute="bottom" constant="566" id="2gg-bM-1wv"/>
                             <constraint firstItem="juk-pI-PcS" firstAttribute="leading" secondItem="Srz-7H-ME1" secondAttribute="trailing" constant="127" id="38T-q1-ty3"/>
                             <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7p1-Vx-wAL" secondAttribute="trailing" symbolic="YES" id="3sS-JO-Rfa"/>
-                            <constraint firstItem="xyQ-o2-YBN" firstAttribute="leading" secondItem="yvg-bd-Wop" secondAttribute="trailing" constant="168.5" id="7Sv-9K-4hw"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="9WD-lD-F5t"/>
                             <constraint firstItem="q55-8Z-o8M" firstAttribute="leading" secondItem="WaF-VC-mTF" secondAttribute="leading" id="B8P-7w-vAe"/>
                             <constraint firstAttribute="trailing" secondItem="q55-8Z-o8M" secondAttribute="trailing" id="BdD-vT-d34"/>
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="top" secondItem="7p1-Vx-wAL" secondAttribute="bottom" constant="566" id="F1r-F0-QAm"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="380" id="J8J-1R-rkw"/>
-                            <constraint firstItem="b0Q-L9-M8U" firstAttribute="trailing" secondItem="xyQ-o2-YBN" secondAttribute="trailing" constant="20" id="QMG-ph-9x8"/>
                             <constraint firstItem="CNX-Im-RZu" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="641" id="VOW-7I-6NR"/>
                             <constraint firstItem="juk-pI-PcS" firstAttribute="top" secondItem="yvg-bd-Wop" secondAttribute="bottom" constant="37" id="VYb-3s-xyg"/>
                             <constraint firstItem="7p1-Vx-wAL" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" constant="46" id="VaG-k4-YKp"/>
@@ -142,7 +127,6 @@
                             <constraint firstItem="eUh-2g-ClE" firstAttribute="centerX" secondItem="WaF-VC-mTF" secondAttribute="centerX" id="jVf-zn-9fD"/>
                             <constraint firstAttribute="bottomMargin" secondItem="q55-8Z-o8M" secondAttribute="bottom" constant="-22" id="l9U-d7-tFz"/>
                             <constraint firstItem="7p1-Vx-wAL" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="24" id="o7b-tf-9IS"/>
-                            <constraint firstItem="xyQ-o2-YBN" firstAttribute="top" secondItem="b0Q-L9-M8U" secondAttribute="top" constant="527" id="s2w-tm-sJR"/>
                             <constraint firstItem="Srz-7H-ME1" firstAttribute="leading" secondItem="b0Q-L9-M8U" secondAttribute="leading" constant="46" id="wYk-p9-thz"/>
                             <constraint firstItem="yvg-bd-Wop" firstAttribute="centerY" secondItem="WaF-VC-mTF" secondAttribute="centerY" id="ybR-e5-PHW"/>
                         </constraints>
@@ -152,7 +136,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="curObject" destination="eUh-2g-ClE" id="2wt-Ak-7hP"/>
-                        <outlet property="highlightbutton" destination="xyQ-o2-YBN" id="TRj-gf-1pV"/>
                         <outlet property="loadGuide" destination="yvg-bd-Wop" id="Zvy-Ke-Usz"/>
                         <outlet property="loadText1" destination="Srz-7H-ME1" id="vXL-kY-FRE"/>
                         <outlet property="loadText2" destination="juk-pI-PcS" id="vfX-aD-wlr"/>
@@ -419,7 +402,6 @@ Have fun exploring Fort Wyllys!</string>
     </scenes>
     <resources>
         <image name="fortwyllys" width="4032" height="3024"/>
-        <image name="highlight.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rCY-d1-aQ1"/>

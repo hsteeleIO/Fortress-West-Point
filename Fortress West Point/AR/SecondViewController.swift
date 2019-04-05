@@ -53,13 +53,13 @@ class Gobjects: NSObject {
 class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let objectList = [
-        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], highBool:[true], boxSize: 5, location:SCNVector3Make(0,0.14,0), textbox: "musket1", textBoxButtons: ["Loading a Musket", "Flint", ""]),
-        Gobjects(id: 1, name: "Matross", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Powder Box", "Job", ""]),
         Gobjects(id: 2, name: "Fort", ARObject:"art.scnassets/fort/fort.dae", node:"fort", high:["Null-14_Instance-1", "Extrude-1", "Null-14_Instance-2"], highBool:[true, true, true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Location", "Why?", "Cannons"]),
         Gobjects(id: 3, name: "Battery", ARObject:"art.scnassets/battery/battery2.dae", node:"battery", high:["24"], highBool:[true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Purpose", "", ""]),
-        Gobjects(id: 4, name: "Colonel", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], highBool:[true, true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Sword", "Epilets"]),
-        Gobjects(id: 5, name: "Lieutenant", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Job", "Pay"]),
-        Gobjects(id: 6, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.153,0.288,0.005), textbox: "musket1", textBoxButtons: ["Loading a Cannon", "", ""])]
+        Gobjects(id: 6, name: "Cannon", ARObject:"art.scnassets/cannon/cannon.dae", node:"cannon", high:["Lathe"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.153,0.288,0.005), textbox: "musket1", textBoxButtons: ["Loading a Cannon", "", ""]),
+        Gobjects(id: 0,name: "Musket", ARObject:"art.scnassets/musket/musket.dae", node:"musket", high:["flint_1"], highBool:[true], boxSize: 5, location:SCNVector3Make(0,0.14,0), textbox: "musket1", textBoxButtons: ["Loading a Musket", "Flint", ""]),
+        Gobjects(id: 4, name: "Colonel's Uniform", ARObject:"art.scnassets/colonel/colonel.dae", node:"colonel", high:["blade-1", "handle"], highBool:[true, true], boxSize: 5, location:SCNVector3Make(0,0,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Sword", "Epilets"]),
+        Gobjects(id: 5, name: "Lieutenant's Uniform", ARObject:"art.scnassets/lieutenant/lieutenant.dae", node:"lieutenant", high:["Sphere"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Red Sash", "Job", "Pay"]),
+        Gobjects(id: 1, name: "Matross's Uniform  ", ARObject:"art.scnassets/mattross/matross.dae", node:"matross", high:["Tube-2"], highBool:[true], boxSize: 5, location:SCNVector3Make(0.181,0.316,0), textbox: "musket1", textBoxButtons: ["Powder Box", "Job", ""])]
     
     @IBOutlet var sceneView: ARSCNView!
     var nodeModel: SCNNode!
@@ -104,11 +104,6 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     @IBAction func CloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    @objc func onCloseButton(_sender:AnyObject){
-        self.dismiss(animated:true,completion:nil)
-        //let vc = segue.destination as? SecondViewController
-        //self.unwind(for: vc, towardsViewController: TitleViewController)
-    }
     
     @IBOutlet weak var curObject: UILabel!
     
@@ -134,12 +129,12 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         var myImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: pickerView.frame.height, height: pickerView.frame.height))
         myImageView.transform = CGAffineTransform(rotationAngle: 90 * (.pi/180))
         
-//        for i in 0..<imageArray.count {
-//            myImageView.image = imageArray[i]
-//            return myImageView
-//        }
+        //        for i in 0..<imageArray.count {
+        //            myImageView.image = imageArray[i]
+        //            return myImageView
+        //        }
         myImageView.image = imageArray[row]
-
+        
         return myImageView
     }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -168,8 +163,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
             }
             self.highlight = true
         }
-        
-        //Unhighlights nodes
+            
+            //Unhighlights nodes
         else if (highlight == true){
             let names = self.highlightList!
             for name in names {
@@ -216,7 +211,7 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
         let imageData1 = FLAnimatedImage(animatedGIFData: gifData! as Data)
         loadGuide.animatedImage = imageData1
         
-        imageArray = [#imageLiteral(resourceName: "Musket"), #imageLiteral(resourceName: "Matross"), #imageLiteral(resourceName: "fort"), #imageLiteral(resourceName: "battery"), #imageLiteral(resourceName: "Colonel"), #imageLiteral(resourceName: "Lieutenant"), #imageLiteral(resourceName: "cannon")]
+        imageArray = [#imageLiteral(resourceName: "fort"), #imageLiteral(resourceName: "Battery"), #imageLiteral(resourceName: "Cannon"), #imageLiteral(resourceName: "musket"), #imageLiteral(resourceName: "Colonol"), #imageLiteral(resourceName: "lt"), #imageLiteral(resourceName: "matross")]
         let y = objectPicker.frame.origin.y
         objectPicker.transform = CGAffineTransform(scaleX: 1.0, y: 1.0);
         objectPicker.transform = CGAffineTransform(rotationAngle: -90 * (.pi/180)) // angle needs to be in radians
@@ -294,8 +289,8 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
                 sceneView.session.add(anchor: ARAnchor(transform: finalTransform))
             }
         }
-        
-        // Switches between objects
+            
+            // Switches between objects
         else if (self.lastObjectName != self.nodeName) {
             //remove the current object
             self.LastARObject.removeFromParentNode()
@@ -363,6 +358,60 @@ class SecondViewController: UIViewController, ARSCNViewDelegate, UIPickerViewDel
     
     //loads text box next to object after button is tapped
     @IBAction func getTextBox(_ sender: Any) {
+        if textBoxMode == true {
+            self.textBox.removeFromParentNode()
+            self.textBoxMode = false
+        }
+        else {
+            guard let nodeToText = self.LastARObject else { return }
+            let plane = SCNPlane(width: CGFloat(0.185), height: CGFloat(0.185))
+            
+            plane.cornerRadius = plane.width / 6.5
+            let pos = object.boxSize
+            let box = object.textbox
+            let spriteKitScene = SKScene(fileNamed: box)
+            //let imageMaterial = UIImage(named: "art.scnassets/cannon/cannon_wood.jpg")
+            plane.firstMaterial?.diffuse.contents = spriteKitScene
+            plane.firstMaterial?.isDoubleSided = true
+            plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.position = SCNVector3Make(object.location.x, object.location.y, object.location.z)
+            
+            self.textBox = planeNode
+            self.textBoxMode = true
+            nodeToText.parent?.addChildNode(self.textBox)
+        }
+    }
+    
+    @IBAction func getTextBox2(_ sender: Any) {
+        if textBoxMode == true {
+            self.textBox.removeFromParentNode()
+            self.textBoxMode = false
+        }
+        else if (true) {
+            guard let nodeToText = self.LastARObject else { return }
+            let plane = SCNPlane(width: CGFloat(0.185), height: CGFloat(0.185))
+            
+            plane.cornerRadius = plane.width / 6.5
+            let pos = object.boxSize
+            let box = object.textbox
+            let spriteKitScene = SKScene(fileNamed: box)
+            //let imageMaterial = UIImage(named: "art.scnassets/cannon/cannon_wood.jpg")
+            plane.firstMaterial?.diffuse.contents = spriteKitScene
+            plane.firstMaterial?.isDoubleSided = true
+            plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.position = SCNVector3Make(object.location.x, object.location.y, object.location.z)
+            
+            self.textBox = planeNode
+            self.textBoxMode = true
+            nodeToText.parent?.addChildNode(self.textBox)
+        }
+    }
+    
+    @IBAction func getTextBox3(_ sender: Any) {
         if textBoxMode == true {
             self.textBox.removeFromParentNode()
             self.textBoxMode = false
