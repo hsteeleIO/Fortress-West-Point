@@ -10,6 +10,11 @@
 		1D2C31D822259EF30090374B /* NodeRender.metal in Sources */ = {isa = PBXBuildFile; fileRef = 1D2C31D622259EF30090374B /* NodeRender.metal */; };
 		1D2C31D922259EF30090374B /* NodeTechnique.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D2C31D722259EF30090374B /* NodeTechnique.plist */; };
 		1D3546E82183603C0016EACC /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D3546E72183603C0016EACC /* exit.png */; };
+		1D47AF4622579E790054271F /* Firing.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF4122579E790054271F /* Firing.sks */; };
+		1D47AF4722579E790054271F /* Stamp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF4222579E790054271F /* Stamp.sks */; };
+		1D47AF4822579E790054271F /* Flint.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF4322579E790054271F /* Flint.sks */; };
+		1D47AF4922579E790054271F /* musket4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF4422579E790054271F /* musket4.sks */; };
+		1D47AF4A22579E790054271F /* colonel1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1D47AF4522579E790054271F /* colonel1.sks */; };
 		1D7A566B21AD97A500C360F8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A566A21AD97A500C360F8 /* GameViewController.swift */; };
 		6B5E7927920B5AF0E0A34486 /* Pods_Fortress_West_Point.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */; };
 		C0139B0D224128500054E02D /* matross1.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0139B0C224128500054E02D /* matross1.sks */; };
@@ -73,6 +78,11 @@
 		1D2C31D622259EF30090374B /* NodeRender.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = NodeRender.metal; sourceTree = "<group>"; };
 		1D2C31D722259EF30090374B /* NodeTechnique.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NodeTechnique.plist; sourceTree = "<group>"; };
 		1D3546E72183603C0016EACC /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		1D47AF4122579E790054271F /* Firing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Firing.sks; path = Textboxes/Firing.sks; sourceTree = "<group>"; };
+		1D47AF4222579E790054271F /* Stamp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Stamp.sks; path = Textboxes/Stamp.sks; sourceTree = "<group>"; };
+		1D47AF4322579E790054271F /* Flint.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Flint.sks; path = Textboxes/Flint.sks; sourceTree = "<group>"; };
+		1D47AF4422579E790054271F /* musket4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = musket4.sks; path = Textboxes/musket4.sks; sourceTree = "<group>"; };
+		1D47AF4522579E790054271F /* colonel1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = colonel1.sks; path = Textboxes/colonel1.sks; sourceTree = "<group>"; };
 		1D7A566A21AD97A500C360F8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		6235ED4C8A6C6A6F4AAABD84 /* Pods_Fortress_West_Point.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fortress_West_Point.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0139B0C224128500054E02D /* matross1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = matross1.sks; sourceTree = "<group>"; };
@@ -198,6 +208,11 @@
 			children = (
 				C073EA88222EC3D400D93E18 /* Textboxes */,
 				C0329A4522009A53003AF50D /* SecondViewController.swift */,
+				1D47AF4522579E790054271F /* colonel1.sks */,
+				1D47AF4122579E790054271F /* Firing.sks */,
+				1D47AF4422579E790054271F /* musket4.sks */,
+				1D47AF4322579E790054271F /* Flint.sks */,
+				1D47AF4222579E790054271F /* Stamp.sks */,
 				1D2C31D622259EF30090374B /* NodeRender.metal */,
 				1D2C31D722259EF30090374B /* NodeTechnique.plist */,
 			);
@@ -416,7 +431,9 @@
 			files = (
 				D9C26D11209763630024B3E9 /* art.scnassets in Resources */,
 				C0BF11BE21ECE7AE00F51CD4 /* GameScene.sks in Resources */,
+				1D47AF4622579E790054271F /* Firing.sks in Resources */,
 				C0243F7621F8AB92003DCE95 /* SelectionScene.sks in Resources */,
+				1D47AF4822579E790054271F /* Flint.sks in Resources */,
 				C0625D652178C73B0091A161 /* Assets.xcassets in Resources */,
 				D915B814206AD59500EB5767 /* lab.png in Resources */,
 				C0AFB66722316E2A0024EE00 /* musket2.sks in Resources */,
@@ -424,13 +441,16 @@
 				D915B800204DA44100EB5767 /* walking.png in Resources */,
 				D9FED8561FD6F0DF00565FED /* Location.gpx in Resources */,
 				D9FED80F1FCC66F400565FED /* PodFile in Resources */,
+				1D47AF4A22579E790054271F /* colonel1.sks in Resources */,
 				C0B0DE5222283E5200A5B2E5 /* musket1.sks in Resources */,
 				D91AD62D206BD658006D7660 /* chain.png in Resources */,
 				C0625D672178D4260091A161 /* LaunchScreen.storyboard in Resources */,
 				D9FED8541FD1ADFC00565FED /* Main.storyboard in Resources */,
 				D915B81A206AE04D00EB5767 /* kosc.png in Resources */,
 				C0139B0D224128500054E02D /* matross1.sks in Resources */,
+				1D47AF4922579E790054271F /* musket4.sks in Resources */,
 				D915B816206ADB0700EB5767 /* battlemonument.png in Resources */,
+				1D47AF4722579E790054271F /* Stamp.sks in Resources */,
 				1D3546E82183603C0016EACC /* exit.png in Resources */,
 				D915B802205037EC00EB5767 /* ARImage.png in Resources */,
 				D915B810206AD41A00EB5767 /* location.png in Resources */,
